@@ -450,12 +450,12 @@ h2 {
   animation: step-b 0.55s ease-in-out infinite alternate;
 }
 @keyframes walk-x {
-  from { transform: translateX(-120px); }
-  to { transform: translateX(calc(100vw + 40px)); }
+  from { transform: translateX(calc(100vw + 40px)); }
+  to { transform: translateX(-140px); }
 }
 @keyframes walk-bob {
-  from { transform: scaleX(-1) translateY(0) rotate(-3deg); }
-  to { transform: scaleX(-1) translateY(-5px) rotate(3deg); }
+  from { transform: translateY(0) rotate(-3deg); }
+  to { transform: translateY(-5px) rotate(3deg); }
 }
 @keyframes step-a {
   from { transform: rotate(-22deg); }
