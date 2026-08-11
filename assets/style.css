@@ -440,13 +440,13 @@ h2 {
 .mascot img { position: absolute; display: block; }
 .m-body { left: 0; top: 0; width: 80px; height: 86px; }
 .m-lega {
-  left: 11px; top: 52px; width: 29px; height: 34px;
-  transform-origin: 83% 8%;
+  left: 11px; top: 48px; width: 29px; height: 36px;
+  transform-origin: 83% 13%;
   animation: step-a 0.55s ease-in-out infinite alternate;
 }
 .m-legb {
-  left: 42px; top: 52px; width: 38px; height: 32px;
-  transform-origin: 15% 8%;
+  left: 42px; top: 48px; width: 38px; height: 34px;
+  transform-origin: 15% 14%;
   animation: step-b 0.55s ease-in-out infinite alternate;
 }
 @keyframes walk-x {
@@ -458,12 +458,12 @@ h2 {
   to { transform: translateY(-5px) rotate(3deg); }
 }
 @keyframes step-a {
-  from { transform: rotate(-22deg); }
-  to { transform: rotate(20deg); }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(24deg); }
 }
 @keyframes step-b {
-  from { transform: rotate(20deg); }
-  to { transform: rotate(-22deg); }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-20deg); }
 }
 @media (prefers-reduced-motion: reduce) {
   .walker { display: none; }
