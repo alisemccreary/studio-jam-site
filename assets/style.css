@@ -394,7 +394,14 @@ h2 {
   position: relative;
 }
 .service li::before { content: "\2737"; position: absolute; left: 0; }
-.service-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 68rem; }
+.service-grid { grid-template-columns: repeat(4, 1fr); max-width: 76rem; }
+.service { font-size: 1.05rem; padding: 1.5rem 1.2rem; }
+@media (max-width: 1024px) {
+  .service-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  .service-grid { grid-template-columns: 1fr; }
+}
 .tier-tag {
   font-family: var(--mono);
   text-transform: uppercase;
