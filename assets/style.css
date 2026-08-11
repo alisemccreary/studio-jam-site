@@ -18,7 +18,7 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { font-family: var(--sans); background: var(--blush); color: var(--teal); }
+body { font-family: var(--sans); background: var(--blush); color: var(--teal); overflow-x: hidden; }
 
 h2 {
   font-family: "Studio Jam Display", var(--sans);
@@ -331,6 +331,12 @@ h2 {
 /* -- Mobile --------------------------------------- */
 @media (max-width: 640px) {
   .nav { flex-direction: column; gap: 0.7rem; }
+  .btn-teal {
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    padding: 0.9rem 1.1rem;
+    max-width: 92%;
+  }
   .hero-logo { width: 78vw; }
   .hero-star { width: 54px; top: 3%; right: 4%; }
   .contact-star { width: 42px; top: 5%; left: 6%; }
@@ -425,19 +431,39 @@ h2 {
   bottom: 0;
   animation: walk-x 26s linear infinite;
 }
-.walker-slide img {
-  display: block;
+.mascot {
+  position: relative;
+  width: 80px;
   height: 86px;
-  width: auto;
   animation: walk-bob 0.55s ease-in-out infinite alternate;
+}
+.mascot img { position: absolute; display: block; }
+.m-body { left: 0; top: 0; width: 80px; height: 86px; }
+.m-lega {
+  left: 11px; top: 52px; width: 29px; height: 34px;
+  transform-origin: 83% 8%;
+  animation: step-a 0.55s ease-in-out infinite alternate;
+}
+.m-legb {
+  left: 42px; top: 52px; width: 38px; height: 32px;
+  transform-origin: 15% 8%;
+  animation: step-b 0.55s ease-in-out infinite alternate;
 }
 @keyframes walk-x {
   from { transform: translateX(-120px); }
   to { transform: translateX(calc(100vw + 40px)); }
 }
 @keyframes walk-bob {
-  from { transform: scaleX(-1) translateY(0) rotate(-4deg); }
-  to { transform: scaleX(-1) translateY(-7px) rotate(4deg); }
+  from { transform: scaleX(-1) translateY(0) rotate(-3deg); }
+  to { transform: scaleX(-1) translateY(-5px) rotate(3deg); }
+}
+@keyframes step-a {
+  from { transform: rotate(-22deg); }
+  to { transform: rotate(20deg); }
+}
+@keyframes step-b {
+  from { transform: rotate(20deg); }
+  to { transform: rotate(-22deg); }
 }
 @media (prefers-reduced-motion: reduce) {
   .walker { display: none; }
