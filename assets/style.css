@@ -410,3 +410,35 @@ h2 {
   margin: 0.3rem 0 1rem;
   opacity: 0.8;
 }
+
+
+/* -- Walking mascot ----------------------------- */
+.walker {
+  position: absolute;
+  left: 0; right: 0; bottom: 10px;
+  height: 96px;
+  overflow: hidden;
+  pointer-events: none;
+}
+.walker-slide {
+  position: absolute;
+  bottom: 0;
+  animation: walk-x 26s linear infinite;
+}
+.walker-slide img {
+  display: block;
+  height: 86px;
+  width: auto;
+  animation: walk-bob 0.55s ease-in-out infinite alternate;
+}
+@keyframes walk-x {
+  from { transform: translateX(-120px); }
+  to { transform: translateX(calc(100vw + 40px)); }
+}
+@keyframes walk-bob {
+  from { transform: scaleX(-1) translateY(0) rotate(-4deg); }
+  to { transform: scaleX(-1) translateY(-7px) rotate(4deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .walker { display: none; }
+}
