@@ -114,11 +114,11 @@ h2 {
   width: clamp(60px, 10vw, 140px);
   top: 8%; right: 7%;
   filter: brightness(0) saturate(100%) invert(89%) sepia(9%) saturate(700%) hue-rotate(305deg);
-  animation: twinkle 4s ease-in-out infinite;
+  animation: spin 16s linear infinite;
 }
-@keyframes twinkle {
-  0%, 100% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(12deg) scale(1.08); }
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 .hero-tag {
   color: var(--blush);
@@ -289,7 +289,7 @@ h2 {
 .contact-star {
   width: clamp(60px, 9vw, 110px);
   position: absolute; top: 12%; left: 10%;
-  animation: twinkle 5s ease-in-out infinite;
+  animation: spin 20s linear infinite;
 }
 .contact h2 { font-size: clamp(3rem, 10vw, 6rem); }
 .contact > p { margin: 1.2rem auto 2rem; max-width: 30rem; line-height: 1.6; }
@@ -336,4 +336,39 @@ h2 {
   .contact-star { width: 42px; top: 5%; left: 6%; }
   .nav-links a { margin: 0 0.55rem; font-size: 0.7rem; }
   .footer-row { justify-content: center; text-align: center; }
+}
+
+
+/* -- Motion ------------------------------------- */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes logo-in {
+  from { opacity: 0; transform: rotate(-3deg) scale(0.9); }
+  to { opacity: 1; transform: rotate(-3deg) scale(1); }
+}
+.hero-logo { animation: logo-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-tag { animation: rise-in 0.8s ease 0.35s both; }
+.hero .btn { animation: rise-in 0.8s ease 0.55s both; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0s);
+}
+.reveal.in { opacity: 1; transform: none; }
+
+.tier, .service {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.tier:hover { transform: translateY(-6px) rotate(-0.5deg); box-shadow: 0 14px 0 rgba(11, 79, 97, 0.12); }
+.service:hover { transform: translateY(-4px) rotate(0.5deg); }
+.pillars li { transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease; }
+.pillars li:hover { transform: rotate(-2deg) scale(1.05); background: var(--teal); color: var(--blush); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-star, .contact-star, .ticker-track, .hero-logo, .hero-tag, .hero .btn { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
