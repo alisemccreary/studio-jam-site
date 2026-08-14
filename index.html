@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Studio Jam | Creative Marketing Studio</title>
 <meta name="description" content="Studio Jam is a creative marketing studio run by Alise McCreary. Brand design, website & Shopify builds, social media management, ads, and email. One studio, one point of contact.">
-<link rel="stylesheet" href="assets/style.css?v=12">
+<link rel="stylesheet" href="assets/style.css?v=13">
 </head>
 <body>
 <div id="sj-root">
@@ -43,7 +43,7 @@
 <section class="about" id="about">
   <p class="kicker">The Studio</p>
   <h2>One studio. One point of&nbsp;contact. Full creative&nbsp;range.</h2>
-  <p class="about-copy">Studio Jam (formerly Claude &amp; Co.) is run by founder Alise McCreary. It&rsquo;s the alternative to hiring a whole in-house marketing department: strategy, design, and a healthy amount of hospitality brought together to grow brands that feel like themselves.</p>
+  <p class="about-copy">Studio Jam is run by founder Alise McCreary. It&rsquo;s the alternative to hiring a whole in-house marketing department: strategy, design, and a healthy amount of hospitality brought together to grow brands that feel like themselves.</p>
   <ul class="pillars">
     <li>Hospitality First</li>
     <li>Sharp Strategy</li>
@@ -171,7 +171,7 @@
 <footer class="footer">
   <p class="footer-big">Stay jammin&rsquo;, folks</p>
   <div class="footer-row">
-    <p>&copy; 2026 Studio Jam &middot; formerly Claude &amp; Co.</p>
+    <p>&copy; 2026 Studio Jam</p>
     <a href="#top">Back to top &#8593;</a>
   </div>
 </footer>
@@ -190,9 +190,25 @@
   for (var i = 0; i < kids.length; i++) {
     if (kids[i] !== root && kids[i].tagName !== 'SCRIPT') kids[i].style.display = 'none';
   }
-  document.documentElement.style.cssText += ';height:auto;overflow-x:hidden;overflow-y:auto;';
-  document.body.style.cssText += ';margin:0;height:auto;overflow:visible;background:#FFD7D9;';
-  window.scrollTo(0, 0);
+  document.documentElement.style.cssText += ';height:auto;overflow-x:hidden;overflow-y:auto;overflow-anchor:none;';
+  document.body.style.cssText += ';margin:0;height:auto;overflow:visible;overflow-anchor:none;background:#FFD7D9;';
+  root.style.overflowAnchor = 'none';
+
+  var userScrolled = false;
+  window.addEventListener('wheel', function () { userScrolled = true; }, { passive: true, once: true });
+  window.addEventListener('touchstart', function () { userScrolled = true; }, { passive: true, once: true });
+  window.addEventListener('keydown', function () { userScrolled = true; }, { once: true });
+
+  function pinTop() {
+    if (!userScrolled && window.scrollY !== 0) window.scrollTo(0, 0);
+  }
+  pinTop();
+  requestAnimationFrame(pinTop);
+  setTimeout(pinTop, 60);
+  setTimeout(pinTop, 250);
+  setTimeout(pinTop, 800);
+  window.addEventListener('load', pinTop);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(pinTop);
 })();
 
 (function () {
