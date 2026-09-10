@@ -456,7 +456,7 @@ pk = head("Packages | Studio Jam", "Three tiers of monthly marketing management 
 pk += nav("packages") + ticker("Pick Your Set &#10039; The Opener &#10039; The Main Event &#10039; The Encore &#10039; Pick Your Set &#10039; The Opener &#10039; The Main Event &#10039; The Encore")
 pk += page_hero("Marketing Management", "Pick your set",
                 "Three tiers of monthly marketing management. No rate cards, no one-size-fits-all. Each one is scoped to your business and your goals.",
-                [("Get scoped", "/contact", "btn-blush btn-solid"), ("How it works", "#how", "btn-blush")],
+                [("Let&rsquo;s talk", "/contact", "btn-blush btn-solid"), ("How it works", "#how", "btn-blush")],
                 photo="alise-think.jpg", alt="Alise McCreary thinking it over, finger on chin")
 pk += f'''
 <section class="packages page-tiers">
@@ -490,7 +490,7 @@ pk += f'''
 </section>
 
 {testimonial("From The Main Event", alt=True)}
-''' + cta_band("Let&rsquo;s jam", "Ready to pick your set?", "Send a note with your business name and what you are hoping to change. I&rsquo;ll come back with a scoped set and no pressure.", "Get scoped") + footer()
+''' + cta_band("Let&rsquo;s jam", "Ready to pick your set?", "Send a note with your business name and what you are hoping to change. I&rsquo;ll come back with the right set for you, and no pressure.", "Send a note") + footer()
 open('packages.html', 'w', encoding='utf-8').write(pk)
 
 # ---------------- PROCESS ----------------
