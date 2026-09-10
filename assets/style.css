@@ -788,3 +788,5 @@ h2 {
 .clientmap .place.home .homep { margin: 0; }
 @media (max-width: 640px) { .clientmap .place.home { flex-direction: column; align-items: flex-start; gap: 0.6rem; } }
 @media (max-width: 700px) { .clientmap .mascot { display: none; } .clientmap .stl { font-size: 30px; } .clientmap .pinl { font-size: 22px; } .clientmap .note { font-size: 0.6rem; } }
+.testimonial.alt { background: var(--berry); }
+.deco.walk { right: 4%; bottom: 0; }
