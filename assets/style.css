@@ -424,3 +424,93 @@ h2 {
 }
 
 
+/* -- Work with us (homepage teaser) -------------- */
+.hiring {
+  background: var(--berry);
+  color: var(--blush);
+  text-align: center;
+  padding: clamp(4rem, 9vw, 7rem) 6vw;
+}
+.hiring h2 { max-width: 16em; margin: 0 auto; }
+.hiring-copy {
+  max-width: 36rem;
+  margin: 1.4rem auto 2.2rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* -- Work with us page -------------------------- */
+.page-hero {
+  position: relative;
+  background: var(--teal);
+  color: var(--blush);
+  text-align: center;
+  padding: clamp(4rem, 10vw, 7rem) 6vw clamp(4rem, 9vw, 6rem);
+  overflow: hidden;
+}
+.page-hero h1 {
+  font-family: "Studio Jam Display", var(--sans);
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 8vw, 5rem);
+  line-height: 1.05;
+  max-width: 12em;
+  margin: 0 auto;
+  animation: rise-in 0.8s ease 0.15s both;
+}
+.page-hero .kicker { animation: rise-in 0.8s ease both; }
+.page-hero .hero-tag { max-width: 30rem; }
+.page-hero .btn { animation: rise-in 0.8s ease 0.55s both; }
+.nav-links a[aria-current="page"] { text-decoration: underline wavy; text-underline-offset: 4px; }
+
+.job {
+  background: var(--blush);
+  padding: clamp(4rem, 9vw, 7rem) 6vw;
+  text-align: center;
+}
+.job-inner { max-width: 62rem; margin: 0 auto; }
+.job h2 { max-width: 16em; margin: 0 auto; }
+.job-copy {
+  max-width: 38rem;
+  margin: 1.4rem auto 1.8rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.job-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.2rem;
+  margin: 2.6rem auto 0;
+  align-items: start;
+}
+.job-card {
+  background: var(--white);
+  border: 2px solid var(--teal);
+  border-radius: 22px;
+  padding: 2rem 1.6rem;
+  text-align: left;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.job-card:hover { transform: translateY(-6px) rotate(-0.5deg); box-shadow: 0 14px 0 rgba(11, 79, 97, 0.12); }
+.job-card-teal { background: var(--teal); color: var(--blush); }
+.job-card h3 {
+  font-family: "Studio Jam Display", var(--sans);
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+.job-card ul { list-style: none; }
+.job-card li {
+  padding: 0.45rem 0 0.45rem 1.4rem;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+.job-card li::before { content: "\2737"; position: absolute; left: 0; }
+.apply .kicker { margin-bottom: 0.4rem; }
+.apply .ig a { margin-left: 0.3rem; }
+@media (max-width: 640px) {
+  .nav-links { text-align: center; line-height: 2; }
+  .page-hero .hero-star { width: 54px; top: 3%; right: 4%; }
+}

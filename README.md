@@ -17,6 +17,12 @@ Everything editable lives in index.html — plain text between tags:
   should differ)
 - Process steps — the process section
 - Contact email / Instagram — the contact section
+- Work With Us teaser — the hiring section on index.html (links to work-with-us.html)
+
+work-with-us.html is the hiring page (part-time marketing assistant, Fayetteville AR).
+Edit the role copy in the job section and the apply email in the apply section.
+Links carry data-sj-page / data-sj-home attributes so that, when embedded in Showit,
+the canvas-escape script rewrites them to /work-with-us and /#section.
 
 Colors and fonts live in assets/style.css (the :root block at the top).
 The font and all brand images are embedded directly in the files as base64 data
