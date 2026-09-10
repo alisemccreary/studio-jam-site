@@ -6,9 +6,9 @@ idx = open('index.html', encoding='utf-8').read()
 
 def data(cls):
     return re.search(r'<img class="%s[^"]*" src="([^"]+)"' % cls, idx).group(1)
-STAR = data('contact-star'); LOGO = data('hero-logo'); MASCOT = data('hero-mascot')
-FAV = re.search(r'<link rel="icon" type="image/png" href="([^"]+)"', idx).group(1)
-CSSV = "18"
+STAR = "/assets/img/star-teal.png"; STAR_PINK = "/assets/img/star-pink.png"; LOGO = "/assets/img/logo.png"; MASCOT = "/assets/img/mascot-hero.png"
+FAV = 'data:image/png;base64,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'
+CSSV = "19"
 EMAIL = "alise@studiojamcreatives.com"
 
 def head(title, desc, path, noindex=False):
@@ -74,7 +74,7 @@ def page_hero(kicker, h1, tag, ctas, cls="", photo=None, alt="Alise McCreary, fo
     </div>'''
     if photo:
         return f'''<section class="page-hero with-photo {cls}" id="top">
-  <img class="hero-star star-a" src="{STAR}" alt="">
+  <img class="hero-star star-a" src="{STAR_PINK}" alt="" width="602" height="667">
   <div class="hero-grid">
     <div class="hero-copy">
 {body}
@@ -87,14 +87,14 @@ def page_hero(kicker, h1, tag, ctas, cls="", photo=None, alt="Alise McCreary, fo
 '''
     d = f'\n  <img loading="lazy" decoding="async" class="deco {deco[1]}" src="/assets/img/{deco[0]}" alt="">' if deco else ''
     return f'''<section class="page-hero {cls}" id="top">
-  <img class="hero-star star-a" src="{STAR}" alt="">{d}
+  <img class="hero-star star-a" src="{STAR_PINK}" alt="" width="602" height="667">{d}
 {body}
 </section>
 '''
 
 def cta_band(kicker, h2, p, btn_text, btn_href="/contact", cls="contact"):
     return f'''<section class="{cls} has-chat">
-  <img class="contact-star" src="{STAR}" alt="">
+  <img class="contact-star" src="{STAR}" alt="" width="602" height="667">
   <img loading="lazy" decoding="async" class="deco chat" src="/assets/img/mascot-chat.png" alt="" width="466" height="891">
   <p class="kicker">{kicker}</p>
   <h2>{h2}</h2>
@@ -250,10 +250,10 @@ home = head("Studio Jam | Creative Marketing Studio",
 home += nav("") + ticker(TICK_MAIN) + f'''
 <!-- HERO -->
 <section class="hero" id="top">
-  <img class="hero-star star-a" src="{STAR}" alt="">
+  <img class="hero-star star-a" src="{STAR_PINK}" alt="" width="602" height="667">
   <h1 class="sr-only">Studio Jam, a creative marketing studio</h1>
-  <img class="hero-logo" src="{LOGO}" alt="Studio Jam">
-  <img class="hero-mascot" src="{MASCOT}" alt="">
+  <img class="hero-logo" src="{LOGO}" alt="Studio Jam" width="1400" height="641">
+  <img class="hero-mascot" src="{MASCOT}" alt="" width="277" height="300">
   <p class="hero-tag">A creative marketing studio with the full range of an in-house team, and the warmth of one person who actually picks up.</p>
   <div class="hero-ctas">
     <a class="btn btn-blush btn-solid" href="/contact">Start a project</a>
@@ -284,7 +284,7 @@ home += nav("") + ticker(TICK_MAIN) + f'''
 
 <!-- SERVICES TEASER -->
 <section class="services" id="services">
-  <img loading="lazy" decoding="async" class="deco kick" src="/assets/img/mascot-kick.png" alt="" width="520" height="362">
+  <img loading="lazy" decoding="async" class="deco kick" src="/assets/img/mascot-kick-pink.png" alt="" width="520" height="362">
   <p class="kicker">The Work</p>
   <h2>What we do</h2>
   <div class="service-grid">
@@ -308,7 +308,7 @@ home += nav("") + ticker(TICK_MAIN) + f'''
 
 <!-- PROCESS TEASER -->
 <section class="process" id="process">
-  <img loading="lazy" decoding="async" class="deco walk" src="/assets/img/mascot-walk.png" alt="" width="520" height="562">
+  <img loading="lazy" decoding="async" class="deco walk" src="/assets/img/mascot-walk-pink.png" alt="" width="520" height="562">
   <p class="kicker">From hello to launch</p>
   <h2>How a jam session goes</h2>
   <div class="steps">
@@ -322,7 +322,7 @@ home += nav("") + ticker(TICK_MAIN) + f'''
 
 <!-- CONTACT -->
 <section class="contact has-chat" id="contact">
-  <img class="contact-star" src="{STAR}" alt="">
+  <img class="contact-star" src="{STAR}" alt="" width="602" height="667">
   <img loading="lazy" decoding="async" class="deco chat" src="/assets/img/mascot-chat.png" alt="" width="466" height="891">
   <h2>Let&rsquo;s jam</h2>
   <p>Tell me about your business, what&rsquo;s working, and what&rsquo;s not. The first conversation is on the house, and there&rsquo;s no pitch at the end of it.</p>
@@ -524,7 +524,7 @@ open('process.html', 'w', encoding='utf-8').write(pr)
 ct = head("Contact | Studio Jam", "Get in touch with Studio Jam, a creative marketing studio in Fayetteville, Arkansas. The first conversation is on the house.", "contact")
 ct += nav("contact") + ticker("Let&rsquo;s Jam &#10039; Fayetteville, Arkansas &#10039; Working With Clients Everywhere &#10039; Let&rsquo;s Jam &#10039; Fayetteville, Arkansas &#10039; Working With Clients Everywhere")
 ct += f'''<section class="page-hero with-photo contact-hero" id="top">
-  <img class="hero-star star-a" src="{STAR}" alt="">
+  <img class="hero-star star-a" src="{STAR_PINK}" alt="" width="602" height="667">
   <div class="hero-grid">
     <div class="hero-copy">
       <p class="kicker">Say hello</p>
@@ -615,7 +615,7 @@ ww += f'''
 
 <!-- APPLY -->
 <section class="contact apply" id="apply">
-  <img class="contact-star" src="{STAR}" alt="">
+  <img class="contact-star" src="{STAR}" alt="" width="602" height="667">
   <p class="kicker">How to apply</p>
   <h2>Let&rsquo;s jam</h2>
   <p>Email your resume plus any recent work (class projects, content you&rsquo;ve made, anything you&rsquo;re proud of) to:</p>

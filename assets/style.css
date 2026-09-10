@@ -133,7 +133,7 @@ h2 {
   position: absolute;
   width: clamp(60px, 10vw, 140px);
   top: 8%; right: 7%;
-  filter: brightness(0) saturate(100%) invert(89%) sepia(9%) saturate(700%) hue-rotate(305deg);
+  
   animation: spin 16s linear infinite;
 }
 @keyframes spin {
@@ -595,7 +595,7 @@ h2 {
 .mission h2 { margin-bottom: 1.2rem; }
 .lead { font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.1rem; }
 .lead.aside { font-family: var(--mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.85; }
-.mission-mascot { width: min(240px, 60%); justify-self: center; filter: brightness(0) saturate(100%) invert(89%) sepia(9%) saturate(700%) hue-rotate(305deg); }
+.mission-mascot { width: min(240px, 60%); justify-self: center;  }
 .pillars-section { background: var(--blush); padding: clamp(4rem, 9vw, 7rem) 6vw; text-align: center; }
 .pillar-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; max-width: 62rem; margin: 2.6rem auto 0; text-align: left; }
 .pillar-grid.three { grid-template-columns: repeat(3, 1fr); }
@@ -694,10 +694,10 @@ h2 {
 
 .deco { position: absolute; pointer-events: none; user-select: none; }
 .services, .process, .contact, .page-hero, .mix { position: relative; overflow: hidden; }
-.deco.kick { width: clamp(120px, 16vw, 230px); right: 2%; top: 1.5rem; filter: brightness(0) saturate(100%) invert(89%) sepia(9%) saturate(700%) hue-rotate(305deg); opacity: 0.95; }
-.deco.walk { width: clamp(120px, 15vw, 210px); right: 4%; bottom: 1.5rem; filter: brightness(0) saturate(100%) invert(89%) sepia(9%) saturate(700%) hue-rotate(305deg); }
-.deco.tall { width: clamp(70px, 8vw, 110px); left: 6%; bottom: 0; filter: brightness(0) saturate(100%) invert(89%) sepia(9%) saturate(700%) hue-rotate(305deg); }
-.deco.stand { width: clamp(120px, 14vw, 200px); left: 6%; bottom: 0; filter: brightness(0) saturate(100%) invert(89%) sepia(9%) saturate(700%) hue-rotate(305deg); }
+.deco.kick { width: clamp(120px, 16vw, 230px); right: 2%; top: 1.5rem;  opacity: 0.95; }
+.deco.walk { width: clamp(120px, 15vw, 210px); right: 4%; bottom: 1.5rem;  }
+.deco.tall { width: clamp(70px, 8vw, 110px); left: 6%; bottom: 0;  }
+.deco.stand { width: clamp(120px, 14vw, 200px); left: 6%; bottom: 0;  }
 .deco.chat { width: clamp(90px, 10vw, 150px); right: 8%; bottom: 0; }
 .has-chat { padding-bottom: clamp(6rem, 12vw, 9rem); }
 
@@ -729,3 +729,5 @@ h2 {
 
 .hero-mascot { height: 124px; margin-top: 18px; }
 @media (max-width: 640px) { .hero-mascot { height: 96px; } }
+
+.hero-star, .contact-star, .hero-logo, .hero-mascot { height: auto; }
