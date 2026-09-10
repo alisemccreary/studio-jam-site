@@ -790,3 +790,6 @@ h2 {
 @media (max-width: 700px) { .clientmap .mascot { display: none; } .clientmap .stl { font-size: 30px; } .clientmap .pinl { font-size: 22px; } .clientmap .note { font-size: 0.6rem; } }
 .testimonial.alt { background: var(--berry); }
 .deco.walk { right: 4%; bottom: 0; }
+
+.hero-mascot { height: 92px; width: auto; margin: 12px auto 0; }
+@media (max-width: 640px) { .hero-mascot { height: 70px; } }
