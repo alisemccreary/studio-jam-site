@@ -838,3 +838,13 @@ h2 {
 .nav-cta[aria-current="page"] { box-shadow: none; opacity: 0.92; }
 .quote::before { display: none; }
 .mono-mark { display: block; opacity: 0.85; width: 64px; }
+
+/* -- Loop: setlist strip, industries, mobile nav hint ----- */
+.setlist { background: var(--offwhite); text-align: center; padding: clamp(2.6rem, 5vw, 3.6rem) 6vw; border-top: 2px solid var(--teal); border-bottom: 2px solid var(--teal); }
+.setlist .kicker { margin-bottom: 1rem; }
+.setlist-names { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem 2.2rem; margin-bottom: 1.1rem; }
+.setlist-names li { font-family: "Studio Jam Display", var(--sans); text-transform: uppercase; font-size: clamp(1.1rem, 2vw, 1.5rem); letter-spacing: 0.02em; }
+.industries { margin: 1.2rem auto 2rem; justify-content: center; }
+@media (max-width: 640px) {
+  .nav-links { -webkit-mask-image: linear-gradient(to right, #000 82%, transparent); mask-image: linear-gradient(to right, #000 82%, transparent); padding-right: 12vw; }
+}
