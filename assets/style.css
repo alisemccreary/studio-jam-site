@@ -859,3 +859,5 @@ h2 {
   .service-row-thumb { width: 88px; }
   .service-row-body { grid-column: 1 / -1; }
 }
+
+.clientmap .note { color: var(--teal); opacity: 0.85; }
