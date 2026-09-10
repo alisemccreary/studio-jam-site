@@ -793,3 +793,6 @@ h2 {
 
 .hero-mascot { height: 92px; width: auto; margin: 12px auto 0; }
 @media (max-width: 640px) { .hero-mascot { height: 70px; } }
+
+.nav-logo img { display: block; height: 44px; width: auto; }
+@media (max-width: 640px) { .nav-logo img { height: 34px; } }
