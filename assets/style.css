@@ -781,4 +781,9 @@ h2 {
 .clientmap .list { grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); }
 .clientmap .place li a, .clientmap .place { text-align: left; }
 @media (max-width: 1024px) { .clientmap .list { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); } }
-@media (min-width: 1100px) { .clientmap .list { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+
+.clientmap .list { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.clientmap .place.home { grid-column: 1 / -1; display: flex; align-items: center; gap: 1.5rem; padding: 1rem 1.4rem; }
+.clientmap .place.home h3 { margin: 0; flex: 0 0 auto; }
+.clientmap .place.home .homep { margin: 0; }
+@media (max-width: 640px) { .clientmap .place.home { flex-direction: column; align-items: flex-start; gap: 0.6rem; } }
