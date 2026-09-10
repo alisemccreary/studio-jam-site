@@ -796,3 +796,42 @@ h2 {
 
 .nav-logo img { display: block; height: 44px; width: auto; }
 @media (max-width: 640px) { .nav-logo img { height: 34px; } }
+
+/* ===== Elevated treatment (applied) ===== */
+:root { --disp: "Bricolage Grotesque", "Inclusive Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+
+/* type: Closeout kept for all headings (per Alise) */
+.footer-big, .notfound h1 { font-family: "Studio Jam Display", var(--sans); }
+
+/* geometry: calmer radii, straight photos, quieter shadows */
+.tier, .job-card, .pillar, .contact-card, .step-card, .clientmap .place, .service { border-radius: 14px; }
+.photo-frame { border-radius: 18px; border-width: 2px; box-shadow: 8px 10px 0 var(--berry); }
+.about .photo-frame, .pillars-section .photo-frame, .mission .photo-frame, .mix .photo-frame { box-shadow: 8px 10px 0 var(--teal); }
+.tilt-r, .tilt-l { transform: none; }
+.photo-frame:hover { transform: translateY(-3px); }
+.tier:hover, .pillar:hover, .job-card:hover { transform: translateY(-4px); box-shadow: 0 10px 0 rgba(11, 79, 97, 0.10); }
+.service:hover { transform: translateY(-3px); }
+.mapbox, .clientmap .mapbox { box-shadow: 8px 10px 0 var(--berry); border-radius: 18px; }
+
+/* interaction: no rotation, no wavy underlines */
+.btn:hover { transform: translateY(-2px); }
+.nav-cta:hover { transform: translateY(-1px); }
+.nav-links a:hover, .footer-links a:hover, .teaser-link, .nav-links a[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.pillars li:hover { transform: none; background: var(--teal); color: var(--blush); }
+.badge { transform: translateX(-50%); font-size: 0.6rem; letter-spacing: 0.22em; }
+
+/* ornament: keep the brand, lower the volume */
+.deco.kick, .deco.walk, .deco.tall, .deco.stand { opacity: 0.45; }
+.deco.chat { opacity: 0.9; width: clamp(80px, 8vw, 120px); }
+.textured::before { opacity: 0.05; }
+.services { background-image: linear-gradient(rgba(117, 63, 75, 0.96), rgba(117, 63, 75, 0.96)), url(/assets/img/squiggle-services.png); }
+.ticker { padding: 0.5rem 0; }
+.ticker-track span { font-size: 0.72rem; letter-spacing: 0.26em; opacity: 0.92; }
+.hero-mascot { height: 104px; }
+.kicker { font-size: 0.74rem; letter-spacing: 0.26em; opacity: 0.85; }
+
+/* rhythm */
+.about, .services, .packages, .process, .story, .mission, .pillars-section, .expect, .clientmap, .testimonial, .contact, .job, .service-rows, .mix, .contact-details { padding-top: clamp(4.5rem, 9.5vw, 7.5rem); padding-bottom: clamp(4.5rem, 9.5vw, 7.5rem); }
+.quote { font-weight: 400; font-style: normal; font-size: clamp(1.2rem, 2.1vw, 1.6rem); line-height: 1.55; }
+.quote::before { content: "\201C"; display: block; font-family: "Studio Jam Display", var(--sans); font-size: 3rem; line-height: 0.6; margin-bottom: 0.9rem; opacity: 0.8; }
+.mono-mark { display: none; }
