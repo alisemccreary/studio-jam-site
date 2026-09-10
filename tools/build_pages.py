@@ -8,7 +8,7 @@ def data(cls):
     return re.search(r'<img class="%s[^"]*" src="([^"]+)"' % cls, idx).group(1)
 STAR = data('contact-star'); LOGO = data('hero-logo'); MASCOT = data('hero-mascot')
 FAV = re.search(r'<link rel="icon" type="image/png" href="([^"]+)"', idx).group(1)
-CSSV = "17"
+CSSV = "18"
 EMAIL = "alise@studiojamcreatives.com"
 
 def head(title, desc, path, noindex=False):
@@ -85,7 +85,7 @@ def page_hero(kicker, h1, tag, ctas, cls="", photo=None, alt="Alise McCreary, fo
   </div>
 </section>
 '''
-    d = f'\n  <img class="deco {deco[1]}" src="/assets/img/{deco[0]}" alt="">' if deco else ''
+    d = f'\n  <img loading="lazy" decoding="async" class="deco {deco[1]}" src="/assets/img/{deco[0]}" alt="">' if deco else ''
     return f'''<section class="page-hero {cls}" id="top">
   <img class="hero-star star-a" src="{STAR}" alt="">{d}
 {body}
@@ -95,7 +95,7 @@ def page_hero(kicker, h1, tag, ctas, cls="", photo=None, alt="Alise McCreary, fo
 def cta_band(kicker, h2, p, btn_text, btn_href="/contact", cls="contact"):
     return f'''<section class="{cls} has-chat">
   <img class="contact-star" src="{STAR}" alt="">
-  <img class="deco chat" src="/assets/img/mascot-chat.png" alt="" width="466" height="891">
+  <img loading="lazy" decoding="async" class="deco chat" src="/assets/img/mascot-chat.png" alt="" width="466" height="891">
   <p class="kicker">{kicker}</p>
   <h2>{h2}</h2>
   <p>{p}</p>
@@ -212,7 +212,7 @@ def testimonial(kicker="From a client"):
     q, who, biz, ctx = QUOTE
     return f'''<!-- TESTIMONIAL -->
 <section class="testimonial textured">
-  <img class="mono-mark" src="/assets/img/monogram-pink.png" alt="" width="300" height="129">
+  <img loading="lazy" decoding="async" class="mono-mark" src="/assets/img/monogram-pink.png" alt="" width="300" height="129">
   <p class="kicker">{kicker}</p>
   <blockquote class="quote">&ldquo;{q}&rdquo;</blockquote>
   <p class="quote-by"><strong>{who}</strong> &middot; {biz}<br><span>{ctx}</span></p>
@@ -265,7 +265,7 @@ home += nav("") + ticker(TICK_MAIN) + f'''
 <section class="about split" id="about">
   <div class="split-grid">
     <div class="photo-frame tilt-l">
-      <img src="/assets/img/alise-kick.jpg" alt="Alise McCreary, founder of Studio Jam, kicking back on a stool" width="1200" height="800">
+      <img loading="lazy" decoding="async" src="/assets/img/alise-kick.jpg" alt="Alise McCreary, founder of Studio Jam, kicking back on a stool" width="1200" height="800">
     </div>
     <div class="split-copy">
       <p class="kicker">The Studio</p>
@@ -284,7 +284,7 @@ home += nav("") + ticker(TICK_MAIN) + f'''
 
 <!-- SERVICES TEASER -->
 <section class="services" id="services">
-  <img class="deco kick" src="/assets/img/mascot-kick.png" alt="" width="520" height="362">
+  <img loading="lazy" decoding="async" class="deco kick" src="/assets/img/mascot-kick.png" alt="" width="520" height="362">
   <p class="kicker">The Work</p>
   <h2>What we do</h2>
   <div class="service-grid">
@@ -308,7 +308,7 @@ home += nav("") + ticker(TICK_MAIN) + f'''
 
 <!-- PROCESS TEASER -->
 <section class="process" id="process">
-  <img class="deco walk" src="/assets/img/mascot-walk.png" alt="" width="520" height="562">
+  <img loading="lazy" decoding="async" class="deco walk" src="/assets/img/mascot-walk.png" alt="" width="520" height="562">
   <p class="kicker">From hello to launch</p>
   <h2>How a jam session goes</h2>
   <div class="steps">
@@ -323,7 +323,7 @@ home += nav("") + ticker(TICK_MAIN) + f'''
 <!-- CONTACT -->
 <section class="contact has-chat" id="contact">
   <img class="contact-star" src="{STAR}" alt="">
-  <img class="deco chat" src="/assets/img/mascot-chat.png" alt="" width="466" height="891">
+  <img loading="lazy" decoding="async" class="deco chat" src="/assets/img/mascot-chat.png" alt="" width="466" height="891">
   <h2>Let&rsquo;s jam</h2>
   <p>Tell me about your business, what&rsquo;s working, and what&rsquo;s not. The first conversation is on the house, and there&rsquo;s no pitch at the end of it.</p>
   <a class="btn btn-teal" href="mailto:{EMAIL}">{EMAIL}</a>
@@ -362,7 +362,7 @@ about += f'''
       <p class="lead aside">Oh, and always play good music during dinner.</p>
     </div>
     <div class="photo-frame tilt-r small">
-      <img src="/assets/img/alise-lookup.jpg" alt="Alise McCreary looking up, hands folded on a stool" width="1100" height="1375">
+      <img loading="lazy" decoding="async" src="/assets/img/alise-lookup.jpg" alt="Alise McCreary looking up, hands folded on a stool" width="1100" height="1375">
     </div>
   </div>
 </section>
@@ -430,7 +430,7 @@ svc += '''
       <a class="btn btn-teal" href="/packages">See monthly management</a>
     </div>
     <div class="photo-frame tilt-r">
-      <img src="/assets/img/alise-cream.jpg" alt="Alise McCreary seated on a block, smiling" width="1100" height="1375">
+      <img loading="lazy" decoding="async" src="/assets/img/alise-cream.jpg" alt="Alise McCreary seated on a block, smiling" width="1100" height="1375">
     </div>
   </div>
 </section>

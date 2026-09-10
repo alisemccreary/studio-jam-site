@@ -726,3 +726,6 @@ h2 {
 .deco, .mono-mark { height: auto; }
 .page-hero.with-photo h1 { font-size: clamp(2.2rem, 4.8vw, 3.8rem); }
 .deco.chat { right: 6%; }
+
+.hero-mascot { height: 124px; margin-top: 18px; }
+@media (max-width: 640px) { .hero-mascot { height: 96px; } }
