@@ -655,3 +655,74 @@ h2 {
 .tier-popular { background: var(--teal); color: var(--blush); }
 .job-card-teal { background: var(--teal); color: var(--blush); }
 .contact-card.teal { background: var(--teal); }
+
+.badge { color: #FFFDFC; }
+
+/* -- Personality pass: photos, mascots, texture -------------- */
+.photo-frame {
+  position: relative; border-radius: 26px; overflow: hidden;
+  border: 3px solid var(--blush); background: var(--offwhite);
+  box-shadow: 12px 14px 0 var(--berry);
+  transition: transform 0.3s ease;
+}
+.photo-frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.tilt-r { transform: rotate(2deg); } .tilt-l { transform: rotate(-2deg); }
+.photo-frame:hover { transform: rotate(0deg) scale(1.01); }
+.about .photo-frame, .story .photo-frame, .pillars-section .photo-frame { border-color: var(--teal); box-shadow: 12px 14px 0 var(--teal); }
+.mission .photo-frame { border-color: var(--blush); box-shadow: 12px 14px 0 var(--teal); }
+.mix .photo-frame { box-shadow: 12px 14px 0 var(--teal); }
+
+.page-hero.with-photo { text-align: left; padding-bottom: clamp(3rem, 7vw, 5rem); }
+.hero-grid { max-width: 68rem; margin: 0 auto; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 3rem 4rem; align-items: center; }
+.page-hero.with-photo h1 { margin: 0; max-width: none; }
+.page-hero.with-photo .hero-tag { margin-left: 0; margin-right: 0; }
+.page-hero.with-photo .hero-ctas { justify-content: flex-start; }
+.page-hero.with-photo .photo-frame { max-width: 380px; justify-self: end; aspect-ratio: 4 / 5; }
+.page-hero.with-photo .photo-frame img[width="1200"] { aspect-ratio: 3 / 2; }
+.with-photo .photo-frame.wide { aspect-ratio: 3 / 2; max-width: 440px; }
+
+.split .split-grid { max-width: 68rem; margin: 0 auto; display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 3rem 4rem; align-items: center; text-align: left; }
+.split h2 { margin: 0 0 1.2rem; max-width: none; }
+.split .about-copy, .split .packages-intro { margin-left: 0; margin-right: 0; }
+.split .pillars { justify-content: flex-start; }
+.split .teaser-link { display: inline-block; }
+.mix.split { text-align: left; }
+.mix.split .split-grid { grid-template-columns: 1.1fr 0.9fr; }
+.mix .photo-frame { max-width: 360px; aspect-ratio: 4 / 5; justify-self: center; }
+.about.split .photo-frame { aspect-ratio: 3 / 2; }
+.mission .photo-frame.small { max-width: 320px; aspect-ratio: 4 / 5; justify-self: center; }
+
+.deco { position: absolute; pointer-events: none; user-select: none; }
+.services, .process, .contact, .page-hero, .mix { position: relative; overflow: hidden; }
+.deco.kick { width: clamp(120px, 16vw, 230px); right: 2%; top: 1.5rem; filter: brightness(0) saturate(100%) invert(89%) sepia(9%) saturate(700%) hue-rotate(305deg); opacity: 0.95; }
+.deco.walk { width: clamp(120px, 15vw, 210px); right: 4%; bottom: 1.5rem; filter: brightness(0) saturate(100%) invert(89%) sepia(9%) saturate(700%) hue-rotate(305deg); }
+.deco.tall { width: clamp(70px, 8vw, 110px); left: 6%; bottom: 0; filter: brightness(0) saturate(100%) invert(89%) sepia(9%) saturate(700%) hue-rotate(305deg); }
+.deco.stand { width: clamp(120px, 14vw, 200px); left: 6%; bottom: 0; filter: brightness(0) saturate(100%) invert(89%) sepia(9%) saturate(700%) hue-rotate(305deg); }
+.deco.chat { width: clamp(90px, 10vw, 150px); right: 8%; bottom: 0; }
+.has-chat { padding-bottom: clamp(6rem, 12vw, 9rem); }
+
+.textured { position: relative; }
+.textured::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: url(/assets/img/squiggle-white.png); background-size: 420px auto;
+  opacity: 0.09;
+}
+.textured > * { position: relative; }
+.mono-mark { width: 74px; display: block; margin: 0 auto 1.2rem; opacity: 0.9; }
+
+@media (max-width: 900px) {
+  .hero-grid, .split .split-grid, .mix.split .split-grid { grid-template-columns: 1fr; }
+  .page-hero.with-photo { text-align: center; }
+  .page-hero.with-photo .hero-ctas { justify-content: center; }
+  .page-hero.with-photo .photo-frame { justify-self: center; max-width: 320px; }
+  .split .split-grid { text-align: center; }
+  .split .pillars { justify-content: center; }
+  .about.split .photo-frame { max-width: 420px; margin: 0 auto; order: 2; }
+  .split .split-copy { order: 1; }
+  .mix.split .split-grid .photo-frame { order: 2; }
+  .deco.kick, .deco.walk, .deco.tall, .deco.stand { display: none; }
+  .deco.chat { width: 80px; right: 4%; }
+}
+.deco, .mono-mark { height: auto; }
+.page-hero.with-photo h1 { font-size: clamp(2.2rem, 4.8vw, 3.8rem); }
+.deco.chat { right: 6%; }

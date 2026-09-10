@@ -8,7 +8,7 @@ def data(cls):
     return re.search(r'<img class="%s[^"]*" src="([^"]+)"' % cls, idx).group(1)
 STAR = data('contact-star'); LOGO = data('hero-logo'); MASCOT = data('hero-mascot')
 FAV = re.search(r'<link rel="icon" type="image/png" href="([^"]+)"', idx).group(1)
-CSSV = "16"
+CSSV = "17"
 EMAIL = "alise@studiojamcreatives.com"
 
 def head(title, desc, path, noindex=False):
@@ -65,21 +65,37 @@ def ticker(text):
 '''
 TICK_MAIN = "Creative Marketing Studio &#10039; Brand &#10039; Web &#10039; Social &#10039; Ads &#10039; Let&rsquo;s Go Dancing! &#10039; Creative Marketing Studio &#10039; Brand &#10039; Web &#10039; Social &#10039; Ads &#10039; Let&rsquo;s Go Dancing!"
 
-def page_hero(kicker, h1, tag, ctas, cls=""):
+def page_hero(kicker, h1, tag, ctas, cls="", photo=None, alt="Alise McCreary, founder of Studio Jam", deco=None):
     c = "".join(f'\n    <a class="btn {k}" href="{h}">{t}</a>' for t, h, k in ctas)
-    return f'''<section class="page-hero {cls}" id="top">
+    body = f'''    <p class="kicker">{kicker}</p>
+    <h1>{h1}</h1>
+    <p class="hero-tag">{tag}</p>
+    <div class="hero-ctas">{c}
+    </div>'''
+    if photo:
+        return f'''<section class="page-hero with-photo {cls}" id="top">
   <img class="hero-star star-a" src="{STAR}" alt="">
-  <p class="kicker">{kicker}</p>
-  <h1>{h1}</h1>
-  <p class="hero-tag">{tag}</p>
-  <div class="hero-ctas">{c}
+  <div class="hero-grid">
+    <div class="hero-copy">
+{body}
+    </div>
+    <div class="photo-frame tilt-r">
+      <img src="/assets/img/{photo}" alt="{alt}" width="1100" height="1375">
+    </div>
   </div>
+</section>
+'''
+    d = f'\n  <img class="deco {deco[1]}" src="/assets/img/{deco[0]}" alt="">' if deco else ''
+    return f'''<section class="page-hero {cls}" id="top">
+  <img class="hero-star star-a" src="{STAR}" alt="">{d}
+{body}
 </section>
 '''
 
 def cta_band(kicker, h2, p, btn_text, btn_href="/contact", cls="contact"):
-    return f'''<section class="{cls}">
+    return f'''<section class="{cls} has-chat">
   <img class="contact-star" src="{STAR}" alt="">
+  <img class="deco chat" src="/assets/img/mascot-chat.png" alt="" width="466" height="891">
   <p class="kicker">{kicker}</p>
   <h2>{h2}</h2>
   <p>{p}</p>
@@ -89,7 +105,7 @@ def cta_band(kicker, h2, p, btn_text, btn_href="/contact", cls="contact"):
 
 def footer():
     return f'''<!-- FOOTER -->
-<footer class="footer">
+<footer class="footer textured">
   <p class="footer-big">Stay jammin&rsquo;, folks</p>
   <nav class="footer-links">
     <a href="/about">About</a>
@@ -112,7 +128,7 @@ def footer():
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce || !('IntersectionObserver' in window)) return;
   var groups = ['.service-grid .service', '.tier-grid .tier', '.job-grid .job-card', '.pillars li', '.steps .step', '.pillar-grid .pillar', '.service-rows .service-row', '.step-grid .step-card', '.tips li', '.faq .faq-item'];
-  var singles = ['.kicker', 'h2', '.about-copy', '.hiring-copy', '.job-copy', '.packages-intro', '.fine-print', '.contact > p', '.hero-ctas', '.btn.btn-teal', '.ig', '.based', '.footer-big', '.quote', '.quote-by', '.story p', '.lead', '.teaser-link'];
+  var singles = ['.kicker', 'h2', '.about-copy', '.hiring-copy', '.job-copy', '.packages-intro', '.fine-print', '.contact > p', '.hero-ctas', '.btn.btn-teal', '.ig', '.based', '.footer-big', '.quote', '.quote-by', '.story p', '.lead', '.teaser-link', '.photo-frame', '.deco'];
   var targets = [];
   groups.forEach(function (sel) {{
     var els = document.querySelectorAll(sel);
@@ -195,7 +211,8 @@ QUOTE = ("It is so much more than &ldquo;social media.&rdquo; They take away the
 def testimonial(kicker="From a client"):
     q, who, biz, ctx = QUOTE
     return f'''<!-- TESTIMONIAL -->
-<section class="testimonial">
+<section class="testimonial textured">
+  <img class="mono-mark" src="/assets/img/monogram-pink.png" alt="" width="300" height="129">
   <p class="kicker">{kicker}</p>
   <blockquote class="quote">&ldquo;{q}&rdquo;</blockquote>
   <p class="quote-by"><strong>{who}</strong> &middot; {biz}<br><span>{ctx}</span></p>
@@ -245,21 +262,29 @@ home += nav("") + ticker(TICK_MAIN) + f'''
 </section>
 
 <!-- ABOUT TEASER -->
-<section class="about" id="about">
-  <p class="kicker">The Studio</p>
-  <h2>One studio. One point of&nbsp;contact. Full creative&nbsp;range.</h2>
-  <p class="about-copy">Studio Jam exists for the business that needs an entire marketing department and can realistically afford one person. Brand, web, social, and ads, run by a founder who is actually in the room rather than a name on a proposal.</p>
-  <ul class="pillars">
-    <li>Hospitality first</li>
-    <li>Sound books</li>
-    <li>Honest business</li>
-    <li>Strategic design</li>
-  </ul>
-  <a class="teaser-link" href="/about">Meet the studio &#8594;</a>
+<section class="about split" id="about">
+  <div class="split-grid">
+    <div class="photo-frame tilt-l">
+      <img src="/assets/img/alise-kick.jpg" alt="Alise McCreary, founder of Studio Jam, kicking back on a stool" width="1200" height="800">
+    </div>
+    <div class="split-copy">
+      <p class="kicker">The Studio</p>
+      <h2>One studio. One point of&nbsp;contact. Full creative&nbsp;range.</h2>
+      <p class="about-copy">Hi, I&rsquo;m Alise. Studio Jam exists for the business that needs an entire marketing department and can realistically afford one person. Brand, web, social, and ads, run by a founder who is actually in the room rather than a name on a proposal.</p>
+      <ul class="pillars">
+        <li>Hospitality first</li>
+        <li>Sound books</li>
+        <li>Honest business</li>
+        <li>Strategic design</li>
+      </ul>
+      <a class="teaser-link" href="/about">Meet the studio &#8594;</a>
+    </div>
+  </div>
 </section>
 
 <!-- SERVICES TEASER -->
 <section class="services" id="services">
+  <img class="deco kick" src="/assets/img/mascot-kick.png" alt="" width="520" height="362">
   <p class="kicker">The Work</p>
   <h2>What we do</h2>
   <div class="service-grid">
@@ -283,6 +308,7 @@ home += nav("") + ticker(TICK_MAIN) + f'''
 
 <!-- PROCESS TEASER -->
 <section class="process" id="process">
+  <img class="deco walk" src="/assets/img/mascot-walk.png" alt="" width="520" height="562">
   <p class="kicker">From hello to launch</p>
   <h2>How a jam session goes</h2>
   <div class="steps">
@@ -295,8 +321,9 @@ home += nav("") + ticker(TICK_MAIN) + f'''
 </section>
 
 <!-- CONTACT -->
-<section class="contact" id="contact">
+<section class="contact has-chat" id="contact">
   <img class="contact-star" src="{STAR}" alt="">
+  <img class="deco chat" src="/assets/img/mascot-chat.png" alt="" width="466" height="891">
   <h2>Let&rsquo;s jam</h2>
   <p>Tell me about your business, what&rsquo;s working, and what&rsquo;s not. The first conversation is on the house, and there&rsquo;s no pitch at the end of it.</p>
   <a class="btn btn-teal" href="mailto:{EMAIL}">{EMAIL}</a>
@@ -312,7 +339,8 @@ about = head("About | Studio Jam", "The story, the mission, and the four pillars
 about += nav("about") + ticker("The Studio &#10039; Hospitality First &#10039; Sound Books &#10039; Honest Business &#10039; Strategic Design &#10039; The Studio &#10039; Hospitality First &#10039; Sound Books &#10039; Honest Business &#10039; Strategic Design")
 about += page_hero("The Studio", "Your marketing department, minus the department",
                    "Studio Jam exists for the business that needs an entire marketing team and can realistically afford one person.",
-                   [("Start a project", "/contact", "btn-blush btn-solid"), ("See the work", "/services", "btn-blush")])
+                   [("Start a project", "/contact", "btn-blush btn-solid"), ("See the work", "/services", "btn-blush")],
+                   photo="alise-seated.jpg", alt="Alise McCreary, founder of Studio Jam, seated in a denim jacket")
 about += f'''
 <section class="story">
   <div class="story-inner">
@@ -333,7 +361,9 @@ about += f'''
       <p class="lead">The whole operation runs on hospitality, and that is not a metaphor. Alise spent eight years in hospitality management before she managed brands. A dining room teaches a specific discipline: anticipate the need, over-communicate, and make sure nobody has to ask for something they should already have.</p>
       <p class="lead aside">Oh, and always play good music during dinner.</p>
     </div>
-    <img class="mission-mascot" src="{MASCOT}" alt="">
+    <div class="photo-frame tilt-r small">
+      <img src="/assets/img/alise-lookup.jpg" alt="Alise McCreary looking up, hands folded on a stool" width="1100" height="1375">
+    </div>
   </div>
 </section>
 
@@ -369,7 +399,8 @@ svc = head("Services | Studio Jam", "Brand identity, websites and Shopify, socia
 svc += nav("services") + ticker("Brand Identity &#10039; Web &amp; Shopify &#10039; Social Media Management &#10039; Marketing &amp; Ads &#10039; Brand Identity &#10039; Web &amp; Shopify &#10039; Social Media Management &#10039; Marketing &amp; Ads")
 svc += page_hero("The Work", "Four services. One point of contact.",
                  "Everything a marketing department does, without the handoffs. Pick one, or let them play together.",
-                 [("Start a project", "/contact", "btn-blush btn-solid"), ("See the packages", "/packages", "btn-blush")])
+                 [("Start a project", "/contact", "btn-blush btn-solid"), ("See the packages", "/packages", "btn-blush")],
+                 deco=("mascot-tall.png", "tall"))
 rows = []
 for n, name, p, items, good in SERVICES:
     lis = "".join(f"\n        <li>{i}</li>" for i in items)
@@ -390,11 +421,18 @@ svc += '''
 ''' + "\n".join(rows) + '''
 </section>
 
-<section class="mix">
-  <p class="kicker">Better together</p>
-  <h2>The services are built to play as a set</h2>
-  <p class="packages-intro">A brand without a website has nowhere to send people. A website without content goes quiet. Content without a plan is just posting. Most clients start with one service and add the next when it makes sense, and monthly management ties it all together.</p>
-  <a class="btn btn-teal" href="/packages">See monthly management</a>
+<section class="mix split">
+  <div class="split-grid">
+    <div class="split-copy">
+      <p class="kicker">Better together</p>
+      <h2>The services are built to play as a set</h2>
+      <p class="packages-intro">A brand without a website has nowhere to send people. A website without content goes quiet. Content without a plan is just posting. Most clients start with one service and add the next when it makes sense, and monthly management ties it all together.</p>
+      <a class="btn btn-teal" href="/packages">See monthly management</a>
+    </div>
+    <div class="photo-frame tilt-r">
+      <img src="/assets/img/alise-cream.jpg" alt="Alise McCreary seated on a block, smiling" width="1100" height="1375">
+    </div>
+  </div>
 </section>
 
 ''' + cta_band("Not sure where to start?", "That&rsquo;s what the first call is for", "Tell me what you sell and what is not working. I&rsquo;ll tell you honestly which of these you actually need, and which you don&rsquo;t.", "Book the first conversation") + footer()
@@ -405,7 +443,8 @@ pk = head("Packages | Studio Jam", "Three tiers of monthly marketing management 
 pk += nav("packages") + ticker("Pick Your Set &#10039; The Opener &#10039; The Main Event &#10039; The Encore &#10039; Pick Your Set &#10039; The Opener &#10039; The Main Event &#10039; The Encore")
 pk += page_hero("Marketing Management", "Pick your set",
                 "Three tiers of monthly marketing management. No rate cards, no one-size-fits-all. Each one is scoped to your business and your goals.",
-                [("Get scoped", "/contact", "btn-blush btn-solid"), ("How it works", "#how", "btn-blush")])
+                [("Get scoped", "/contact", "btn-blush btn-solid"), ("How it works", "#how", "btn-blush")],
+                photo="alise-think.jpg", alt="Alise McCreary thinking it over, finger on chin")
 pk += f'''
 <section class="packages page-tiers">
   <div class="tier-grid">
@@ -446,7 +485,8 @@ pr = head("Process | Studio Jam", "How a project with Studio Jam goes, from the 
 pr += nav("process") + ticker("Discovery &#10039; Strategy &#10039; Build &#10039; Launch + Beyond &#10039; Discovery &#10039; Strategy &#10039; Build &#10039; Launch + Beyond")
 pr += page_hero("From hello to launch", "How a jam session goes",
                 "Four steps, in order, every time. You always know what is happening, what is next, and who to call.",
-                [("Start at step one", "/contact", "btn-blush btn-solid"), ("See the services", "/services", "btn-blush")])
+                [("Start at step one", "/contact", "btn-blush btn-solid"), ("See the services", "/services", "btn-blush")],
+                photo="alise-stand.jpg", alt="Alise McCreary standing on a block in a denim jacket")
 pr += '''
 <section class="process page-steps">
   <div class="steps big">
@@ -483,14 +523,21 @@ open('process.html', 'w', encoding='utf-8').write(pr)
 # ---------------- CONTACT ----------------
 ct = head("Contact | Studio Jam", "Get in touch with Studio Jam, a creative marketing studio in Fayetteville, Arkansas. The first conversation is on the house.", "contact")
 ct += nav("contact") + ticker("Let&rsquo;s Jam &#10039; Fayetteville, Arkansas &#10039; Working With Clients Everywhere &#10039; Let&rsquo;s Jam &#10039; Fayetteville, Arkansas &#10039; Working With Clients Everywhere")
-ct += f'''<section class="page-hero contact-hero" id="top">
+ct += f'''<section class="page-hero with-photo contact-hero" id="top">
   <img class="hero-star star-a" src="{STAR}" alt="">
-  <p class="kicker">Say hello</p>
-  <h1>Let&rsquo;s jam</h1>
-  <p class="hero-tag">Tell me about your business, what&rsquo;s working, and what&rsquo;s not. The first conversation is on the house, and there&rsquo;s no pitch at the end of it.</p>
-  <div class="hero-ctas">
-    <a class="btn btn-blush btn-solid" href="mailto:{EMAIL}?subject=Let%27s%20jam">{EMAIL}</a>
-    <a class="btn btn-blush" href="https://instagram.com/studiojamcreatives" target="_blank" rel="noopener">@studiojamcreatives</a>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="kicker">Say hello</p>
+      <h1>Let&rsquo;s jam</h1>
+      <p class="hero-tag">Tell me about your business, what&rsquo;s working, and what&rsquo;s not. The first conversation is on the house, and there&rsquo;s no pitch at the end of it.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-blush btn-solid" href="mailto:{EMAIL}?subject=Let%27s%20jam">{EMAIL}</a>
+        <a class="btn btn-blush" href="https://instagram.com/studiojamcreatives" target="_blank" rel="noopener">@studiojamcreatives</a>
+      </div>
+    </div>
+    <div class="photo-frame tilt-r">
+      <img src="/assets/img/alise-glasses.jpg" alt="Alise McCreary in glasses, smiling" width="1100" height="1375">
+    </div>
   </div>
 </section>
 
@@ -527,7 +574,8 @@ ww = head("Work With Us | Studio Jam", "Studio Jam is hiring a part-time marketi
 ww += nav("work-with-us") + ticker("Now Hiring &#10039; Fayetteville, Arkansas &#10039; Part-Time Marketing Assistant &#10039; Paid Internship &#10039; Let&rsquo;s Jam! &#10039; Now Hiring &#10039; Fayetteville, Arkansas &#10039; Part-Time Marketing Assistant &#10039; Paid Internship &#10039; Let&rsquo;s Jam!")
 ww += page_hero("Work with us", "We&rsquo;re hiring in Fayetteville",
                 "Studio Jam is looking for a part-time marketing assistant / paid intern in Fayetteville, Arkansas.",
-                [("Send your resume", "#apply", "btn-blush btn-solid"), ("About the studio", "/about", "btn-blush")])
+                [("Send your resume", "#apply", "btn-blush btn-solid"), ("About the studio", "/about", "btn-blush")],
+                photo="alise-stool.jpg", alt="Alise McCreary on a stool with her feet up, laughing")
 ww += f'''
 <!-- THE ROLE -->
 <section class="job" id="role">
@@ -581,7 +629,7 @@ open('work-with-us.html', 'w', encoding='utf-8').write(ww)
 # ---------------- 404 ----------------
 nf = head("Wrong Venue | Studio Jam", "That page is not on the setlist. Head back to Studio Jam.", "404", noindex=True)
 nf += nav("") + page_hero("404", "Wrong venue", "That page isn&rsquo;t on the setlist. The show is still on, though.",
-                          [("Back to the main stage", "/", "btn-blush btn-solid"), ("Say hello", "/contact", "btn-blush")], cls="notfound")
+                          [("Back to the main stage", "/", "btn-blush btn-solid"), ("Say hello", "/contact", "btn-blush")], cls="notfound", deco=("mascot-stand.png", "stand"))
 nf += footer()
 open('404.html', 'w', encoding='utf-8').write(nf)
 print("pages built:", [f for f in os.listdir('.') if f.endswith('.html')])
