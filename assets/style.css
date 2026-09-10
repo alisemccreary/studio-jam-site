@@ -746,3 +746,38 @@ h2 {
   .nav-links a { flex: 0 0 auto; margin: 0 0.45rem; font-size: 0.68rem; }
   .nav-cta { margin: 0 0.3rem 0 0.6rem !important; padding: 0.45rem 0.9rem; }
 }
+
+/* -- Client map (About) ----------------------------- */
+.clientmap { background: var(--blush); padding: clamp(4rem, 9vw, 7rem) 6vw; text-align: center; }
+.clientmap h2 { max-width: 16em; margin: 0 auto; }
+.clientmap .mapbox { position: relative; max-width: 68rem; margin: 0 auto; background: var(--offwhite); border: 3px solid var(--teal); border-radius: 26px; overflow: hidden; box-shadow: 12px 14px 0 var(--berry); }
+.clientmap svg.map { display: block; width: 100%; height: auto; }
+.clientmap .st { fill: #F6F7F7; stroke: var(--teal); stroke-width: 1.6; stroke-linejoin: round; }
+.clientmap .stl { font-family: var(--mono); font-size: 19px; letter-spacing: 0.2em; fill: var(--sage); text-anchor: middle; pointer-events: none; }
+.clientmap .pin { cursor: pointer; outline: none; }
+.clientmap .pin .halo { fill: var(--blush); opacity: 0; transition: opacity 0.2s; }
+.clientmap .pin:hover .halo, .clientmap .pin:focus-visible .halo, .clientmap .pin.on .halo { opacity: 0.9; }
+.clientmap .pin image { transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1); transform-origin: 0 0; }
+.clientmap .pin:hover image, .clientmap .pin.on image { transform: rotate(-14deg) scale(1.12); }
+.clientmap .cnt { fill: var(--red); stroke: #F6F7F7; stroke-width: 3; }
+.clientmap .cntt { font-family: var(--mono); font-size: 15px; font-weight: 700; fill: #FFFDFC; text-anchor: middle; }
+.clientmap .pinl { font-family: var(--mono); font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; fill: var(--teal); text-anchor: middle; paint-order: stroke; stroke: #F6F7F7; stroke-width: 4; stroke-linejoin: round; }
+.clientmap .note { position: absolute; right: 1rem; bottom: 0.9rem; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); }
+.clientmap .mascot { position: absolute; left: 1.2rem; bottom: 0; width: 86px; height: auto; pointer-events: none; }
+.clientmap .list { max-width: 68rem; margin: 1.6rem auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; align-items: start; text-align: left; }
+.clientmap .place { background: var(--offwhite); border: 2px solid var(--teal); border-radius: 22px; padding: 1.2rem 1.25rem 1rem; transition: transform 0.25s, box-shadow 0.25s, background 0.2s, color 0.2s; }
+.clientmap .place.home { border-style: dashed; }
+.clientmap .place.on { background: var(--teal); color: var(--blush); transform: translateY(-4px) rotate(-0.4deg); box-shadow: 0 12px 0 rgba(11, 79, 97, 0.14); }
+.clientmap .place h3 { font-family: "Studio Jam Display", var(--sans); text-transform: uppercase; font-weight: 400; font-size: 1.3rem; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
+.clientmap .place.on h3 img { filter: brightness(0) saturate(100%) invert(88%) sepia(9%) saturate(600%) hue-rotate(305deg); }
+.clientmap .place ul { list-style: none; display: grid; gap: 0.35rem; }
+.clientmap .place li a { display: grid; gap: 0.1rem; color: inherit; text-decoration: none; padding: 0.6rem 0.7rem; border-radius: 14px; border: 2px solid transparent; transition: border-color 0.15s; }
+.clientmap .place li a:hover, .clientmap .place li a:focus-visible { border-color: currentColor; }
+.clientmap .place li strong { font-weight: 600; }
+.clientmap .place li span { font-size: 0.88rem; opacity: 0.85; }
+.clientmap .place li em { font-style: normal; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; margin-top: 0.25rem; }
+.clientmap .homep { font-size: 0.92rem; line-height: 1.6; opacity: 0.9; }
+@media (max-width: 860px) { .clientmap .mapbox { box-shadow: 8px 10px 0 var(--berry); } .clientmap .stl { font-size: 26px; } .clientmap .pinl { font-size: 20px; } .clientmap .mascot { width: 60px; } }
+.clientmap .list { grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); }
+.clientmap .place li a, .clientmap .place { text-align: left; }
+@media (max-width: 1024px) { .clientmap .list { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); } }
