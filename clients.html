@@ -89,6 +89,7 @@
       <image href="/assets/img/star-teal.png" x="-27" y="-30" width="54" height="60"/><circle class="cnt" cx="22" cy="-22" r="13"/><text class="cntt" x="22" y="-17">1</text>
       <text class="pinl" style="text-anchor:middle" x="0" y="58">Charlotte, NC</text>
     </g></g></svg>
+    <div id="sj-gl" class="gl-map" aria-hidden="true"></div>
     <span class="note">3 stops &middot; 6 venues &middot; 1 home base</span>
     <img class="mascot" src="/assets/img/mascot-chat.png" alt="" width="466" height="891" loading="lazy" decoding="async">
   </div>
@@ -112,6 +113,74 @@
   var svg = document.querySelector('.clientmap svg.map');
   function fit() { svg.setAttribute('viewBox', window.innerWidth < 700 ? svg.dataset.zoom : svg.dataset.full); }
   fit(); window.addEventListener('resize', fit);
+
+  /* ---- Mapbox GL layer (the drawn map above stays as the fallback) ---- */
+  var PLACES = [{"id": "home", "label": "Home base \u00b7 Colorado", "lon": -104.99, "lat": 39.739, "count": null, "home": true, "split": []}, {"id": "fayetteville", "label": "Fayetteville, AR", "lon": -94.171, "lat": 36.082, "count": 2, "home": false, "split": []}, {"id": "nms", "label": "North Mississippi", "lon": -89.1, "lat": 34.44, "count": 3, "home": false, "split": [{"label": "Oxford, MS", "lon": -89.519, "lat": 34.366, "count": 2}, {"label": "Baldwyn, MS", "lon": -88.635, "lat": 34.509, "count": 1}]}, {"id": "charlotte", "label": "Charlotte, NC", "lon": -80.843, "lat": 35.227, "count": 1, "home": false, "split": []}];
+  var box = document.querySelector('.clientmap .mapbox');
+  function startGL() {
+    if (!window.mapboxgl || !mapboxgl.supported()) return;
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpc2VtY2NyZWFyeSIsImEiOiJjbXR3ZDNvdGMwNnE1MnhxMGY5eWZvb2d6In0.q49WmuCXrPBaZU6Se7httQ';
+    var style = {
+      version: 8,
+      glyphs: 'mapbox://fonts/mapbox/{fontstack}/{range}.pbf',
+      sources: { composite: { type: 'vector', url: 'mapbox://mapbox.mapbox-streets-v8' } },
+      layers: [
+        { id: 'bg', type: 'background', paint: { 'background-color': '#F6F7F7' } },
+        { id: 'landuse-park', type: 'fill', source: 'composite', 'source-layer': 'landuse', minzoom: 9, filter: ['in', ['get', 'class'], ['literal', ['park', 'grass', 'wood']]], paint: { 'fill-color': '#0B4F61', 'fill-opacity': 0.06 } },
+        { id: 'water', type: 'fill', source: 'composite', 'source-layer': 'water', paint: { 'fill-color': '#0B4F61', 'fill-opacity': 0.16 } },
+        { id: 'waterway', type: 'line', source: 'composite', 'source-layer': 'waterway', minzoom: 8, paint: { 'line-color': '#0B4F61', 'line-opacity': 0.25, 'line-width': 1 } },
+        { id: 'roads-minor', type: 'line', source: 'composite', 'source-layer': 'road', minzoom: 12, filter: ['in', ['get', 'class'], ['literal', ['street', 'street_limited', 'tertiary']]], paint: { 'line-color': '#0B4F61', 'line-opacity': 0.14, 'line-width': ['interpolate', ['linear'], ['zoom'], 12, 0.6, 16, 2] } },
+        { id: 'roads-major', type: 'line', source: 'composite', 'source-layer': 'road', minzoom: 8, filter: ['in', ['get', 'class'], ['literal', ['motorway', 'trunk', 'primary', 'secondary']]], paint: { 'line-color': '#0B4F61', 'line-opacity': 0.3, 'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.6, 14, 3] } },
+        { id: 'admin-1', type: 'line', source: 'composite', 'source-layer': 'admin', filter: ['all', ['==', ['get', 'admin_level'], 1], ['==', ['get', 'maritime'], 'false']], paint: { 'line-color': '#0B4F61', 'line-width': ['interpolate', ['linear'], ['zoom'], 3, 0.8, 8, 1.4], 'line-opacity': 0.7 } },
+        { id: 'admin-0', type: 'line', source: 'composite', 'source-layer': 'admin', filter: ['all', ['==', ['get', 'admin_level'], 0], ['==', ['get', 'maritime'], 'false']], paint: { 'line-color': '#0B4F61', 'line-width': 1.6 } },
+        { id: 'state-labels', type: 'symbol', source: 'composite', 'source-layer': 'place_label', minzoom: 3.5, maxzoom: 7, filter: ['==', ['get', 'class'], 'state'], layout: { 'text-field': ['get', 'abbr'], 'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'], 'text-size': 13, 'text-letter-spacing': 0.25 }, paint: { 'text-color': '#849D9B' } },
+        { id: 'city-labels', type: 'symbol', source: 'composite', 'source-layer': 'place_label', minzoom: 6, filter: ['all', ['==', ['get', 'class'], 'settlement'], ['<=', ['get', 'symbolrank'], 11]], layout: { 'text-field': ['get', 'name_en'], 'text-font': ['DIN Pro Medium', 'Arial Unicode MS Regular'], 'text-size': ['interpolate', ['linear'], ['zoom'], 6, 11, 12, 15], 'text-transform': 'uppercase', 'text-letter-spacing': 0.12 }, paint: { 'text-color': '#0B4F61', 'text-halo-color': '#F6F7F7', 'text-halo-width': 1.4 } }
+      ]
+    };
+    var map = new mapboxgl.Map({ container: 'sj-gl', style: style, center: [-92, 36.5], zoom: 3.6, minZoom: 2.5, maxZoom: 15, cooperativeGestures: true, attributionControl: true, dragRotate: false, pitchWithRotate: false, touchPitch: false });
+    map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'top-right');
+    var markers = {}; var splitMarkers = [];
+    function makeEl(label, count, home, id) {
+      var el = document.createElement('div'); el.className = 'gl-pin' + (home ? ' home' : ''); el.setAttribute('role', 'button'); el.tabIndex = 0; el.setAttribute('aria-label', label);
+      el.innerHTML = '<span class="gl-halo"></span><img src="/assets/img/star-teal.png" alt="" width="44" height="49">' + (count ? '<b>' + count + '</b>' : '') + '<i>' + label + '</i>';
+      if (id) { el.addEventListener('click', function (e) { e.stopPropagation(); set(id); }); el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); set(id); } }); }
+      return el;
+    }
+    var b = new mapboxgl.LngLatBounds();
+    PLACES.forEach(function (p) {
+      var el = makeEl(p.label, p.count, p.home, p.id);
+      markers[p.id] = new mapboxgl.Marker({ element: el, anchor: 'center' }).setLngLat([p.lon, p.lat]).addTo(map);
+      b.extend([p.lon, p.lat]);
+      p.split.forEach(function (c) {
+        var m = new mapboxgl.Marker({ element: makeEl(c.label, c.count, false, p.id), anchor: 'center' }).setLngLat([c.lon, c.lat]);
+        splitMarkers.push({ parent: p.id, marker: m });
+      });
+    });
+    function applySplit() {
+      var z = map.getZoom();
+      splitMarkers.forEach(function (sm) {
+        var parent = markers[sm.parent];
+        if (z >= 7) { sm.marker.addTo(map); parent.getElement().classList.add('is-split'); }
+        else { sm.marker.remove(); parent.getElement().classList.remove('is-split'); }
+      });
+    }
+    map.on('zoom', applySplit);
+    map.on('load', function () {
+      box.classList.add('gl-ready');
+      var pad = window.innerWidth < 700 ? 34 : 90; map.fitBounds(b, { padding: { top: pad + 20, right: pad, bottom: pad, left: pad }, maxZoom: 5.2, duration: 0 });
+      applySplit();
+    });
+    map.on('error', function (e) { if (!box.classList.contains('gl-ready')) box.classList.add('gl-failed'); });
+    window.__sjFly = function (id) {
+      var p = PLACES.filter(function (x) { return x.id === id; })[0]; if (!p) return;
+      Object.keys(markers).forEach(function (k) { markers[k].getElement().classList.toggle('on', k === id); });
+      map.flyTo({ center: [p.lon, p.lat], zoom: p.split.length ? 7.4 : 6.2, speed: 0.9, curve: 1.3, essential: true });
+    };
+  }
+  var _set = set;
+  set = function (id) { _set(id); if (window.__sjFly) window.__sjFly(id); };
+  var s1 = document.createElement('link'); s1.rel = 'stylesheet'; s1.href = 'https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.css'; document.head.appendChild(s1);
+  var s2 = document.createElement('script'); s2.src = 'https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.js'; s2.onload = startGL; s2.onerror = function () { box.classList.add('gl-failed'); }; document.head.appendChild(s2);
 })();
 </script>
 <!-- TESTIMONIAL -->

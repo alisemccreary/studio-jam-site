@@ -914,3 +914,29 @@ h2 {
   .nav-links a { padding: 0.45rem 0; }
   .tips li a, .tip a, .contact-cards a { display: inline-block; padding: 0.35rem 0; }
 }
+
+/* -- Mapbox GL layer on the Tour map ----------------------------- */
+.clientmap .mapbox { aspect-ratio: 1400 / 868; }
+.clientmap .mapbox svg.map { position: absolute; inset: 0; width: 100%; height: 100%; }
+.clientmap .gl-map { position: absolute; inset: 0; opacity: 0; transition: opacity 0.6s ease; }
+.clientmap .mapbox.gl-ready .gl-map { opacity: 1; }
+.clientmap .mapbox.gl-ready svg.map { visibility: hidden; }
+.clientmap .mapbox.gl-ready .mascot { display: none; }
+.clientmap .mapbox .note { z-index: 3; }
+.gl-pin { position: relative; width: 44px; height: 49px; cursor: pointer; outline: none; }
+.gl-pin img { position: relative; z-index: 2; display: block; width: 44px; height: 49px; transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1); }
+.gl-pin .gl-halo { position: absolute; left: 50%; top: 50%; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; background: var(--blush); opacity: 0; transition: opacity 0.2s; z-index: 1; }
+.gl-pin:hover .gl-halo, .gl-pin.on .gl-halo, .gl-pin:focus-visible .gl-halo { opacity: 1; }
+.gl-pin:hover img, .gl-pin.on img { transform: rotate(-14deg) scale(1.12); }
+.gl-pin b { position: absolute; z-index: 3; right: -8px; top: -8px; min-width: 22px; height: 22px; padding: 0 5px; border-radius: 999px; background: var(--red); color: #FFFDFC; border: 2px solid #F6F7F7; font-family: var(--mono); font-size: 12px; font-weight: 700; line-height: 18px; text-align: center; }
+.gl-pin i { position: absolute; z-index: 3; left: 50%; top: 100%; transform: translateX(-50%); margin-top: 4px; white-space: nowrap; font-style: normal; font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); background: rgba(246, 247, 247, 0.9); padding: 2px 7px; border-radius: 999px; }
+.gl-pin.home i { top: auto; bottom: 100%; margin: 0 0 4px; }
+.gl-pin.is-split { opacity: 0; pointer-events: none; }
+.gl-pin.is-split i, .gl-pin.is-split b { display: none; }
+.mapboxgl-ctrl-group { border: 2px solid var(--teal) !important; border-radius: 12px !important; box-shadow: none !important; overflow: hidden; }
+.mapboxgl-ctrl-group button { width: 36px !important; height: 36px !important; }
+.mapboxgl-ctrl-group button + button { border-top: 2px solid var(--teal) !important; }
+.mapboxgl-ctrl-attrib { font-family: var(--sans); font-size: 10px !important; background: rgba(246,247,247,0.8) !important; }
+.mapboxgl-ctrl-attrib a { color: var(--teal) !important; }
+.mapboxgl-ctrl-logo { opacity: 0.55; }
+@media (max-width: 700px) { .clientmap .mapbox { aspect-ratio: 4 / 3; } .gl-pin i { font-size: 10px; } }
