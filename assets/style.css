@@ -884,3 +884,33 @@ h2 {
 .service-row .recent a, .setlist-names a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .service-row .recent a:hover, .setlist-names a:hover { text-decoration-thickness: 2px; }
 .clientmap .place .bill { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7; margin: -0.2rem 0 0.5rem; }
+
+/* -- Mobile legibility + tap targets (audit pass) --------------- */
+@media (max-width: 640px) {
+  .nav-links a { font-size: 0.78rem; padding: 0.55rem 0; letter-spacing: 0.1em; }
+  .nav-cta { padding: 0.6rem 1.05rem !important; }
+  .btn, .btn-teal, .btn-blush { font-size: 0.78rem; letter-spacing: 0.1em; padding: 0.95rem 1.5rem; max-width: 100%; }
+  .btn.btn-teal[href^="mailto"] { font-size: 0.72rem; padding: 0.95rem 1.1rem; }
+  .kicker, .service > span, .tier-tag, .recent, .bill, .place li em, .place small, .num, .good, .testimonial span, .testimonial cite span, .fine-print, .setlist .kicker, .step-num, .job-pills li, .pillars li { font-size: 0.78rem; }
+  .badge { font-size: 0.7rem; padding: 0.4rem 0.9rem; }
+  .teaser-link, .setlist-names li a, .service-row .recent a { display: inline-block; padding: 0.4rem 0; }
+  .footer-links a { font-size: 0.78rem; display: inline-block; padding: 0.5rem 0.25rem; }
+  .footer-row { font-size: 0.78rem; }
+  .footer-row a, .footer-row p { display: inline-block; padding: 0.4rem 0; }
+  .ig, .ig a { font-size: 0.9rem; }
+  .place li a { padding: 0.75rem 0.7rem; }
+}
+@media (max-width: 640px) {
+  .hero .hero-ctas .btn, .page-hero .hero-ctas .btn, .contact .btn, .apply .btn, .mix .btn, .cta-band .btn, section .btn { font-size: 0.78rem; }
+  .clientmap .place .bill, .clientmap .place li strong small, .clientmap .place li em { font-size: 0.75rem; }
+  .service-rows .service-row .recent, .service-rows .service-row .recent a { font-size: 0.78rem; line-height: 1.7; }
+  .packages .badge, .tier .badge, .tier-grid .badge { font-size: 0.74rem; }
+  .footer .footer-row a, .contact .ig a, .apply .ig a, .job-copy a { display: inline-block; padding: 0.5rem 0; }
+  .teaser-link { padding: 0.55rem 0; }
+}
+@media (max-width: 640px) {
+  .nav { padding: 0.5rem 0 0.35rem; gap: 0.25rem; }
+  .nav-logo img { height: 30px; }
+  .nav-links a { padding: 0.45rem 0; }
+  .tips li a, .tip a, .contact-cards a { display: inline-block; padding: 0.35rem 0; }
+}
