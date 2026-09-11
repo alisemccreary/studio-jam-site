@@ -42,7 +42,7 @@
 </header>
 <section class="page-hero notfound" id="top"><span id="main"></span>
   <img class="hero-star star-a" src="/assets/img/star-pink.png" alt="" width="602" height="667">
-  <img loading="lazy" decoding="async" class="deco stand" src="/assets/img/mascot-stand.png" alt="">
+  <img loading="lazy" decoding="async" class="deco stand" src="/assets/img/mascot-stand.png" alt="" width="420" height="384">
     <p class="kicker">404</p>
     <h1>Wrong venue</h1>
     <p class="hero-tag">That page isn&rsquo;t on the setlist. The show is still on, though.</p>
@@ -108,6 +108,9 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  setTimeout(function () {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }, 2200);
 })();
 </script>
 </body>

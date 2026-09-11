@@ -71,6 +71,7 @@ def ticker(text):
 '''
 TICK_MAIN = "Creative Marketing Studio &#10039; Brand &#10039; Web &#10039; Social &#10039; Ads &#10039; Let&rsquo;s Go Dancing! &#10039; Creative Marketing Studio &#10039; Brand &#10039; Web &#10039; Social &#10039; Ads &#10039; Let&rsquo;s Go Dancing!"
 
+DECO_DIMS = {"mascot-stand-pink.png": (420, 384), "mascot-walk-pink.png": (520, 562), "mascot-tall-pink.png": (229, 600), "mascot-stand.png": (420, 384), "mascot-walk.png": (520, 562), "mascot-tall.png": (229, 600)}
 def page_hero(kicker, h1, tag, ctas, cls="", photo=None, alt="Alise McCreary, founder of Studio Jam", deco=None):
     c = "".join(f'\n    <a class="btn {k}" href="{h}">{t}</a>' for t, h, k in ctas)
     body = f'''    <p class="kicker">{kicker}</p>
@@ -94,7 +95,7 @@ def page_hero(kicker, h1, tag, ctas, cls="", photo=None, alt="Alise McCreary, fo
   </div>
 </section>
 '''
-    d = f'\n  <img loading="lazy" decoding="async" class="deco {deco[1]}" src="/assets/img/{deco[0]}" alt="">' if deco else ''
+    d = f'\n  <img loading="lazy" decoding="async" class="deco {deco[1]}" src="/assets/img/{deco[0]}" alt="" width="{DECO_DIMS.get(deco[0], (400, 400))[0]}" height="{DECO_DIMS.get(deco[0], (400, 400))[1]}">' if deco else ''
     return f'''<section class="page-hero {cls}" id="top"><span id="main"></span>
   <img class="hero-star star-a" src="{STAR_PINK}" alt="" width="602" height="667">{d}
 {body}
@@ -170,6 +171,9 @@ def footer():
     }});
   }}, {{ threshold: 0.12, rootMargin: '0px 0px -40px 0px' }});
   document.querySelectorAll('.reveal').forEach(function (el) {{ io.observe(el); }});
+  setTimeout(function () {{
+    document.querySelectorAll('.reveal').forEach(function (el) {{ el.classList.add('in'); }});
+  }}, 2200);
 }})();
 </script>
 </body>
@@ -422,7 +426,7 @@ about += f'''
 open('about.html', 'w', encoding='utf-8').write(about)
 
 # ---------------- SERVICES ----------------
-svc = head("Brand, Web, Social & Ads Services | Studio Jam", "Brand identity, websites and Shopify, social media management, and marketing and ads. What Studio Jam does and what is included in each.", "services")
+svc = head("Brand, Web, Social &amp; Ads Services | Studio Jam", "Brand identity, websites and Shopify, social media management, and marketing and ads. What Studio Jam does and what is included in each.", "services")
 svc += nav("services") + ticker("Brand Identity &#10039; Web &amp; Shopify &#10039; Social Media Management &#10039; Marketing &amp; Ads &#10039; Brand Identity &#10039; Web &amp; Shopify &#10039; Social Media Management &#10039; Marketing &amp; Ads")
 svc += page_hero("The Work", "Four services. One point of contact.",
                  "Everything a marketing department does, without the handoffs. Pick one, or let them play together.",
