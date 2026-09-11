@@ -933,10 +933,10 @@ h2 {
 .gl-pin.home i { top: auto; bottom: 100%; margin: 0 0 4px; }
 .gl-pin.is-split { opacity: 0; pointer-events: none; }
 .gl-pin.is-split i, .gl-pin.is-split b { display: none; }
-.mapboxgl-ctrl-group { border: 2px solid var(--teal) !important; border-radius: 12px !important; box-shadow: none !important; overflow: hidden; }
-.mapboxgl-ctrl-group button { width: 36px !important; height: 36px !important; }
-.mapboxgl-ctrl-group button + button { border-top: 2px solid var(--teal) !important; }
-.mapboxgl-ctrl-attrib { font-family: var(--sans); font-size: 10px !important; background: rgba(246,247,247,0.8) !important; }
-.mapboxgl-ctrl-attrib a { color: var(--teal) !important; }
-.mapboxgl-ctrl-logo { opacity: 0.55; }
+.maplibregl-ctrl-group, .mapboxgl-ctrl-group { border: 2px solid var(--teal) !important; border-radius: 12px !important; box-shadow: none !important; overflow: hidden; }
+.maplibregl-ctrl-group, .mapboxgl-ctrl-group button { width: 36px !important; height: 36px !important; }
+.maplibregl-ctrl-group, .mapboxgl-ctrl-group button + button { border-top: 2px solid var(--teal) !important; }
+.maplibregl-ctrl-attrib, .mapboxgl-ctrl-attrib { font-family: var(--sans); font-size: 10px !important; background: rgba(246,247,247,0.8) !important; }
+.maplibregl-ctrl-attrib, .mapboxgl-ctrl-attrib a { color: var(--teal) !important; }
+.maplibregl-ctrl-logo, .mapboxgl-ctrl-logo { opacity: 0.55; }
 @media (max-width: 700px) { .clientmap .mapbox { aspect-ratio: 4 / 3; } .gl-pin i { font-size: 10px; } }
