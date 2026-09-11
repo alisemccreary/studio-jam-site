@@ -1,0 +1,110 @@
+#!/usr/bin/env python3
+"""Regenerates tools/map_fragment.html (the Clients page map) from tools/us-states.json.
+Edit PLACES below to add or move clients, then run: python3 tools/build_map.py && python3 tools/build_pages.py"""
+import json, math, os
+HERE = os.path.dirname(os.path.abspath(__file__))
+d = json.load(open(os.path.join(HERE, 'us-states.json')))
+
+# Albers equal-area conic (contiguous US)
+p1, p2, l0, lam0 = map(math.radians, (29.5, 45.5, 23.0, -96.0))
+n = (math.sin(p1) + math.sin(p2)) / 2; C = math.cos(p1) ** 2 + 2 * n * math.sin(p1); rho0 = math.sqrt(C - 2 * n * math.sin(l0)) / n
+def proj(lon, lat):
+    lam, phi = math.radians(lon), math.radians(lat); rho = math.sqrt(C - 2 * n * math.sin(phi)) / n; th = n * (lam - lam0)
+    return rho * math.sin(th), rho0 - rho * math.cos(th)
+SKIP = {'Alaska', 'Hawaii', 'Puerto Rico'}
+feats = []; pts = []
+for f in d['features']:
+    name = f['properties']['name']
+    if name in SKIP: continue
+    g = f['geometry']; polys = g['coordinates'] if g['type'] == 'MultiPolygon' else [g['coordinates']]
+    rings = [[proj(x, y) for x, y in ring] for poly in polys for ring in poly]
+    feats.append((name, rings)); pts += [p for r in rings for p in r]
+minx = min(p[0] for p in pts); maxx = max(p[0] for p in pts); miny = min(p[1] for p in pts); maxy = max(p[1] for p in pts)
+W = 1400; s = W / (maxx - minx); H = (maxy - miny) * s
+def T(p): return ((p[0] - minx) * s, (maxy - p[1]) * s)
+def P(lon, lat): return T(proj(lon, lat))
+states = ''.join('<path class="st" d="%s"><title>%s</title></path>' % (''.join('M' + ' L'.join('%.0f,%.0f' % T(p) for p in r) + 'Z' for r in rings), name) for name, rings in feats)
+
+# ---- pins: (id, label, lon, lat, count, label placement, is_home)
+PLACES = [
+    ("home", "Home base &middot; Colorado", -104.99, 39.739, None, ("start", 46, 7), True),
+    ("fayetteville", "Fayetteville, AR", -94.171, 36.082, 2, ("middle", 0, -44), False),
+    ("nms", "North Mississippi", -89.10, 34.44, 3, ("middle", 0, 58), False),
+    ("charlotte", "Charlotte, NC", -80.843, 35.227, 1, ("middle", 0, 58), False),
+]
+CARDS = {
+    "home": None,
+    "fayetteville": ("Fayetteville, AR", [
+        ("Ella&rsquo;s Table at the Inn at Carnall Hall", "Social media management", "https://www.innatcarnallhall.com/restaurants-fayetteville-ar", "innatcarnallhall.com"),
+        ("Lambeth Lounge at the Inn at Carnall Hall", "Social media management", "https://www.innatcarnallhall.com/restaurants-fayetteville-ar/lambeth-lounge-coffee-bar", "innatcarnallhall.com")]),
+    "nms": ("North Mississippi", [
+        ("Kristy Bridgers, Sober and Social <small>Oxford</small>", "Social media management, on-site shooting, paid ads, brand partnerships", "https://instagram.com/kbridgers1", "@kbridgers1"),
+        ("Window Joe <small>Oxford</small>", "Social media management", "https://www.windowjoeoxford.com/", "windowjoeoxford.com"),
+        ("JM Services <small>Baldwyn</small>", "Marketing management, CRM setup, print collateral", "https://jmservices.biz/", "jmservices.biz")]),
+    "charlotte": ("Charlotte, NC", [
+        ("Marelle Mahjong", "Instagram, content strategy, email marketing", "https://www.marellemahjong.com/", "marellemahjong.com")]),
+}
+STAR = "/assets/img/star-teal.png"
+pins = ''; xs = []; ys = []
+for pid, label, lon, lat, cnt, (anchor, lx, ly), home in PLACES:
+    x, y = P(lon, lat); xs.append(x); ys.append(y)
+    badge = '' if cnt is None else '<circle class="cnt" cx="22" cy="-22" r="13"/><text class="cntt" x="22" y="-17">%d</text>' % cnt
+    pins += '''<g class="pin%s" data-place="%s" transform="translate(%.0f,%.0f)" tabindex="0" role="button" aria-label="%s">
+      <circle class="halo" r="38"/>
+      <image href="%s" x="-27" y="-30" width="54" height="60"/>%s
+      <text class="pinl" style="text-anchor:%s" x="%d" y="%d">%s</text>
+    </g>''' % (' home' if home else '', pid, x, y, label.replace('&middot;', '-'), STAR, badge, anchor, lx, ly, label)
+zx0 = min(xs) - 120; zy0 = min(ys) - 110; zw = max(xs) - min(xs) + 240 + 160; zh = max(ys) - min(ys) + 220
+if zh / zw < 0.66: zh = zw * 0.66
+zoom = '%.0f %.0f %.0f %.0f' % (zx0, zy0, zw, zh)
+
+cards = '<section class="place home" id="place-home" data-place="home"><h3><img src="%s" alt="" width="18" height="20">Home base &middot; Colorado</h3><p class="homep">Where the tour is booked from. Every stop on this map, and the ones not on it yet, gets the same hospitality-forward treatment from here.</p></section>' % STAR
+for pid, label, lon, lat, cnt, _, home in PLACES:
+    if home: continue
+    title, items = CARDS[pid]
+    lis = ''.join('<li><a href="%s" target="_blank" rel="noopener"><strong>%s</strong><span>%s</span><em>%s &#8594;</em></a></li>' % (u, nme, svc, lnk) for nme, svc, u, lnk in items)
+    cards += '<section class="place" id="place-%s" data-place="%s"><h3><img src="%s" alt="" width="18" height="20">%s</h3><p class="bill">On the bill</p><ul>%s</ul></section>' % (pid, pid, STAR, title, lis)
+
+frag = '''<!-- CLIENT MAP (generated by tools/build_map.py) -->
+<section class="clientmap" id="map">
+  <p class="kicker">Tour stops</p>
+  <h2>Where the tour has played</h2>
+  <p class="packages-intro">Click a star for the venues at each stop, and click a name to visit them.</p>
+  <ul class="pillars industries">
+    <li>Salons &amp; spas</li>
+    <li>Restaurants &amp; bars</li>
+    <li>Home services</li>
+    <li>Retail &amp; e-commerce</li>
+    <li>B2B distribution</li>
+    <li>Personal brands</li>
+  </ul>
+  <div class="mapbox">
+    <svg class="map" viewBox="0 0 %d %d" data-full="0 0 %d %d" data-zoom="%s" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of the United States with Studio Jam client locations"><g>%s</g><g id="pins">%s</g></svg>
+    <span class="note">3 stops &middot; 6 venues &middot; 1 home base</span>
+    <img class="mascot" src="/assets/img/mascot-chat.png" alt="" width="466" height="891" loading="lazy" decoding="async">
+  </div>
+  <div class="list">%s</div>
+</section>
+<script>
+(function () {
+  var pins = document.querySelectorAll('.clientmap .pin'), places = document.querySelectorAll('.clientmap .place');
+  function set(id) {
+    pins.forEach(function (p) { p.classList.toggle('on', p.dataset.place === id); });
+    places.forEach(function (c) { c.classList.toggle('on', c.dataset.place === id); });
+    var el = document.getElementById('place-' + id);
+    if (el && window.innerWidth < 860) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  pins.forEach(function (p) {
+    p.addEventListener('click', function () { set(p.dataset.place); });
+    p.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); set(p.dataset.place); } });
+  });
+  places.forEach(function (c) { c.addEventListener('mouseenter', function () { set(c.dataset.place); }); });
+  set('home');
+  var svg = document.querySelector('.clientmap svg.map');
+  function fit() { svg.setAttribute('viewBox', window.innerWidth < 700 ? svg.dataset.zoom : svg.dataset.full); }
+  fit(); window.addEventListener('resize', fit);
+})();
+</script>
+''' % (W, H, W, H, zoom, states, pins, cards)
+open(os.path.join(HERE, 'map_fragment.html'), 'w', encoding='utf-8').write(frag)
+print('map fragment written:', len(frag) // 1024, 'KB; zoom', zoom)
