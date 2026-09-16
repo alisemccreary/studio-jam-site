@@ -8,7 +8,7 @@ def data(cls):
     return re.search(r'<img class="%s[^"]*" src="([^"]+)"' % cls, idx).group(1)
 STAR = "/assets/img/star-teal.png"; STAR_PINK = "/assets/img/star-pink.png"; LOGO = "/assets/img/logo.png"; MASCOT = "/assets/img/mascot-walk-pink.png"
 FAV = 'data:image/png;base64,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'
-CSSV = "52"
+CSSV = "53"
 EMAIL = "alise@studiojamcreatives.com"
 
 JSONLD = '''{"@context":"https://schema.org","@type":"ProfessionalService","name":"Studio Jam","alternateName":"Studio Jam Creatives","url":"https://studiojamcreatives.com/","email":"alise@studiojamcreatives.com","founder":{"@type":"Person","name":"Alise McCreary"},"description":"A creative marketing studio offering brand identity, website and Shopify design, social media management, and marketing and ads.","sameAs":["https://instagram.com/studiojamcreatives"],"knowsAbout":["Brand identity","Website design","Shopify","Social media management","Paid advertising","Email marketing"]}'''
@@ -313,12 +313,13 @@ home += nav("") + ticker(TICK_MAIN) + f'''
       <p class="kicker">The Studio</p>
       <h2>One studio. One point of contact. Full creative range.</h2>
       <p class="about-copy">Hi, I&rsquo;m Alise. Studio Jam exists for the business that needs an entire marketing department and can realistically afford one person. Brand, web, social, and ads, run by a founder who is actually in the room rather than a name on a proposal.</p>
+      <ul class="pillars">
+        <li>Hospitality first</li>
+        <li>Sound books</li>
+        <li>Honest business</li>
+        <li>Strategic design</li>
+      </ul>
       <a class="teaser-link" href="/about">Meet the studio &#8594;</a>
-      <div class="tour-note">
-        <p class="kicker">On the map</p>
-        <p>Our clients are pinned across the South, from Fayetteville to Charlotte, with a home base in Colorado. See where the tour has played and who was on the bill.</p>
-        <a class="btn btn-teal" href="/clients">See the tour</a>
-      </div>
     </div>
   </div>
 </section>
@@ -335,6 +336,18 @@ home += nav("") + ticker(TICK_MAIN) + f'''
 </section>
 
 
+
+<!-- SETLIST -->
+<section class="setlist">
+  <p class="kicker">On tour</p>
+  <p class="setlist-line">Three stops so far, six venues on the bill, and a home base in Colorado.</p>
+  <ul class="setlist-names">
+    <li>Fayetteville, AR</li>
+    <li>North Mississippi</li>
+    <li>Charlotte, NC</li>
+  </ul>
+  <a class="teaser-link" href="/clients">Follow the tour &#8594;</a>
+</section>
 
 {testimonial()}
 <!-- PACKAGES TEASER -->
@@ -409,27 +422,11 @@ about += f'''
   </div>
 </section>
 
-<section class="pillars-section">
-  <p class="kicker">Studio pillars</p>
-  <h2>What the studio runs on</h2>
-  <div class="pillar-grid">
-    <div class="pillar">
-      <h3>Hospitality first</h3>
-      <p>Eight years of hospitality management leaves a person certain that the work is only half of it. The other half is how someone feels while it is being done, and that is the half most studios quietly decline to manage. Nobody should have to chase this one for an update.</p>
-    </div>
-    <div class="pillar">
-      <h3>Sound books</h3>
-      <p>A studio that cannot keep its own finances in order has no standing to advise anyone else on theirs. Honest pricing, invoices that arrive when they were promised, and enough margin to turn down work that is wrong for both sides.</p>
-    </div>
-    <div class="pillar">
-      <h3>Honest business</h3>
-      <p>Clients hear what the studio actually believes, including when that is not what they hoped to hear. No manufactured urgency, no scope padded to look impressive, no hidden timelines.</p>
-    </div>
-    <div class="pillar">
-      <h3>Strategic design</h3>
-      <p>Beautiful is the easy part, and it is the part that fails quietly when nothing underneath it is true. Every project starts with the business, the audience, and the competition, well before anyone opens a design file.</p>
-    </div>
-  </div>
+<section class="tour-band">
+  <p class="kicker">On the map</p>
+  <h2>See where the tour has played</h2>
+  <p class="packages-intro">Our clients are pinned across the South, from Fayetteville to Charlotte, with a home base in Colorado. Every stop is a business we work with, and every pin opens the bill.</p>
+  <a class="btn btn-teal" href="/clients">See the tour</a>
 </section>
 
 {testimonial("What it feels like")}

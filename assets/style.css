@@ -915,3 +915,8 @@ h2 { max-width: 18em; margin-left: auto; margin-right: auto; }
 .tour-note .kicker { margin-bottom: 0.6rem; }
 .tour-note p:not(.kicker) { line-height: 1.6; margin-bottom: 1.1rem; }
 @media (max-width: 900px) { .tour-note { margin-left: auto; margin-right: auto; text-align: center; } }
+
+/* -- About: tour band (replaces the pillars grid) --------------- */
+.tour-band { background: var(--offwhite); text-align: center; padding: var(--section-pad) var(--section-x); border-top: 2px solid var(--teal); border-bottom: 2px solid var(--teal); }
+.tour-band h2 { max-width: 16em; margin: 0 auto; }
+.tour-band .packages-intro { margin: 1.2rem auto 2rem; }
