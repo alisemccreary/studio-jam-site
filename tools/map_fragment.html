@@ -26,7 +26,7 @@
     #sj-tour a { color:var(--teal); text-underline-offset:3px; }
     #sj-tour .sj-tools { display:flex; align-items:center; justify-content:center; gap:1rem; margin:1rem auto 1.5rem; max-width:1200px; text-align:center; flex-wrap:wrap; }
     #sj-tour .sj-reset { border:2px solid var(--teal); background:var(--paper); border-radius:14px; padding:9px 14px; flex-shrink:0; }
-    #sj-tour .sj-cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:2.5rem 3rem; align-items:start; }
+    #sj-tour .sj-cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.25rem; align-items:stretch; }
     #sj-tour .sj-home-card { grid-column:1 / -1; display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; }
     #sj-tour .sj-home-card .sj-card-top { border-bottom:0; padding-bottom:0; }
     #sj-tour .industries { justify-content:center; margin:0 auto 2rem; }
@@ -34,10 +34,11 @@
     #sj-tour .sj-mascot { position:absolute; left:1.2rem; bottom:0; z-index:4; width:86px; height:auto; pointer-events:none; }
     #sj-tour .sj-home-card .sj-card-top { margin:0; }
     #sj-tour .sj-home-card p { margin:0; }
-    #sj-tour .sj-card { min-width:0; border:0; border-radius:0; padding:0; background:transparent; scroll-margin-block:24px; }
+    #sj-tour .sj-card { min-width:0; border:2px solid var(--teal); border-radius:16px; padding:1.5rem 1.5rem 0.5rem; background:var(--paper); scroll-margin-block:24px; }
+    #sj-tour .sj-card.is-active { background:var(--pink); border-color:var(--berry); }
     #sj-tour .sj-card.is-active .sj-card-top { border-bottom-color:var(--berry); }
     #sj-tour .sj-card.is-active .sj-card-button { color:var(--berry); }
-    #sj-tour .sj-card.sj-home-card { border-bottom:2px dashed var(--teal); padding-bottom:1rem; }
+    #sj-tour .sj-card.sj-home-card { border-style:dashed; padding:1.1rem 1.5rem; }
     #sj-tour .sj-card-top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:0; padding-bottom:0.8rem; border-bottom:2px solid var(--teal); }
     #sj-tour .sj-card-button { background:none; border:0; padding:0; text-align:left; font:inherit; text-transform:inherit; }
     #sj-tour .sj-count { flex-shrink:0; display:grid; place-items:center; border-radius:50%; background:var(--red); color:var(--paper); width:28px; height:28px; font:700 14px/1 "Inclusive Sans",sans-serif; }
@@ -70,7 +71,7 @@
       #sj-tour .sj-map { height:auto; aspect-ratio:4/3; }
       #sj-tour .sj-cards { grid-template-columns:1fr; }
       #sj-tour .sj-home-card { display:block; }
-      #sj-tour .sj-card { padding:0; }
+      #sj-tour .sj-card { padding:1.2rem 1.2rem 0.4rem; }
       #sj-tour .sj-mascot { width:58px; }
       #sj-tour .sj-note { display:none; }
       #sj-tour .sj-tools { align-items:flex-start; flex-direction:column; }
