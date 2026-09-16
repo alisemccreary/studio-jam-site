@@ -8,7 +8,7 @@ def data(cls):
     return re.search(r'<img class="%s[^"]*" src="([^"]+)"' % cls, idx).group(1)
 STAR = "/assets/img/star-teal.png"; STAR_PINK = "/assets/img/star-pink.png"; LOGO = "/assets/img/logo.png"; MASCOT = "/assets/img/mascot-walk-pink.png"
 FAV = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAARVklEQVR4nO2dC3BTZ3bH//dKVw9Lli3LtvALMOZhQ8Kb8lqXAEkWCNmwedB1Nt00m+xjOtPdbWe7bbNt0uxO2smkyySdbdq0zQZINoQJkGUCwaYkDQQTwMQ8DDi2wQ/8AFuWn9iS9eycz5YLji1LtiXde3V/MxonMr6+1vl/5zvf+c53LocIYnjkGX8krx8v9B18m4vUtaf0worBpSeIKbmQYnjpCmFSF1AML30hTOgHFcPLRwh8uD+gGF+8TMQ2YQlAMb74CddGIbkMxfDynRLG9QCK8aVLKLYLKgDF+NJnPBuGHQQqyIsxBaCMfvkQzJajCkAxvvwYy6ZfE4BifPkymm2VGCDOuUsAyuiXPyNtrHiAOGdYAMrojx/utLXiAeIcJgBl9McfAZvL3gPo1epY34KokbUAlmZa8ca2jVBzsv4zJ4WsP5llWel47N4CLM5Mi/WtiBZezvP/H+VkgNfpUJibHetbESVke9l6AK1ahYI0C+D1Ysm09Ij9jkStBlJGtgLIMiViepIRPpcLCzPSkKTXTen1tSoVXn9oPRZOk/b0IlsBzLEkw6TXw+PxINNkRJ7ZNGXXTtLr8G+PbMSmubmo6+iClJGtAPLTzFCrVPD6/UjQarEyJ2NKrpuo1eCtRx/Ed1YuRUNXD9r7nZAyshVArjkZ4AZrIv1+Px7Oz4Oan9xBmgRBjd8+vAGb8ucALhcqbXa4vF5IGVkKQMVxKEhPgW/IOB6vF3kpSUjWTS4O+OX6VXhs8QI4nA5SFc41t0HqyFIAZr0O05MS4fP52P/TV0uCHnmW5Alf8+mlC/CjlYvhcjrBcxz6XS5cvKkIQJTkJCfCrNfDGxCA3w+dToeV2ROLAx5bMBevbF7HPAvFFCSAbocTNzp7IHVkKYA5FjMMOi0z/DB+PxZnhJ8PWJFlxY6t69meAk0lhFqtxqVbNrT3OyB1ZCmAwplZ4Ebk/71eL+ZbLSyQC5VMkxFvbHsAKXodXB7P8Pscz6O0oZl5A6kjOwFwHIdZ5mT4/YPuPwCN3unJiZhtMYd0nQRBjTe3PYACaxqcbvddH5jH7caFFhvkgOwEYDUkYLYliSWA7oSmA0oMLQoxc/fC+tVYPycXjoGBu96n0U/zf11nN+SA7ARAkX6qIeHu+T8Ax2F5tnXca2yclYPnVi6Ca4TxCUoukfFbem5DDshOAOTmtRrNqALwejxYlmkNWiSSZTJix0PrIfD8qHM8r1KhrKkVAxJPAMlWALNTzMMZwJFQIDjTbEJWknHU76s4Dr+6fw3y0lPvCvpGUm3vgFyQlQDoj1mSmQ7/0Pp/JN6hOOAea+qo3/+L1UuwfdF8OJzOMa/vcrtRa5f2BpBsBaBRq5GVZBjOAI4GuXAqFRvJ6umZ+Jv7VsIdZOTzPI/Ovn581d4JuRBxAZBbjVZhplmvRZJGM5wBHA3yDvdYLXe9l6TT4pVvFsKo1Qb9WZVKhRvdvWi73Q+5EHEBUNXMric248crFyE1QR/R35VuTIDZkMB2/8aC4oB5qWZYEgY3hihv8Ov712Lp9Cw4Xa6g1yfvcemmDe4gIpEaEReAw+PFqRvNePnBQpT++Em8u/0hfHv+HJh02in/XSatBmo++J9EIzzdaBhOCD21uAB/tvxeOEdZ8o2EdhdLbzRDTkTcN9NofK20HPmpKXhq1VJkJZvwrfmzcb29g6VTd5+vRHnLLXh8k0+rzk1NgUYQghqTlod6rZZVDN3suY1/WL+axQzBvEZgKnO6XaiS0fxPRO3UxN8dPYlZKclYk5vDIulcixlzrGnYvjAfF2/asOdiJQ5V1U5qfp2XmsLmeBrlqiCegIy9JMOKRwrykJls+lq2b6wVRFljK2509UJORE0AnQ4nnj1Qgn1PfgsLMtLZh04RN42sVTOysHpGFn7R1Y3P65vx7oWrzDuE4xXI3FQDwP57jDxAgAG3G0WL5kFQqUIyPk0rtv5+fHGjBT0DweMEqRHVZWBjdy+e2V+MensndBrNsEum4oo+lwvTEo0oWrIA+777CD763qN4/r5VyKPETgikGROwNNvKRj8FdsEgD6BVq8P44znaTWYrgGCrBCkS9TzA1TY7vvfBx2jp7oVWENh7nN8Pt9cDh9vDRiTd1NqZ2Xj+/rUofuYx/OvWDVgzPTPoyNbwPASOH3cuD0DC84V4zz7/oKi06sh+XORpaMk82drFsH4nYkB5Sxue21+Mt5/YzCJycslalZq5fLfXx2ru6T243UhN0OH7KxejaHEBTt9owdvnKnCyoQVtfXfHCslU9x+hz43neRyracCphpZJX8uo1cBq0MNCu5YpScg2JcKgEVCQnoo0g459/0JLG3566FP0u8dOSk0VMTs6+3lDM4reP4R3tm9BpimRGXxQ+Rx8+P9R7PH54Bmqw7svbwY75nWr9zb2X7mG/RXVKG9pZf/OoNWwURoRDfj9mJliQltfeBVAVFOQk2xiK6BFGWlYnmlFpsnAdiupvJxWLLS9HPgd0Grx2ZVqvHn2Ils+RwMu1mcD/zg3G7uf2MIKOYNtwATghrZk1YKA3n4Hjl1rwO8vVmJbQR6eWnZvSEFduOgEgXmfLTv3B00CZSclsuUllZ6RwQvSLcgyGpGUoAOnUrEVCtUp0DRFH3pgx5JS2HTdnV9exq8+ORXVQDPmAiDW5WZj5+ObkWJIYEvEUCGvQMs9t9c77tJvovAcx7Z+aVS+9MkXw++T26bpad2sHKzOyYTVmMCOidHopprBQNaR7muswJGuTVvXte2d+EXxcRRX1yHaiKJ7wvG6Jjy7vwT//fgmWEL0BMOBnNfLPkhK045aBDJZ/H4WnNV39jKhLrCmYq7FjGXZVuhVKpbb0Gi1w6ObjO0OwQvREpT491Pl+JeTZWiN0f6CKDxAgA2zcrBr+xaYtNqQRRAtepwDLNCkEevxeuAfylEwEYYpPMpE3uzpwfPFJ/HB5SrEElFtB39a24hn9xWjs9/B5kUxYR7ayBpMYHkHg1OfLyzjU+yi1+nwP9XX8fCuD2NufNEJgDh6rQHPHShBz8CAqETgDdPYI6GcB3mRHcfPoOj9j/GVTRxVRaITAHHs+g388MBR0YlgwvUQOh2+bLqFzTv344VjpXCKaHoTpQCII9V1+MGBEnQ7pSsCrSDA4fHg9ZNlePT3B1kWVGyIVgBEcXU9vr+vGHYWEwymjaUAPzTqq212FO09jF+WfM42w8SIqAVAHLvegD/d+zHsfX3DewdiRqNWs/vce/4qtu7+ECfqmiBmRC8Agqpwnt53hOX/xSwCvU6HOnsXnt13BD/4sAS3evsgdiQhAILqBJ7aexgtPb3DW8liQaDlnV6PY1W1+PZ7B7G3oioySal4FgBB+fgn3z+E2vYOlkyJNf6hpE5LTx/+9vCnbHOrrkNaZwYlJYDAVvLjez5CWWNLTD2BiudZ86lT9U14/L0/4LdfnGcRv9SQnACImvZOPPruQZxvuhmTJaKWCk89Xrx49HNse+dDXG0TR1JnIkhzgQ3gm3NmID0x+CmgiMBxKGu8iRc/KcXJeumXiEtOADq1Gi9sWI0/X72E7asH2rZEA0GtRlWbHU9/cARNPfKoDpbUFDDbkow933kIP1m7jO21R9P4BFUxz041Y0/RVjxxz1x2hFzqiGo7OBhFi/LxjxvXICs5KSJVP+HGAFQn+IfL1Xjp01MsJpEqohcApVX/unAFfrpmCfSCwLZgxQBH05FWi/bbffjNiTK8cfYCvFNwuinaiFoAVGP36qZ12DQvlwV7YkyuqKk+UaVCSVUt/umz02yZKiVEKwA6B7Bjyzrkp6eymj8xww15A2oe9VrpObxx+gL6XKHXNsYS0QlAxXP4+TdW4C8LlyNBEAbPB0gEFc9Do9GgtLYRf3/0BMqaB0vWxYyoBJCZaMCL96/Fd5csYNXBUj2Gpddo0NXvwCvHz+DNsgpRdxQXjQAKZ2Thta0bMW9aKpxO5x1HQ8KDVQhz3ISDRY1azTqBsBzDUJXvRO6FKokpb/DJ9Qb85sRZnBBp0kgUAvjhioV46YG1MGg0E3L59GFTLT6dsrntcLC5mA6ajHdIdCS0t7Dz3CU0dPZg7YwsLLBaYE00MkFQEEq5h0AgGmpASptF/W43/vPMebxyvAy9IjtdHFMBpCTo8PID30DRovmDI843tquk79O2K33wtAan+Za+0vstnd0419KKK612FNfUYYY5Ca9vXQ+jIITcz1fF8+hyDmD9f+1lTwIhcpISMT/dgsLcHKzKmYbcZBPrbEJRvyAI7EwCE8Y4KxQVR7GBgAtNt/DyZ2dwpLoWiPdUMD3Ri4y0Jm8GBpzOoB8guXSn1wd7/202IhvpUS19DlS1d6Ckph7lza3s6HaARRnpMBsMIbV9CUDB2wdnLw4bP3CcnV70O+geqHk0vYyCmj2S7sHZM5Fq0CONzvrRwyjobKPfP3giiF5Df5PX72PJq4WZ6XjnT7bgP85cxD9/dloUK4WYCIAe30LdODNMRjgcXz9wSR82uW8aaezEj9eLGnsXPq6qZYY/eq0eDV29Yy4P51nMYbl/no5/uVw4XDX20SwSaFN3L3sFzjDQiR6DoGHNJ/NTzayXQX764Fd6j0RB988Ofg49uEKjUuFn61Yyj/KzQ/+Ly63tiBsBUO78rwqX4+eFK9gH4RjqyhUI3ALzuNvtRq9zAFX2DpTWN6O0oQUVre1o7+sPqWvINJORLBb6fQkCSusacbrxZlh/j8frR7d3gLW4oVcAOuNPD62Yk2pmh0XnWFKQqBFYG1tqPU9TGU0vL25Ygx8dPIqOGD54KmoC0Alq1oH7J4UrWM9emr+pho6gzpwdjgFU2ew4WtOAS6021ouH3PFEloLUXyAceJ7HR5XXpmy5RoUh1e2d7HUndPydehGqOeo44ofT64UzCj0AYi6AGcmJeHXzfWw09Dud6OofwFc2O6o7utihyNKGJlZKdet2f8gdPsaCPmRqGEldPUL79zxau7pxuCrygRl5ry6RlYdHRQDLsqaxR6z87lwFa3xQY++MWLt16v1DDSNDXaYJGg1KLlWymCIeiYoADlypYa9oQPMraxYZggB4jmN5g13lVxGvSL+iYQTk/pO1oz8vYCRajYb1/TnbdAvxiuwEQIS6AvT5fNhzqXLScYeUkZ0AfD4/vP7QqnouNrfiUKV4snKxQHYCyEg0sP49441qnlfhvUuVkqzln0pkJwDq/U87esFiANqlu25rx/uXYt+hI9bITgCh1OVRxnH3+auiPbIdTWQngAHP4JbtWG1laZl4rdWGXeVXon5vYkR2AqB+vsz4Y0wBao2GPaNADs/9nQpkJwAqBKG9/dESwbS72GzvEEV3LrEgOwGMt+u3t6Ka7fEryFQAY8WANPpt3b1461xFtG9J1MhOAB7/6EWcNPp/V375roofBRkKgMqvRgaAFPk32OysFEtB5gKgp46wx8bc8R61ln+r/DJsIx4yoSBDAbg9g1NAoCaQRn+9zY7dcbzlG1cCSDPoh8vHA+v+neevKOv+eBHAnXvBtCdQc6tNyfrFlQDugEqyd5z8ErYwn/UTT8hQAP7h/f4LjTex72p0StGkimx3A6ke4NWT5+AQwekbMcP3HXw7ek8pjALs2cOCgINXanDoq+uxvh1RQ7aXnQegA56HKipZ8yYxtpQRG5LrEzgelbYO1l4+2PP9FGQsAJr73crIDxk2BcgtDlAYn4DNZRcDKITHsAAULxA/3GlrxQPEOXcJQPEC8mekjRUPEOd8TQCKF5Avo9l2VA+giEB+jGXTMacARQTyIZgtlRggzgkqAMULSJ/xbDiuB1BEIF1CsV1YxhVDY2mF8Qln0IYVAyjeQPyEa6Owg0BFBOJlIraZlDGVKUEcTGZQTsloVoQQG6bCG0+pO1eEEB2mchqO6HyuCGJqiGTc9X9xEyUtH90aFQAAAABJRU5ErkJggg=='
-CSSV = "47"
+CSSV = "49"
 EMAIL = "alise@studiojamcreatives.com"
 
 JSONLD = '''{"@context":"https://schema.org","@type":"ProfessionalService","name":"Studio Jam","alternateName":"Studio Jam Creatives","url":"https://studiojamcreatives.com/","email":"alise@studiojamcreatives.com","founder":{"@type":"Person","name":"Alise McCreary"},"description":"A creative marketing studio offering brand identity, website and Shopify design, social media management, and marketing and ads.","sameAs":["https://instagram.com/studiojamcreatives"],"knowsAbout":["Brand identity","Website design","Shopify","Social media management","Paid advertising","Email marketing"]}'''
@@ -53,7 +53,7 @@ def nav(current):
     return f'''<!-- NAV -->
 <header class="nav">
   <a class="nav-logo" href="/" aria-label="Studio Jam home"><img src="/assets/img/logo-lockup.png" alt="Studio Jam" width="900" height="206"></a>
-  <nav class="nav-links">{links}
+  <nav class="nav-links" aria-label="Primary">{links}
     <a class="nav-cta" href="/contact"{cta_cur}>Let&rsquo;s jam</a>
   </nav>
 </header>
@@ -62,11 +62,12 @@ def nav(current):
 def ticker(text):
     t = text + " &#10039;&nbsp;"
     return f'''<!-- TICKER -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
+<div class="ticker">
+  <div class="ticker-track" aria-hidden="true">
     <span>{t}</span>
     <span>{t}</span>
   </div>
+  <button class="ticker-toggle" type="button" aria-pressed="false" aria-label="Pause the scrolling banner"><span aria-hidden="true">&#10074;&#10074;</span></button>
 </div>
 '''
 TICK_MAIN = "Creative Marketing Studio &#10039; Brand &#10039; Web &#10039; Social &#10039; Ads &#10039; Let&rsquo;s Go Dancing! &#10039; Creative Marketing Studio &#10039; Brand &#10039; Web &#10039; Social &#10039; Ads &#10039; Let&rsquo;s Go Dancing!"
@@ -113,11 +114,25 @@ def cta_band(kicker, h2, p, btn_text, btn_href="/contact", cls="contact"):
 </section>
 '''
 
+def finalize(html):
+    """Post-process a built page: <main> landmark, external-link hints."""
+    html = html.replace('<span id="main"></span>', '')
+    if '<main id="main">' not in html:
+        i = html.find('<!-- TICKER -->'); j = html.find('<section', i)
+        html = html[:j] + '<main id="main">\n' + html[j:]
+        html = html.replace('<!-- FOOTER -->', '</main>\n<!-- FOOTER -->', 1)
+    def hint(m):
+        tag, inner = m.group(1), m.group(2)
+        if 'aria-label=' in tag or 'new tab' in inner: return m.group(0)
+        return tag + inner + '<span class="sr-only"> (opens in a new tab)</span></a>'
+    html = re.sub(r'(<a [^>]*target="_blank"[^>]*>)(.*?)</a>', hint, html, flags=re.S)
+    return html
+
 def footer():
     return f'''<!-- FOOTER -->
 <footer class="footer textured">
   <p class="footer-big">Stay jammin&rsquo;, folks</p>
-  <nav class="footer-links">
+  <nav class="footer-links" aria-label="Footer">
     <a href="/about">About</a>
     <a href="/services">Services</a>
     <a href="/packages">Packages</a>
@@ -136,6 +151,15 @@ def footer():
 
 </div>
 <script>
+(function () {{
+  var tk = document.querySelector('.ticker'), tb = document.querySelector('.ticker-toggle');
+  if (tk && tb) tb.addEventListener('click', function () {{
+    var paused = tk.classList.toggle('paused');
+    tb.setAttribute('aria-pressed', String(paused));
+    tb.setAttribute('aria-label', paused ? 'Resume the scrolling banner' : 'Pause the scrolling banner');
+    tb.firstElementChild.innerHTML = paused ? '&#9654;' : '&#10074;&#10074;';
+  }});
+}})();
 (function () {{
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce || !('IntersectionObserver' in window)) return;
@@ -287,7 +311,7 @@ home += nav("") + ticker(TICK_MAIN) + f'''
     </div>
     <div class="split-copy">
       <p class="kicker">The Studio</p>
-      <h2>One studio. One point of&nbsp;contact. Full creative&nbsp;range.</h2>
+      <h2>One studio. One point of contact. Full creative range.</h2>
       <p class="about-copy">Hi, I&rsquo;m Alise. Studio Jam exists for the business that needs an entire marketing department and can realistically afford one person. Brand, web, social, and ads, run by a founder who is actually in the room rather than a name on a proposal.</p>
       <ul class="pillars">
         <li>Hospitality first</li>
@@ -363,7 +387,7 @@ home += nav("") + ticker(TICK_MAIN) + f'''
 </section>
 
 ''' + footer()
-open('index.html', 'w', encoding='utf-8').write(home)
+open('index.html', 'w', encoding='utf-8').write(finalize(home))
 
 # ---------------- ABOUT ----------------
 about = head("About Studio Jam | Creative Marketing Studio", "The story, the mission, and the four pillars behind Studio Jam, a creative marketing studio founded by Alise McCreary.", "about")
@@ -423,7 +447,7 @@ about += f'''
 
 {testimonial("What it feels like")}
 ''' + cta_band("Let&rsquo;s jam", "Sound like your kind of studio?", "Tell me about your business. The first conversation is on the house.", "Get in touch") + footer()
-open('about.html', 'w', encoding='utf-8').write(about)
+open('about.html', 'w', encoding='utf-8').write(finalize(about))
 
 # ---------------- SERVICES ----------------
 svc = head("Brand, Web, Social &amp; Ads Services | Studio Jam", "Brand identity, websites and Shopify, social media management, and marketing and ads. What Studio Jam does and what is included in each.", "services")
@@ -475,7 +499,7 @@ svc += '''
 </section>
 
 ''' + cta_band("Not sure where to start?", "That&rsquo;s what the first call is for", "Tell me what you sell and what is not working. I&rsquo;ll tell you honestly which of these you actually need, and which you don&rsquo;t.", "Book the first conversation") + footer()
-open('services.html', 'w', encoding='utf-8').write(svc)
+open('services.html', 'w', encoding='utf-8').write(finalize(svc))
 
 # ---------------- PACKAGES ----------------
 pk = head("Monthly Marketing Management Packages | Studio Jam", "Three tiers of monthly marketing management from Studio Jam: The Opener, The Main Event, and The Encore. Scoped to your business, no rate cards.", "packages")
@@ -486,6 +510,7 @@ pk += page_hero("Marketing Management", "Pick your set",
                 photo="alise-think.jpg", alt="Alise McCreary thinking it over, finger on chin")
 pk += f'''
 <section class="packages page-tiers">
+  <h2 class="sr-only">The three sets</h2>
   <div class="tier-grid">
 {tier_cards()}
   </div>
@@ -517,7 +542,7 @@ pk += f'''
 
 {testimonial("From a client", alt=True)}
 ''' + cta_band("Let&rsquo;s jam", "Ready to pick your set?", "Send a note with your business name and what you are hoping to change. I&rsquo;ll come back with the right set for you, and no pressure.", "Send a note") + footer()
-open('packages.html', 'w', encoding='utf-8').write(pk)
+open('packages.html', 'w', encoding='utf-8').write(finalize(pk))
 
 # ---------------- PROCESS ----------------
 pr = head("How a Project Works | Studio Jam", "How a project with Studio Jam goes, from the first conversation to launch and the months after.", "process")
@@ -557,7 +582,7 @@ pr += '''
 </section>
 
 ''' + cta_band("Let&rsquo;s jam", "Step one is a conversation", "Tell me about your business, what&rsquo;s working, and what&rsquo;s not. The first conversation is on the house.", "Start the conversation") + footer()
-open('process.html', 'w', encoding='utf-8').write(pr)
+open('process.html', 'w', encoding='utf-8').write(finalize(pr))
 
 # ---------------- CONTACT ----------------
 ct = head("Contact Studio Jam | Let&rsquo;s Jam", "Get in touch with Studio Jam, a creative marketing studio. The first conversation is on the house.", "contact")
@@ -605,7 +630,7 @@ ct += f'''<section class="page-hero with-photo contact-hero" id="top"><span id="
 
 {testimonial("What clients say", alt=True)}
 ''' + footer()
-open('contact.html', 'w', encoding='utf-8').write(ct)
+open('contact.html', 'w', encoding='utf-8').write(finalize(ct))
 
 # ---------------- CLIENTS ----------------
 cl = head("The Studio Jam Tour | Studio Jam", "Every stop on the Studio Jam tour is a business we work with: Fayetteville, North Mississippi, Charlotte, and a Colorado home base. See who was on the bill at each stop.", "clients")
@@ -616,7 +641,7 @@ cl += page_hero("Now touring", "The Studio Jam Tour",
 cl += open(os.path.join(SITE, "tools", "map_fragment.html"), encoding="utf-8").read()
 cl += testimonial("Kristy, on working together") + testimonial("Dayne, on the brand refresh", alt=True).replace('class="testimonial textured"', 'class="testimonial textured alt"')
 cl += cta_band("Next leg", "Want your city on the tour?", "Tell me about your business, what&rsquo;s working, and what&rsquo;s not. The first conversation is on the house.", "Add your stop") + footer()
-open('clients.html', 'w', encoding='utf-8').write(cl)
+open('clients.html', 'w', encoding='utf-8').write(finalize(cl))
 
 # ---------------- WORK WITH US (rebuild with shared shell) ----------------
 ww = head("Marketing Assistant Job, Fayetteville AR | Studio Jam", "Studio Jam is hiring a part-time marketing assistant / paid intern in Fayetteville, Arkansas. Email your resume and recent work to apply.", "work-with-us")
@@ -673,12 +698,12 @@ ww += f'''
 </section>
 
 ''' + footer()
-open('work-with-us.html', 'w', encoding='utf-8').write(ww)
+open('work-with-us.html', 'w', encoding='utf-8').write(finalize(ww))
 
 # ---------------- 404 ----------------
 nf = head("Wrong Venue | Studio Jam", "That page is not on the setlist. Head back to Studio Jam.", "404", noindex=True)
 nf += nav("") + page_hero("404", "Wrong venue", "That page isn&rsquo;t on the setlist. The show is still on, though.",
                           [("Back to the main stage", "/", "btn-blush btn-solid"), ("Say hello", "/contact", "btn-blush")], cls="notfound", deco=("mascot-stand.png", "stand"))
 nf += footer()
-open('404.html', 'w', encoding='utf-8').write(nf)
+open('404.html', 'w', encoding='utf-8').write(finalize(nf))
 print("pages built:", [f for f in os.listdir('.') if f.endswith('.html')])

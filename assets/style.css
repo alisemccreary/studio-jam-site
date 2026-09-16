@@ -747,45 +747,9 @@ h2 {
   .nav-cta { margin: 0 0.3rem 0 0.6rem !important; padding: 0.45rem 0.9rem; }
 }
 
-/* -- Client map (About) ----------------------------- */
-.clientmap { background: var(--blush); padding: clamp(4rem, 9vw, 7rem) 6vw; text-align: center; }
-.clientmap h2 { max-width: 16em; margin: 0 auto; }
-.clientmap .mapbox { position: relative; max-width: 68rem; margin: 0 auto; background: var(--offwhite); border: 3px solid var(--teal); border-radius: 26px; overflow: hidden; box-shadow: 12px 14px 0 var(--berry); }
-.clientmap svg.map { display: block; width: 100%; height: auto; }
-.clientmap .st { fill: #F6F7F7; stroke: var(--teal); stroke-width: 1.6; stroke-linejoin: round; }
-.clientmap .stl { font-family: var(--mono); font-size: 19px; letter-spacing: 0.2em; fill: var(--sage); text-anchor: middle; pointer-events: none; }
-.clientmap .pin { cursor: pointer; outline: none; }
-.clientmap .pin .halo { fill: var(--blush); opacity: 0; transition: opacity 0.2s; }
-.clientmap .pin:hover .halo, .clientmap .pin:focus-visible .halo, .clientmap .pin.on .halo { opacity: 0.9; }
-.clientmap .pin image { transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1); transform-origin: 0 0; }
-.clientmap .pin:hover image, .clientmap .pin.on image { transform: rotate(-14deg) scale(1.12); }
-.clientmap .cnt { fill: var(--red); stroke: #F6F7F7; stroke-width: 3; }
-.clientmap .cntt { font-family: var(--mono); font-size: 15px; font-weight: 700; fill: #FFFDFC; text-anchor: middle; }
-.clientmap .pinl { font-family: var(--mono); font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; fill: var(--teal); text-anchor: middle; paint-order: stroke; stroke: #F6F7F7; stroke-width: 4; stroke-linejoin: round; }
-.clientmap .note { position: absolute; right: 1rem; top: 0.9rem; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); }
-.clientmap .mascot { position: absolute; left: 1.2rem; bottom: 0; width: 86px; height: auto; pointer-events: none; }
-.clientmap .list { max-width: 68rem; margin: 1.6rem auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; align-items: start; text-align: left; }
-.clientmap .place { background: var(--offwhite); border: 2px solid var(--teal); border-radius: 22px; padding: 1.2rem 1.25rem 1rem; transition: transform 0.25s, box-shadow 0.25s, background 0.2s, color 0.2s; }
-.clientmap .place.home { border-style: dashed; }
-.clientmap .place.on { background: var(--teal); color: var(--blush); transform: translateY(-4px) rotate(-0.4deg); box-shadow: 0 12px 0 rgba(11, 79, 97, 0.14); }
-.clientmap .place h3 { font-family: "Studio Jam Display", var(--sans); text-transform: uppercase; font-weight: 400; font-size: 1.3rem; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
-.clientmap .place.on h3 img { filter: brightness(0) saturate(100%) invert(88%) sepia(9%) saturate(600%) hue-rotate(305deg); }
-.clientmap .place ul { list-style: none; display: grid; gap: 0.35rem; }
-.clientmap .place li a { display: grid; gap: 0.1rem; color: inherit; text-decoration: none; padding: 0.6rem 0.7rem; border-radius: 14px; border: 2px solid transparent; transition: border-color 0.15s; }
-.clientmap .place li a:hover, .clientmap .place li a:focus-visible { border-color: currentColor; }
-.clientmap .place li strong { font-weight: 600; }
-.clientmap .place li span { font-size: 0.88rem; opacity: 0.85; }
-.clientmap .place li em { font-style: normal; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; margin-top: 0.25rem; }
-.clientmap .homep { font-size: 0.92rem; line-height: 1.6; opacity: 0.9; }
 @media (max-width: 860px) { .clientmap .mapbox { box-shadow: 8px 10px 0 var(--berry); } .clientmap .stl { font-size: 26px; } .clientmap .pinl { font-size: 20px; } .clientmap .mascot { width: 60px; } }
-.clientmap .list { grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); }
-.clientmap .place li a, .clientmap .place { text-align: left; }
 @media (max-width: 1024px) { .clientmap .list { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); } }
 
-.clientmap .list { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-.clientmap .place.home { grid-column: 1 / -1; display: flex; align-items: center; gap: 1.5rem; padding: 1rem 1.4rem; }
-.clientmap .place.home h3 { margin: 0; flex: 0 0 auto; }
-.clientmap .place.home .homep { margin: 0; }
 @media (max-width: 640px) { .clientmap .place.home { flex-direction: column; align-items: flex-start; gap: 0.6rem; } }
 @media (max-width: 700px) { .clientmap .mascot { display: none; } .clientmap .stl { font-size: 30px; } .clientmap .pinl { font-size: 22px; } .clientmap .note { font-size: 0.6rem; } }
 .testimonial.alt { background: var(--berry); }
@@ -858,14 +822,8 @@ h2 {
   .service-row { grid-template-columns: 1fr; }
 }
 
-.clientmap .note { color: var(--teal); opacity: 0.85; }
 
 /* -- Map + nav corrections (perfect-the-map loop) ------------ */
-.clientmap .pin .halo { fill: var(--blush); opacity: 0; transition: opacity 0.2s; }
-.clientmap .pin.on .halo { opacity: 1; }
-.clientmap .pinl { font-size: 16px; letter-spacing: 0.12em; stroke-width: 5; }
-.clientmap .place li strong small { display: inline-block; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; margin-left: 0.5rem; font-weight: 400; }
-.clientmap .place.on li strong small { opacity: 0.85; }
 @media (max-width: 700px) { .clientmap .note, .clientmap .mascot { display: none; } .clientmap .pinl { font-size: 22px; } }
 
 /* Tablet nav: keep one row until 1100px, then use the compact scrolling row */
@@ -883,7 +841,6 @@ h2 {
 
 .service-row .recent a, .setlist-names a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .service-row .recent a:hover, .setlist-names a:hover { text-decoration-thickness: 2px; }
-.clientmap .place .bill { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.7; margin: -0.2rem 0 0.5rem; }
 
 /* -- Mobile legibility + tap targets (audit pass) --------------- */
 @media (max-width: 640px) {
@@ -902,7 +859,6 @@ h2 {
 }
 @media (max-width: 640px) {
   .hero .hero-ctas .btn, .page-hero .hero-ctas .btn, .contact .btn, .apply .btn, .mix .btn, .cta-band .btn, section .btn { font-size: 0.78rem; }
-  .clientmap .place .bill, .clientmap .place li strong small, .clientmap .place li em { font-size: 0.75rem; }
   .service-rows .service-row .recent, .service-rows .service-row .recent a { font-size: 0.78rem; line-height: 1.7; }
   .packages .badge, .tier .badge, .tier-grid .badge { font-size: 0.74rem; }
   .footer .footer-row a, .contact .ig a, .apply .ig a, .job-copy a { display: inline-block; padding: 0.5rem 0; }
@@ -915,28 +871,33 @@ h2 {
   .tips li a, .tip a, .contact-cards a { display: inline-block; padding: 0.35rem 0; }
 }
 
-/* -- Mapbox GL layer on the Tour map ----------------------------- */
-.clientmap .mapbox { aspect-ratio: 1400 / 868; }
-.clientmap .mapbox svg.map { position: absolute; inset: 0; width: 100%; height: 100%; }
-.clientmap .gl-map { position: absolute; inset: 0; opacity: 0; transition: opacity 0.6s ease; }
-.clientmap .mapbox.gl-ready .gl-map { opacity: 1; }
-.clientmap .mapbox.gl-ready svg.map { visibility: hidden; }
-.clientmap .mapbox.gl-ready .mascot { display: none; }
-.clientmap .mapbox .note { z-index: 3; }
-.gl-pin { position: relative; width: 44px; height: 49px; cursor: pointer; outline: none; }
-.gl-pin img { position: relative; z-index: 2; display: block; width: 44px; height: 49px; transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1); }
-.gl-pin .gl-halo { position: absolute; left: 50%; top: 50%; width: 70px; height: 70px; margin: -35px 0 0 -35px; border-radius: 50%; background: var(--blush); opacity: 0; transition: opacity 0.2s; z-index: 1; }
-.gl-pin:hover .gl-halo, .gl-pin.on .gl-halo, .gl-pin:focus-visible .gl-halo { opacity: 1; }
-.gl-pin:hover img, .gl-pin.on img { transform: rotate(-14deg) scale(1.12); }
-.gl-pin b { position: absolute; z-index: 3; right: -8px; top: -8px; min-width: 22px; height: 22px; padding: 0 5px; border-radius: 999px; background: var(--red); color: #FFFDFC; border: 2px solid #F6F7F7; font-family: var(--mono); font-size: 12px; font-weight: 700; line-height: 18px; text-align: center; }
-.gl-pin i { position: absolute; z-index: 3; left: 50%; top: 100%; transform: translateX(-50%); margin-top: 4px; white-space: nowrap; font-style: normal; font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); background: rgba(246, 247, 247, 0.9); padding: 2px 7px; border-radius: 999px; }
-.gl-pin.home i { top: auto; bottom: 100%; margin: 0 0 4px; }
-.gl-pin.is-split { opacity: 0; pointer-events: none; }
-.gl-pin.is-split i, .gl-pin.is-split b { display: none; }
-.maplibregl-ctrl-group, .mapboxgl-ctrl-group { border: 2px solid var(--teal) !important; border-radius: 12px !important; box-shadow: none !important; overflow: hidden; }
-.maplibregl-ctrl-group, .mapboxgl-ctrl-group button { width: 36px !important; height: 36px !important; }
-.maplibregl-ctrl-group, .mapboxgl-ctrl-group button + button { border-top: 2px solid var(--teal) !important; }
-.maplibregl-ctrl-attrib, .mapboxgl-ctrl-attrib { font-family: var(--sans); font-size: 10px !important; background: rgba(246,247,247,0.8) !important; }
-.maplibregl-ctrl-attrib, .mapboxgl-ctrl-attrib a { color: var(--teal) !important; }
-.maplibregl-ctrl-logo, .mapboxgl-ctrl-logo { opacity: 0.55; }
 @media (max-width: 700px) { .clientmap .mapbox { aspect-ratio: 4 / 3; } .gl-pin i { font-size: 10px; } }
+
+/* ============================================================
+   Consistency + WCAG 2.1 AA pass
+   ============================================================ */
+:root { --section-pad: clamp(4rem, 9vw, 7rem); --section-x: 6vw; --gap: 1.25rem; --radius: 16px; --teal-muted: #3E6C7A; }
+h1, h2, h3, .footer-big { text-wrap: balance; }
+h2 { max-width: 18em; margin-left: auto; margin-right: auto; }
+.split h2, .service-row h2, .page-hero.with-photo h1 { margin-left: 0; margin-right: 0; }
+.about, .services, .packages, .process, .contact, .job, .story, .mission, .pillars-section, .expect, .service-rows, .mix, .testimonial, .hiring, .contact-details, .apply { padding: var(--section-pad) var(--section-x); }
+.setlist { padding: clamp(2.6rem, 5vw, 3.6rem) var(--section-x); }
+.kicker { margin-bottom: 0.9rem; }
+.kicker + h2 { margin-top: 0; }
+.tier, .job-card, .pillar, .step-card, .service, .contact-card, .tips { border-radius: var(--radius); }
+.tier, .job-card, .pillar, .step-card, .contact-card { padding: 1.6rem 1.5rem; }
+.service { padding: 1.5rem 1.35rem; }
+.tier-grid, .job-grid, .pillar-grid, .step-grid, .service-grid, .contact-grid { gap: var(--gap); }
+.kicker, .service span, .service-row .num, .service-row .good, .service-row .recent, .step-card .step-num, .step-get, .tip-note, .tier-tag, .fine-print, .based, .quote-by span, .lead.aside, .ticker-track span { opacity: 1; }
+.service-row .num, .step-card .step-num, .service-row .recent, .quote-by span { color: inherit; }
+.service-row .good, .tip-note, .fine-print { color: var(--teal); }
+:focus-visible { outline: 3px solid var(--berry); outline-offset: 3px; box-shadow: 0 0 0 3px var(--offwhite); border-radius: 8px; }
+.btn:focus-visible, .nav-cta:focus-visible, .pillars li:focus-visible { border-radius: 999px; }
+.nav-links a:focus-visible, .footer-links a:focus-visible, .teaser-link:focus-visible { text-decoration: none; }
+.skip:focus { outline: 3px solid var(--berry); outline-offset: 3px; box-shadow: 0 0 0 3px var(--offwhite); }
+.ticker { position: relative; padding-right: 3.2rem; }
+.ticker.paused .ticker-track { animation-play-state: paused; }
+.ticker-toggle { position: absolute; right: 0.6rem; top: 50%; transform: translateY(-50%); width: 2rem; height: 2rem; border-radius: 999px; border: 2px solid var(--blush); background: var(--berry); color: var(--blush); font-size: 0.6rem; line-height: 1; cursor: pointer; display: grid; place-items: center; padding: 0; }
+.ticker-toggle:hover { background: var(--blush); color: var(--berry); }
+@media (prefers-reduced-motion: reduce) { .ticker-toggle { display: none; } }
+#sj-tour { padding: var(--section-pad) var(--section-x) !important; }

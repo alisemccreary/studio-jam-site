@@ -21,7 +21,7 @@
 <link rel="apple-touch-icon" href="/assets/img/icon-180.png">
 <link rel="preload" href="/assets/fonts/closeout.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inclusive-sans.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/style.css?v=47">
+<link rel="stylesheet" href="/assets/style.css?v=49">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Studio Jam","alternateName":"Studio Jam Creatives","url":"https://studiojamcreatives.com/","email":"alise@studiojamcreatives.com","founder":{"@type":"Person","name":"Alise McCreary"},"description":"A creative marketing studio offering brand identity, website and Shopify design, social media management, and marketing and ads.","sameAs":["https://instagram.com/studiojamcreatives"],"knowsAbout":["Brand identity","Website design","Shopify","Social media management","Paid advertising","Email marketing"]}</script>
 </head>
 <body>
@@ -30,7 +30,7 @@
 <!-- NAV -->
 <header class="nav">
   <a class="nav-logo" href="/" aria-label="Studio Jam home"><img src="/assets/img/logo-lockup.png" alt="Studio Jam" width="900" height="206"></a>
-  <nav class="nav-links">
+  <nav class="nav-links" aria-label="Primary">
     <a href="/about">About</a>
     <a href="/services">Services</a>
     <a href="/packages">Packages</a>
@@ -41,15 +41,17 @@
   </nav>
 </header>
 <!-- TICKER -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
+<div class="ticker">
+  <div class="ticker-track" aria-hidden="true">
     <span>Creative Marketing Studio &#10039; Brand &#10039; Web &#10039; Social &#10039; Ads &#10039; Let&rsquo;s Go Dancing! &#10039; Creative Marketing Studio &#10039; Brand &#10039; Web &#10039; Social &#10039; Ads &#10039; Let&rsquo;s Go Dancing! &#10039;&nbsp;</span>
     <span>Creative Marketing Studio &#10039; Brand &#10039; Web &#10039; Social &#10039; Ads &#10039; Let&rsquo;s Go Dancing! &#10039; Creative Marketing Studio &#10039; Brand &#10039; Web &#10039; Social &#10039; Ads &#10039; Let&rsquo;s Go Dancing! &#10039;&nbsp;</span>
   </div>
+  <button class="ticker-toggle" type="button" aria-pressed="false" aria-label="Pause the scrolling banner"><span aria-hidden="true">&#10074;&#10074;</span></button>
 </div>
 
 <!-- HERO -->
-<section class="hero" id="top"><span id="main"></span>
+<main id="main">
+<section class="hero" id="top">
   <img class="hero-star star-a" src="/assets/img/star-pink.png" alt="" width="602" height="667">
   <h1 class="sr-only">Studio Jam, a creative marketing studio</h1>
   <img class="hero-logo" src="/assets/img/logo.png" alt="Studio Jam" width="1400" height="641">
@@ -69,7 +71,7 @@
     </div>
     <div class="split-copy">
       <p class="kicker">The Studio</p>
-      <h2>One studio. One point of&nbsp;contact. Full creative&nbsp;range.</h2>
+      <h2>One studio. One point of contact. Full creative range.</h2>
       <p class="about-copy">Hi, I&rsquo;m Alise. Studio Jam exists for the business that needs an entire marketing department and can realistically afford one person. Brand, web, social, and ads, run by a founder who is actually in the room rather than a name on a proposal.</p>
       <ul class="pillars">
         <li>Hospitality first</li>
@@ -132,12 +134,12 @@
 <section class="setlist">
   <p class="kicker">On the setlist</p>
   <ul class="setlist-names">
-    <li><a href="https://www.marellemahjong.com/" target="_blank" rel="noopener">Marelle Mahjong</a></li>
-    <li><a href="https://www.windowjoeoxford.com/" target="_blank" rel="noopener">Window Joe</a></li>
-    <li><a href="https://jmservices.biz/" target="_blank" rel="noopener">JM Services</a></li>
-    <li><a href="https://www.innatcarnallhall.com/restaurants-fayetteville-ar/lambeth-lounge-coffee-bar" target="_blank" rel="noopener">Lambeth Lounge</a></li>
-    <li><a href="https://www.innatcarnallhall.com/restaurants-fayetteville-ar" target="_blank" rel="noopener">Ella&rsquo;s Table</a></li>
-    <li><a href="https://instagram.com/kbridgers1" target="_blank" rel="noopener">Sober and Social</a></li>
+    <li><a href="https://www.marellemahjong.com/" target="_blank" rel="noopener">Marelle Mahjong<span class="sr-only"> (opens in a new tab)</span></a></li>
+    <li><a href="https://www.windowjoeoxford.com/" target="_blank" rel="noopener">Window Joe<span class="sr-only"> (opens in a new tab)</span></a></li>
+    <li><a href="https://jmservices.biz/" target="_blank" rel="noopener">JM Services<span class="sr-only"> (opens in a new tab)</span></a></li>
+    <li><a href="https://www.innatcarnallhall.com/restaurants-fayetteville-ar/lambeth-lounge-coffee-bar" target="_blank" rel="noopener">Lambeth Lounge<span class="sr-only"> (opens in a new tab)</span></a></li>
+    <li><a href="https://www.innatcarnallhall.com/restaurants-fayetteville-ar" target="_blank" rel="noopener">Ella&rsquo;s Table<span class="sr-only"> (opens in a new tab)</span></a></li>
+    <li><a href="https://instagram.com/kbridgers1" target="_blank" rel="noopener">Sober and Social<span class="sr-only"> (opens in a new tab)</span></a></li>
   </ul>
   <a class="teaser-link" href="/clients">See the tour &#8594;</a>
 </section>
@@ -222,13 +224,14 @@
   <h2>Let&rsquo;s jam</h2>
   <p>Tell me about your business, what&rsquo;s working, and what&rsquo;s not. The first conversation is on the house, and there&rsquo;s no pitch at the end of it.</p>
   <a class="btn btn-teal" href="mailto:alise@studiojamcreatives.com">alise@studiojamcreatives.com</a>
-  <p class="ig"><a href="https://instagram.com/studiojamcreatives" target="_blank" rel="noopener">@studiojamcreatives</a> on Instagram</p>
+  <p class="ig"><a href="https://instagram.com/studiojamcreatives" target="_blank" rel="noopener">@studiojamcreatives<span class="sr-only"> (opens in a new tab)</span></a> on Instagram</p>
 </section>
 
+</main>
 <!-- FOOTER -->
 <footer class="footer textured">
   <p class="footer-big">Stay jammin&rsquo;, folks</p>
-  <nav class="footer-links">
+  <nav class="footer-links" aria-label="Footer">
     <a href="/about">About</a>
     <a href="/services">Services</a>
     <a href="/packages">Packages</a>
@@ -236,7 +239,7 @@
     <a href="/clients">Clients</a>
     <a href="/work-with-us">Work with us</a>
     <a href="/contact">Contact</a>
-    <a href="https://instagram.com/studiojamcreatives" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://instagram.com/studiojamcreatives" target="_blank" rel="noopener">Instagram<span class="sr-only"> (opens in a new tab)</span></a>
     <a class="mail" href="mailto:alise@studiojamcreatives.com">alise@studiojamcreatives.com</a>
   </nav>
   <div class="footer-row">
@@ -247,6 +250,15 @@
 
 </div>
 <script>
+(function () {
+  var tk = document.querySelector('.ticker'), tb = document.querySelector('.ticker-toggle');
+  if (tk && tb) tb.addEventListener('click', function () {
+    var paused = tk.classList.toggle('paused');
+    tb.setAttribute('aria-pressed', String(paused));
+    tb.setAttribute('aria-label', paused ? 'Resume the scrolling banner' : 'Pause the scrolling banner');
+    tb.firstElementChild.innerHTML = paused ? '&#9654;' : '&#10074;&#10074;';
+  });
+})();
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce || !('IntersectionObserver' in window)) return;

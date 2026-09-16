@@ -1,20 +1,21 @@
 <!-- Paste this entire block into the existing page. Fonts are inherited from the site. -->
 <section id="sj-tour" aria-labelledby="sj-tour-heading">
   <style>
-    #sj-tour { --pink:#F8CBCC; --teal:#0B4F61; --berry:#753F4B; --red:#B93D46; --sage:#849D9B; --paper:#ECEEEF; background:var(--pink); color:var(--teal); padding:clamp(24px,5vw,72px); font:16px/1.5 "Inclusive Sans",sans-serif; }
+    #sj-tour { --pink:#F8CBCC; --teal:#0B4F61; --berry:#753F4B; --red:#B93D46; --sage:#3E6C7A; --paper:#ECEEEF; background:var(--pink); color:var(--teal); padding:clamp(24px,5vw,72px); font:16px/1.5 "Inclusive Sans",sans-serif; }
     #sj-tour *, #sj-tour *::before, #sj-tour *::after { box-sizing:border-box; }
     #sj-tour [hidden] { display:none !important; }
     #sj-tour .sj-inner { max-width:1200px; margin:auto; }
     #sj-tour h2, #sj-tour h3 { font-family:"Studio Jam Display",sans-serif; font-weight:400; text-transform:uppercase; }
-    #sj-tour h2 { font-size:clamp(36px,5.5vw,76px); line-height:1.05; margin:0 0 18px; max-width:900px; }
+    #sj-tour h2 { font-size:clamp(1.8rem,5.4vw,3.2rem); line-height:1.12; margin:0 auto 1rem; max-width:18em; text-align:center; text-wrap:balance; }
     #sj-tour h3 { font-size:28px; line-height:1.15; margin:0; }
     #sj-tour p { margin:0; }
-    #sj-tour .sj-intro { margin-bottom:24px; }
+    #sj-tour .sj-intro { margin:0 auto 2rem; max-width:36rem; text-align:center; line-height:1.7; }
+    #sj-tour .sj-kicker { display:block; text-align:center; margin-bottom:0.9rem; }
     #sj-tour .sj-label { font:12px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace; text-transform:uppercase; letter-spacing:.1em; }
     #sj-tour button, #sj-tour a { -webkit-tap-highlight-color:transparent; }
     #sj-tour button { font:inherit; color:var(--teal); cursor:pointer; }
-    #sj-tour :is(button,a):focus-visible, #sj-tour .sj-card:focus-visible { outline:3px solid var(--berry); outline-offset:4px; }
-    #sj-tour .sj-stage { position:relative; isolation:isolate; border:2px solid var(--teal); border-radius:18px; overflow:hidden; background:var(--paper); }
+    #sj-tour :is(button,a):focus-visible, #sj-tour .sj-card:focus-visible { outline:3px solid var(--berry); outline-offset:3px; box-shadow:0 0 0 3px var(--paper); }
+    #sj-tour .sj-stage { position:relative; isolation:isolate; border:2px solid var(--teal); border-radius:16px; overflow:hidden; background:var(--paper); max-width:1200px; margin:0 auto; }
     #sj-tour .sj-viewport { position:relative; }
     #sj-tour .sj-map { width:100%; height:520px; }
     #sj-tour .sj-fallback { position:absolute; inset:0; z-index:3; background:var(--paper); padding:clamp(16px,4vw,40px); display:flex; flex-direction:column; justify-content:center; gap:16px; overflow:auto; }
@@ -23,13 +24,16 @@
     #sj-tour .sj-map-footer { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; padding:12px 16px; border-top:2px solid var(--teal); }
     #sj-tour .sj-credit { font-size:12px; }
     #sj-tour a { color:var(--teal); text-underline-offset:3px; }
-    #sj-tour .sj-tools { display:flex; align-items:center; justify-content:space-between; gap:16px; margin:16px 0 24px; }
+    #sj-tour .sj-tools { display:flex; align-items:center; justify-content:center; gap:1rem; margin:1rem auto 1.5rem; max-width:1200px; text-align:center; flex-wrap:wrap; }
     #sj-tour .sj-reset { border:2px solid var(--teal); background:var(--paper); border-radius:14px; padding:9px 14px; flex-shrink:0; }
-    #sj-tour .sj-cards { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
-    #sj-tour .sj-card { min-width:0; border:2px solid var(--teal); border-radius:16px; padding:24px; background:var(--paper); scroll-margin-block:24px; }
+    #sj-tour .sj-cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.25rem; align-items:stretch; }
+    #sj-tour .sj-home-card { grid-column:1 / -1; display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; }
+    #sj-tour .sj-home-card .sj-card-top { margin:0; }
+    #sj-tour .sj-home-card p { margin:0; }
+    #sj-tour .sj-card { min-width:0; border:2px solid var(--teal); border-radius:16px; padding:1.6rem 1.5rem; background:var(--paper); scroll-margin-block:24px; }
     #sj-tour .sj-card.is-active { background:var(--pink); outline:3px solid var(--berry); outline-offset:3px; }
     #sj-tour .sj-card.sj-home-card { border-style:dashed; }
-    #sj-tour .sj-card-top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:20px; }
+    #sj-tour .sj-card-top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:1rem; }
     #sj-tour .sj-card-button { background:none; border:0; padding:0; text-align:left; font:inherit; text-transform:inherit; }
     #sj-tour .sj-count { flex-shrink:0; display:grid; place-items:center; border-radius:50%; background:var(--red); color:var(--paper); width:28px; height:28px; font:700 14px/1 "Inclusive Sans",sans-serif; }
     #sj-tour .sj-venues { list-style:none; padding:0; margin:0; }
@@ -54,10 +58,12 @@
     #sj-tour .maplibregl-ctrl-zoom-out::before { content:"−"; font-size:28px; }
     #sj-tour .maplibregl-cooperative-gesture-screen { background:var(--teal); color:var(--paper); font-family:"Inclusive Sans",sans-serif; }
     #sj-tour .sj-sr { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+    @media (max-width:900px) { #sj-tour .sj-cards { grid-template-columns:repeat(2,minmax(0,1fr)); } }
     @media (max-width:600px) {
       #sj-tour { padding:32px 16px; }
       #sj-tour .sj-map { height:auto; aspect-ratio:4/3; }
       #sj-tour .sj-cards { grid-template-columns:1fr; }
+      #sj-tour .sj-home-card { display:block; }
       #sj-tour .sj-card { padding:20px; }
       #sj-tour .sj-tools { align-items:flex-start; flex-direction:column; }
       #sj-tour .sj-fallback { justify-content:flex-start; gap:10px; }
@@ -73,11 +79,12 @@
     }
   </style>
   <div class="sj-inner">
-    <h2 id="sj-tour-heading">Where the tour has played.</h2>
+    <span class="sj-label sj-kicker">Tour stops</span>
+    <h2 id="sj-tour-heading">Where the tour has played</h2>
     <p class="sj-intro">Meet the stops and the venues on the bill.</p>
     <div class="sj-stage">
       <div class="sj-viewport">
-      <div class="sj-map" aria-label="Studio Jam tour stops" aria-describedby="sj-tour-help"></div>
+      <div class="sj-map" role="region" aria-label="Studio Jam tour map" aria-describedby="sj-tour-help"></div>
       <!-- Remains visible until real vector tiles have rendered. -->
       <div class="sj-fallback">
         <p class="sj-label">The tour, stop by stop</p>
@@ -165,7 +172,7 @@
       title.append(button); top.append(title);
       if (!group.home) {
         const count = node('span','sj-count',String(group.count));
-        count.setAttribute('aria-label',`${group.count} venues`); top.append(count);
+        count.append(node('span','sj-sr',' venues')); top.append(count);
       }
       card.append(top);
       if (group.home) card.append(node('p','','Where the tour begins.'));
@@ -259,7 +266,7 @@
         {id:'water',type:'fill',source:'tour','source-layer':'water',paint:{'fill-color':'#0B4F61','fill-opacity':0.16}},
         {id:'roads',type:'line',source:'tour','source-layer':'transportation',minzoom:8,filter:['in',['get','class'],['literal',['motorway','trunk','primary','secondary','tertiary','minor','service']]],paint:{'line-color':'#0B4F61','line-opacity':0.2,'line-width':0.8}},
         {id:'borders',type:'line',source:'tour','source-layer':'boundary',filter:['all',['in',['get','admin_level'],['literal',[2,4]]],['!=',['get','maritime'],1]],paint:{'line-color':'#0B4F61','line-width':['match',['get','admin_level'],2,1.5,0.8]}},
-        {id:'states',type:'symbol',source:'tour','source-layer':'place',minzoom:2,maxzoom:8,filter:['==',['get','class'],'state'],layout:{'text-field':['match',english,...Object.entries(stateCodes).flat(),''],'text-font':['Noto Sans Regular'],'text-size':12,'text-letter-spacing':0.12},paint:{'text-color':'#849D9B','text-halo-color':'#ECEEEF','text-halo-width':1}},
+        {id:'states',type:'symbol',source:'tour','source-layer':'place',minzoom:2,maxzoom:8,filter:['==',['get','class'],'state'],layout:{'text-field':['match',english,...Object.entries(stateCodes).flat(),''],'text-font':['Noto Sans Regular'],'text-size':12,'text-letter-spacing':0.12},paint:{'text-color':'#3E6C7A','text-halo-color':'#ECEEEF','text-halo-width':1}},
         {id:'cities',type:'symbol',source:'tour','source-layer':'place',minzoom:6,filter:['in',['get','class'],['literal',['city','town']]],layout:{'text-field':english,'text-font':['Noto Sans Regular'],'text-size':12},paint:{'text-color':'#0B4F61','text-halo-color':'#ECEEEF','text-halo-width':2}}
       ]
     };
