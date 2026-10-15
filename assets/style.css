@@ -941,9 +941,7 @@ h2 { max-width: 18em; margin-left: auto; margin-right: auto; }
   .nav-logo img { height: 30px; }
   .hero { padding: 3rem 6vw 3.5rem; }
   .hero-tag { font-size: 1rem; margin: 1.2rem auto 1.6rem; }
-  .services .service p { display: none; }
-  .services .service ul { margin-top: 0.4rem; }
-  .services .service li { padding: 0.2rem 0 0.2rem 1.2rem; font-size: 0.88rem; }
+  .services .service p { display: block; font-size: 0.92rem; margin-top: 0.5rem; }
   .service { padding: 1.2rem 1.15rem; }
   .packages .tier ul { display: none; }
   .packages .tier { padding: 1.2rem 1.25rem; }
@@ -965,3 +963,13 @@ h2 { max-width: 18em; margin-left: auto; margin-right: auto; }
 .packages .tier { padding: 1.4rem 1.4rem 1.2rem; }
 .packages .tier-tag { margin-bottom: 0; }
 .service-grid { max-width: 68rem; }
+
+/* pass 2: breathing room between stacked sections on phones, tighter card stacks */
+@media (max-width: 640px) {
+  .service-grid, .tier-grid { gap: 0.8rem; }
+  .steps .step { padding: 1.1rem 0; }
+  .contact h2 { font-size: clamp(2.6rem, 14vw, 4rem); }
+  .footer { padding: 2.6rem 5vw 1.6rem; }
+  .footer-big { font-size: 1.6rem; margin-bottom: 1.4rem; }
+  .footer-links { gap: 0.5rem 1rem; }
+}
