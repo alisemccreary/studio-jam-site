@@ -920,3 +920,48 @@ h2 { max-width: 18em; margin-left: auto; margin-right: auto; }
 .tour-band { background: var(--offwhite); text-align: center; padding: var(--section-pad) var(--section-x); border-top: 2px solid var(--teal); border-bottom: 2px solid var(--teal); }
 .tour-band h2 { max-width: 16em; margin: 0 auto; }
 .tour-band .packages-intro { margin: 1.2rem auto 2rem; }
+
+/* ============================================================
+   Pass 1: calm motion, compact mobile, map on phones
+   ============================================================ */
+.reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+.hero-logo, .hero-tag, .hero .btn, .hero-ctas, .hero-mascot, .page-hero .kicker, .page-hero h1, .page-hero .btn { animation: none !important; }
+.tier:hover, .service:hover, .job-card:hover, .pillar:hover, .step-card:hover, .contact-card:hover, .photo-frame:hover, .place:hover { transform: none !important; box-shadow: none !important; }
+.tier, .service, .job-card, .pillar, .step-card, .photo-frame { transition: border-color 0.15s ease, background 0.15s ease; }
+.btn:hover, .nav-cta:hover { transform: none; }
+.btn:hover { background: var(--teal); color: var(--blush); border-color: var(--teal); }
+.btn-blush:hover { background: var(--blush); color: var(--teal); border-color: var(--blush); }
+.pillars li:hover { transform: none; }
+/* mobile: slimmer header stack, more air, teasers that read as teasers */
+@media (max-width: 640px) {
+  .ticker { padding: 0.4rem 0; padding-right: 2.6rem; }
+  .ticker-track span { font-size: 0.62rem; letter-spacing: 0.2em; }
+  .ticker-toggle { width: 1.6rem; height: 1.6rem; right: 0.5rem; font-size: 0.5rem; }
+  .nav { padding: 0.55rem 0 0.5rem; gap: 0.35rem; }
+  .nav-logo img { height: 30px; }
+  .hero { padding: 3rem 6vw 3.5rem; }
+  .hero-tag { font-size: 1rem; margin: 1.2rem auto 1.6rem; }
+  .services .service p { display: none; }
+  .services .service ul { margin-top: 0.4rem; }
+  .services .service li { padding: 0.2rem 0 0.2rem 1.2rem; font-size: 0.88rem; }
+  .service { padding: 1.2rem 1.15rem; }
+  .packages .tier ul { display: none; }
+  .packages .tier { padding: 1.2rem 1.25rem; }
+  .packages .tier-tag { margin-bottom: 0; }
+  .tier-grid { gap: 0.9rem; }
+  .steps .step { padding: 1.2rem 0; }
+  .step p:last-child { font-size: 0.95rem; }
+  .pillars li { font-size: 0.68rem; padding: 0.45rem 0.9rem; }
+  .setlist-line { font-size: 0.98rem; }
+  h2 { font-size: clamp(1.7rem, 7.6vw, 2.4rem); }
+  .kicker { margin-bottom: 0.7rem; }
+  .about-copy, .packages-intro, .job-copy, .hiring-copy { font-size: 1rem; }
+  .industries { display: none; }
+}
+/* home teasers read as teasers on every screen: the detail lives on /services and /packages */
+.services .service ul, .packages .tier ul { display: none; }
+.services .service p { margin-bottom: 0; }
+.service { padding: 1.4rem 1.3rem; }
+.packages .tier { padding: 1.4rem 1.4rem 1.2rem; }
+.packages .tier-tag { margin-bottom: 0; }
+.service-grid { max-width: 68rem; }

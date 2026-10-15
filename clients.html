@@ -21,7 +21,7 @@
 <link rel="apple-touch-icon" href="/assets/img/icon-180.png">
 <link rel="preload" href="/assets/fonts/closeout.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inclusive-sans.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/style.css?v=53">
+<link rel="stylesheet" href="/assets/style.css?v=55">
 
 </head>
 <body>
@@ -82,6 +82,8 @@
     #sj-tour .sj-map { width:100%; height:520px; }
     #sj-tour .sj-fallback { position:absolute; inset:0; z-index:3; background:var(--paper); padding:clamp(16px,4vw,40px); display:flex; flex-direction:column; justify-content:center; gap:16px; overflow:auto; }
     #sj-tour .sj-fallback nav { display:flex; flex-wrap:wrap; gap:10px; }
+    #sj-tour .sj-stage.is-failed .sj-map, #sj-tour .sj-stage.is-failed .sj-mascot, #sj-tour .sj-stage.is-failed .sj-note { display:none; }
+    #sj-tour .sj-stage.is-failed .sj-fallback { position:static; padding:1.4rem 1.5rem; }
     #sj-tour .sj-fallback a { border:2px solid var(--teal); border-radius:14px; padding:8px 12px; color:var(--teal); text-decoration:none; }
     #sj-tour .sj-map-footer { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; padding:12px 16px; border-top:2px solid var(--teal); }
     #sj-tour .sj-credit { font-size:12px; }
@@ -130,11 +132,18 @@
     @media (max-width:900px) { #sj-tour .sj-cards { grid-template-columns:repeat(2,minmax(0,1fr)); } }
     @media (max-width:600px) {
       #sj-tour { padding:32px 16px; }
-      #sj-tour .sj-map { height:auto; aspect-ratio:4/3; }
+      #sj-tour .sj-map { height:auto; aspect-ratio:1/1; }
+      #sj-tour .sj-pin:not([aria-pressed="true"]) .sj-pin-label { display:none; }
+      #sj-tour .sj-pin-region::after { display:none; }
       #sj-tour .sj-cards { grid-template-columns:1fr; }
       #sj-tour .sj-home-card { display:block; }
       #sj-tour .sj-card { padding:1.2rem 1.2rem 0.4rem; }
-      #sj-tour .sj-mascot { width:58px; }
+      #sj-tour .sj-mascot { display:none; }
+      #sj-tour .sj-map-footer { padding:8px 12px; gap:6px; }
+      #sj-tour .sj-map-footer .sj-label { font-size:11px; }
+      #sj-tour .sj-credit { font-size:11px; }
+      #sj-tour .sj-help-long { display:none; }
+      #sj-tour .sj-tools { gap:0.8rem; margin:0.9rem auto 1.2rem; }
       #sj-tour .sj-note { display:none; }
       #sj-tour .sj-tools { align-items:flex-start; flex-direction:column; }
       #sj-tour .sj-fallback { justify-content:flex-start; gap:10px; }
@@ -171,7 +180,7 @@
         <p class="sj-label">The tour, stop by stop</p>
         <p class="sj-fallback-message" role="status">The bill is below. The map is tuning up.</p>
         <nav aria-label="Tour stop list">
-          <a href="#sj-stop-home">Home base · Colorado</a>
+          <a href="#sj-stop-home">Home base&nbsp;&middot;&nbsp;Colorado</a>
           <a href="#sj-stop-fayetteville">Fayetteville, AR</a>
           <a href="#sj-stop-north-ms">North Mississippi</a>
           <a href="#sj-stop-charlotte">Charlotte, NC</a>
@@ -185,7 +194,7 @@
       </div>
     </div>
     <div class="sj-tools">
-      <p id="sj-tour-help">Pick a stop to see the bill. Use two fingers to move the map, or Ctrl / ⌘ + scroll to zoom.</p>
+      <p id="sj-tour-help">Pick a stop to see the bill.<span class="sj-help-long"> Use two fingers to move the map, or Ctrl / ⌘ + scroll to zoom.</span></p>
       <button class="sj-reset" type="button" hidden>See the whole tour</button>
     </div>
     <div class="sj-cards"></div>
@@ -197,7 +206,7 @@
     // One row per venue. Add a client with one new row; matching stop/town names group automatically.
     // A home row has no venue. Coordinates always use [longitude, latitude].
     const stops = [
-      { stop:'Home base · Colorado', id:'home', at:[-104.99,39.739], home:true },
+      { stop:'Home base\u00a0·\u00a0Colorado', id:'home', at:[-104.99,39.739], home:true },
       { stop:'Fayetteville, AR', id:'fayetteville', at:[-94.171,36.082], venue:"Ella's Table at the Inn at Carnall Hall", service:'Social media management', url:'https://www.innatcarnallhall.com/restaurants-fayetteville-ar' },
       { stop:'Fayetteville, AR', id:'fayetteville', at:[-94.171,36.082], venue:'Lambeth Lounge at the Inn at Carnall Hall', service:'Social media management', url:'https://www.innatcarnallhall.com/restaurants-fayetteville-ar/lambeth-lounge-coffee-bar' },
       { stop:'North Mississippi', id:'north-ms', town:'Oxford, MS', at:[-89.519,34.366], venue:'Kristy Bridgers, Sober and Social', service:'Social media management and on-site shooting', url:'https://instagram.com/kbridgers1' },
@@ -281,10 +290,10 @@
       link.addEventListener('click', () => { select(group,false,true); group.button.focus({preventScroll:true}); });
       return link;
     }));
-    function fallback() {
+    function fallback(reason) {
       if (failed) return;
-      failed = true; clearTimeout(timer);
-      $('.sj-fallback').hidden = false;
+      failed = true; clearTimeout(timer); window.__sjFallback = String(reason && reason.message || reason || 'called');
+      $('.sj-fallback').hidden = false; $('.sj-stage').classList.add('is-failed');
       $('.sj-fallback-message').textContent = 'The map is taking a break. The full bill is below.';
       $('.sj-reset').hidden = true;
       if (map) { map.remove(); map = null; }
@@ -304,8 +313,9 @@
       map.setPadding({top:0,bottom:0,left:0,right:0});
       const bounds = new maplibregl.LngLatBounds();
       stops.forEach(s => bounds.extend(s.at));
-      const side = window.matchMedia('(max-width:600px)').matches ? 65 : 100;
-      map.fitBounds(bounds,{retainPadding:false,padding:{top:65,bottom:105,left:side,right:side},duration,maxZoom:4.2});
+      const small = window.matchMedia('(max-width:600px)').matches;
+      const side = small ? 48 : 100;
+      map.fitBounds(bounds,{retainPadding:false,padding:{top:small?40:65,bottom:small?56:105,left:side,right:side},duration,maxZoom:4.2});
     }
     function updatePins() {
       const nextSplit = map.getZoom() > 7;
@@ -351,7 +361,7 @@
         {id:'cities',type:'symbol',source:'tour','source-layer':'place',minzoom:6,filter:['in',['get','class'],['literal',['city','town']]],layout:{'text-field':english,'text-font':['Noto Sans Regular'],'text-size':12},paint:{'text-color':'#0B4F61','text-halo-color':'#ECEEEF','text-halo-width':2}}
       ]
     };
-    timer = setTimeout(fallback,20000);
+    timer = setTimeout(() => { if (!loaded) fallback(); }, 25000);
     Promise.all([
       resource('link','https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.6.1/maplibre-gl.min.css'),
       window.maplibregl ? Promise.resolve() : resource('script','https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/5.6.1/maplibre-gl.min.js')
@@ -360,23 +370,30 @@
       map = new maplibregl.Map({container:$('.sj-map'),style,center:[-98,38],zoom:3,
         cooperativeGestures:true,dragRotate:false,touchZoomRotate:true,touchPitch:false,
         pitchWithRotate:false,maxPitch:0,renderWorldCopies:false,attributionControl:false});
+      window.__sjMap = map; window.__sjEvents = [];
+      ['error','load','styledata','idle','webglcontextlost'].forEach(n => map.on(n, e => window.__sjEvents.push(n + (e && e.error ? ':' + e.error.message : ''))));
       map.touchZoomRotate.disableRotation();
       map.keyboard.disableRotation();
       map.addControl(new maplibregl.NavigationControl({showCompass:false}),'top-right');
-      overview();
-      map.on('error', fallback);
-      map.on('load', () => {
+      // Style or source failures before the first render are fatal; a missing tile or glyph is not.
+      map.on('error', e => {
+        if (loaded) return;
+        const tileish = !!(e && (e.tile || e.sourceId)) || /tile|glyph|font|pbf/i.test((e && e.error && e.error.message) || '');
+        if (!tileish) fallback();
+      });
+      map.once('load', () => {
         if (failed) return;
-        loaded=true; clearTimeout(timer);
-        $('.sj-fallback').hidden=true; $('.sj-reset').hidden=false;
+        loaded = true; clearTimeout(timer);
+        $('.sj-fallback').hidden = true; $('.sj-reset').hidden = false;
+        overview(0);
         updatePins();
       });
-      map.on('zoom',updatePins);
-      map.getCanvas().addEventListener('webglcontextlost',fallback);
+      map.on('zoom', updatePins);
+      map.getCanvas().addEventListener('webglcontextlost', fallback);
       $('.sj-reset').addEventListener('click', () => overview(reduced.matches ? 0 : 1100));
-      // Resize without resetting a visitor's chosen stop.
       if ('ResizeObserver' in window) {
-        const observer = new ResizeObserver(() => { if (map && !failed) map.resize(); });
+        let last = 0;
+        const observer = new ResizeObserver(() => { const w = $('.sj-map').clientWidth; if (map && loaded && !failed && w !== last) { last = w; map.resize(); } });
         observer.observe($('.sj-map'));
       }
     }).catch(fallback);
@@ -437,45 +454,7 @@
     tb.firstElementChild.innerHTML = paused ? '&#9654;' : '&#10074;&#10074;';
   });
 })();
-(function () {
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce || !('IntersectionObserver' in window)) return;
-  var groups = ['.clientmap .place', '.service-grid .service', '.tier-grid .tier', '.job-grid .job-card', '.pillars li', '.steps .step', '.pillar-grid .pillar', '.service-rows .service-row', '.step-grid .step-card', '.tips li', '.faq .faq-item'];
-  var singles = ['.kicker', 'h2', '.about-copy', '.hiring-copy', '.job-copy', '.packages-intro', '.fine-print', '.contact > p', '.hero-ctas', '.btn.btn-teal', '.ig', '.based', '.footer-big', '.quote', '.quote-by', '.story p', '.lead', '.teaser-link', '.photo-frame', '.deco', '.mapbox'];
-  var targets = [];
-  groups.forEach(function (sel) {
-    var els = document.querySelectorAll(sel);
-    for (var i = 0; i < els.length; i++) {
-      els[i].style.setProperty('--reveal-delay', (i * 0.09) + 's');
-      targets.push(els[i]);
-    }
-  });
-  singles.forEach(function (sel) {
-    var els = document.querySelectorAll(sel);
-    for (var i = 0; i < els.length; i++) targets.push(els[i]);
-  });
-  targets.forEach(function (el) {
-    if (!el.closest('.hero') && !el.closest('.page-hero')) el.classList.add('reveal');
-  });
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) {
-        var el = e.target;
-        el.classList.add('in');
-        io.unobserve(el);
-        setTimeout(function () {
-          el.classList.remove('reveal');
-          el.classList.remove('in');
-          el.style.removeProperty('--reveal-delay');
-        }, 1100);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-  setTimeout(function () {
-    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
-  }, 2200);
-})();
+/* scroll-reveal removed: content is visible at rest, no motion on scroll */
 </script>
 </body>
 </html>

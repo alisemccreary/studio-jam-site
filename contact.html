@@ -21,7 +21,7 @@
 <link rel="apple-touch-icon" href="/assets/img/icon-180.png">
 <link rel="preload" href="/assets/fonts/closeout.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inclusive-sans.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/style.css?v=53">
+<link rel="stylesheet" href="/assets/style.css?v=55">
 
 </head>
 <body>
@@ -130,45 +130,7 @@
     tb.firstElementChild.innerHTML = paused ? '&#9654;' : '&#10074;&#10074;';
   });
 })();
-(function () {
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce || !('IntersectionObserver' in window)) return;
-  var groups = ['.clientmap .place', '.service-grid .service', '.tier-grid .tier', '.job-grid .job-card', '.pillars li', '.steps .step', '.pillar-grid .pillar', '.service-rows .service-row', '.step-grid .step-card', '.tips li', '.faq .faq-item'];
-  var singles = ['.kicker', 'h2', '.about-copy', '.hiring-copy', '.job-copy', '.packages-intro', '.fine-print', '.contact > p', '.hero-ctas', '.btn.btn-teal', '.ig', '.based', '.footer-big', '.quote', '.quote-by', '.story p', '.lead', '.teaser-link', '.photo-frame', '.deco', '.mapbox'];
-  var targets = [];
-  groups.forEach(function (sel) {
-    var els = document.querySelectorAll(sel);
-    for (var i = 0; i < els.length; i++) {
-      els[i].style.setProperty('--reveal-delay', (i * 0.09) + 's');
-      targets.push(els[i]);
-    }
-  });
-  singles.forEach(function (sel) {
-    var els = document.querySelectorAll(sel);
-    for (var i = 0; i < els.length; i++) targets.push(els[i]);
-  });
-  targets.forEach(function (el) {
-    if (!el.closest('.hero') && !el.closest('.page-hero')) el.classList.add('reveal');
-  });
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) {
-        var el = e.target;
-        el.classList.add('in');
-        io.unobserve(el);
-        setTimeout(function () {
-          el.classList.remove('reveal');
-          el.classList.remove('in');
-          el.style.removeProperty('--reveal-delay');
-        }, 1100);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-  setTimeout(function () {
-    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
-  }, 2200);
-})();
+/* scroll-reveal removed: content is visible at rest, no motion on scroll */
 </script>
 </body>
 </html>
