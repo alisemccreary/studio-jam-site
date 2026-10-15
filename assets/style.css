@@ -973,3 +973,15 @@ h2 { max-width: 18em; margin-left: auto; margin-right: auto; }
   .footer-big { font-size: 1.6rem; margin-bottom: 1.4rem; }
   .footer-links { gap: 0.5rem 1rem; }
 }
+/* pass 3: photo frames keep their width inside grids; service rows fit 320px */
+.photo-frame { width: 100%; }
+.mix .photo-frame { width: min(100%, 360px); }
+.mission .photo-frame.small { width: min(100%, 320px); }
+.page-hero.with-photo .photo-frame { width: min(100%, 380px); }
+.service-row > * { min-width: 0; }
+.service-row h2 { overflow-wrap: anywhere; }
+@media (max-width: 640px) {
+  .service-row { grid-template-columns: 72px 1fr; gap: 1rem 1rem; }
+  .service-row-thumb { width: 72px; }
+  .service-row h2 { font-size: 1.45rem; }
+}
