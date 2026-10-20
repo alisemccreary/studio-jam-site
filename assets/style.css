@@ -985,3 +985,15 @@ h2 { max-width: 18em; margin-left: auto; margin-right: auto; }
   .service-row-thumb { width: 72px; }
   .service-row h2 { font-size: 1.45rem; }
 }
+/* clean pass: measured line lengths, one quiet rhythm, less ornament */
+.hero-tag, .about-copy, .packages-intro, .job-copy, .hiring-copy, .setlist-line, .contact > p, .lead, .story p, .step p:last-child, .tour-band .packages-intro, .expect .pillar p { max-width: 58ch; }
+.step p:last-child { max-width: 58ch; }
+.kicker { font-size: 0.7rem; letter-spacing: 0.24em; }
+.textured::before { opacity: 0.045; }
+.deco.chat { opacity: 0.8; }
+.ticker-track span { opacity: 0.85; }
+.footer-links { margin-bottom: 1.6rem; }
+.footer-row { opacity: 0.85; }
+.quote { font-size: clamp(1.15rem, 2.1vw, 1.45rem); line-height: 1.6; max-width: 40rem; }
+.mono-mark { width: 52px; margin-bottom: 1rem; }
+.contact-star, .hero-star { opacity: 0.9; }
