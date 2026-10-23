@@ -997,3 +997,33 @@ h2 { max-width: 18em; margin-left: auto; margin-right: auto; }
 .quote { font-size: clamp(1.15rem, 2.1vw, 1.45rem); line-height: 1.6; max-width: 40rem; }
 .mono-mark { width: 52px; margin-bottom: 1rem; }
 .contact-star, .hero-star { opacity: 0.9; }
+/* -- Apply page: application form ------------------ */
+.apply-form { background: var(--blush); padding: clamp(3rem, 8vw, 6rem) 6vw; }
+.app-card { max-width: 46rem; margin: 0 auto; background: var(--white); border: 2px solid var(--teal); border-radius: 22px; padding: clamp(1.6rem, 4vw, 2.8rem); display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem 1.2rem; color: var(--teal); }
+.app-card > .kicker, .app-card > h2, .app-card > .app-note, .app-card .full { grid-column: 1 / -1; }
+.app-card > .kicker { margin-bottom: -0.8rem; }
+.app-note { font-size: 0.95rem; line-height: 1.5; }
+.field { display: flex; flex-direction: column; gap: 0.45rem; min-width: 0; }
+.field label { font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; font-weight: 600; }
+.req { color: var(--berry); }
+.field input[type="text"], .field input[type="email"], .field input[type="tel"], .field select, .field textarea {
+  font: inherit; font-size: 1rem; color: var(--teal); background: #fff; border: 2px solid var(--teal); border-radius: 14px; padding: 0.8rem 0.95rem; width: 100%; min-width: 0;
+}
+.field textarea { resize: vertical; line-height: 1.5; }
+.field select { appearance: none; -webkit-appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--teal) 50%), linear-gradient(135deg, var(--teal) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 2.4rem; }
+.field ::placeholder { color: #5f8590; opacity: 1; }
+.hint { font-size: 0.85rem; line-height: 1.45; color: #2f6573; }
+.drop { position: relative; border: 2px dashed var(--teal); border-radius: 18px; padding: 1.6rem 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; background: #fff; transition: background 0.15s ease; }
+.drop input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.drop:focus-within { outline: 3px solid var(--berry); outline-offset: 3px; }
+.drop.over, .drop.has-file { background: var(--blush); }
+.drop-icon { font-size: 1.6rem; line-height: 1; color: var(--berry); }
+.drop-text { font-weight: 600; overflow-wrap: anywhere; }
+.drop-hint { font-size: 0.85rem; color: #2f6573; }
+.field-msg { font-size: 0.88rem; min-height: 1.2em; }
+.app-submit { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; text-align: center; margin-top: 0.4rem; }
+.btn-fill { background: var(--teal); color: var(--blush); border-color: var(--teal); cursor: pointer; font-size: 0.85rem; }
+.btn-fill[aria-disabled="true"] { opacity: 0.7; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+@media (max-width: 640px) { .app-card { grid-template-columns: 1fr; } }
+.app-card > h2 { text-align: left; margin: 0; }

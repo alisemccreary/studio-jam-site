@@ -8,7 +8,7 @@ def data(cls):
     return re.search(r'<img class="%s[^"]*" src="([^"]+)"' % cls, idx).group(1)
 STAR = "/assets/img/star-teal.png"; STAR_PINK = "/assets/img/star-pink.png"; LOGO = "/assets/img/logo.png"; MASCOT = "/assets/img/mascot-walk-pink.png"
 FAV = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAARVklEQVR4nO2dC3BTZ3bH//dKVw9Lli3LtvALMOZhQ8Kb8lqXAEkWCNmwedB1Nt00m+xjOtPdbWe7bbNt0uxO2smkyySdbdq0zQZINoQJkGUCwaYkDQQTwMQ8DDi2wQ/8AFuWn9iS9eycz5YLji1LtiXde3V/MxonMr6+1vl/5zvf+c53LocIYnjkGX8krx8v9B18m4vUtaf0worBpSeIKbmQYnjpCmFSF1AML30hTOgHFcPLRwh8uD+gGF+8TMQ2YQlAMb74CddGIbkMxfDynRLG9QCK8aVLKLYLKgDF+NJnPBuGHQQqyIsxBaCMfvkQzJajCkAxvvwYy6ZfE4BifPkymm2VGCDOuUsAyuiXPyNtrHiAOGdYAMrojx/utLXiAeIcJgBl9McfAZvL3gPo1epY34KokbUAlmZa8ca2jVBzsv4zJ4WsP5llWel47N4CLM5Mi/WtiBZezvP/H+VkgNfpUJibHetbESVke9l6AK1ahYI0C+D1Ysm09Ij9jkStBlJGtgLIMiViepIRPpcLCzPSkKTXTen1tSoVXn9oPRZOk/b0IlsBzLEkw6TXw+PxINNkRJ7ZNGXXTtLr8G+PbMSmubmo6+iClJGtAPLTzFCrVPD6/UjQarEyJ2NKrpuo1eCtRx/Ed1YuRUNXD9r7nZAyshVArjkZ4AZrIv1+Px7Oz4Oan9xBmgRBjd8+vAGb8ucALhcqbXa4vF5IGVkKQMVxKEhPgW/IOB6vF3kpSUjWTS4O+OX6VXhs8QI4nA5SFc41t0HqyFIAZr0O05MS4fP52P/TV0uCHnmW5Alf8+mlC/CjlYvhcjrBcxz6XS5cvKkIQJTkJCfCrNfDGxCA3w+dToeV2ROLAx5bMBevbF7HPAvFFCSAbocTNzp7IHVkKYA5FjMMOi0z/DB+PxZnhJ8PWJFlxY6t69meAk0lhFqtxqVbNrT3OyB1ZCmAwplZ4Ebk/71eL+ZbLSyQC5VMkxFvbHsAKXodXB7P8Pscz6O0oZl5A6kjOwFwHIdZ5mT4/YPuPwCN3unJiZhtMYd0nQRBjTe3PYACaxqcbvddH5jH7caFFhvkgOwEYDUkYLYliSWA7oSmA0oMLQoxc/fC+tVYPycXjoGBu96n0U/zf11nN+SA7ARAkX6qIeHu+T8Ax2F5tnXca2yclYPnVi6Ca4TxCUoukfFbem5DDshOAOTmtRrNqALwejxYlmkNWiSSZTJix0PrIfD8qHM8r1KhrKkVAxJPAMlWALNTzMMZwJFQIDjTbEJWknHU76s4Dr+6fw3y0lPvCvpGUm3vgFyQlQDoj1mSmQ7/0Pp/JN6hOOAea+qo3/+L1UuwfdF8OJzOMa/vcrtRa5f2BpBsBaBRq5GVZBjOAI4GuXAqFRvJ6umZ+Jv7VsIdZOTzPI/Ovn581d4JuRBxAZBbjVZhplmvRZJGM5wBHA3yDvdYLXe9l6TT4pVvFsKo1Qb9WZVKhRvdvWi73Q+5EHEBUNXMric248crFyE1QR/R35VuTIDZkMB2/8aC4oB5qWZYEgY3hihv8Ov712Lp9Cw4Xa6g1yfvcemmDe4gIpEaEReAw+PFqRvNePnBQpT++Em8u/0hfHv+HJh02in/XSatBmo++J9EIzzdaBhOCD21uAB/tvxeOEdZ8o2EdhdLbzRDTkTcN9NofK20HPmpKXhq1VJkJZvwrfmzcb29g6VTd5+vRHnLLXh8k0+rzk1NgUYQghqTlod6rZZVDN3suY1/WL+axQzBvEZgKnO6XaiS0fxPRO3UxN8dPYlZKclYk5vDIulcixlzrGnYvjAfF2/asOdiJQ5V1U5qfp2XmsLmeBrlqiCegIy9JMOKRwrykJls+lq2b6wVRFljK2509UJORE0AnQ4nnj1Qgn1PfgsLMtLZh04RN42sVTOysHpGFn7R1Y3P65vx7oWrzDuE4xXI3FQDwP57jDxAgAG3G0WL5kFQqUIyPk0rtv5+fHGjBT0DweMEqRHVZWBjdy+e2V+MensndBrNsEum4oo+lwvTEo0oWrIA+777CD763qN4/r5VyKPETgikGROwNNvKRj8FdsEgD6BVq8P44znaTWYrgGCrBCkS9TzA1TY7vvfBx2jp7oVWENh7nN8Pt9cDh9vDRiTd1NqZ2Xj+/rUofuYx/OvWDVgzPTPoyNbwPASOH3cuD0DC84V4zz7/oKi06sh+XORpaMk82drFsH4nYkB5Sxue21+Mt5/YzCJycslalZq5fLfXx2ru6T243UhN0OH7KxejaHEBTt9owdvnKnCyoQVtfXfHCslU9x+hz43neRyracCphpZJX8uo1cBq0MNCu5YpScg2JcKgEVCQnoo0g459/0JLG3566FP0u8dOSk0VMTs6+3lDM4reP4R3tm9BpimRGXxQ+Rx8+P9R7PH54Bmqw7svbwY75nWr9zb2X7mG/RXVKG9pZf/OoNWwURoRDfj9mJliQltfeBVAVFOQk2xiK6BFGWlYnmlFpsnAdiupvJxWLLS9HPgd0Grx2ZVqvHn2Ils+RwMu1mcD/zg3G7uf2MIKOYNtwATghrZk1YKA3n4Hjl1rwO8vVmJbQR6eWnZvSEFduOgEgXmfLTv3B00CZSclsuUllZ6RwQvSLcgyGpGUoAOnUrEVCtUp0DRFH3pgx5JS2HTdnV9exq8+ORXVQDPmAiDW5WZj5+ObkWJIYEvEUCGvQMs9t9c77tJvovAcx7Z+aVS+9MkXw++T26bpad2sHKzOyYTVmMCOidHopprBQNaR7muswJGuTVvXte2d+EXxcRRX1yHaiKJ7wvG6Jjy7vwT//fgmWEL0BMOBnNfLPkhK045aBDJZ/H4WnNV39jKhLrCmYq7FjGXZVuhVKpbb0Gi1w6ObjO0OwQvREpT491Pl+JeTZWiN0f6CKDxAgA2zcrBr+xaYtNqQRRAtepwDLNCkEevxeuAfylEwEYYpPMpE3uzpwfPFJ/HB5SrEElFtB39a24hn9xWjs9/B5kUxYR7ayBpMYHkHg1OfLyzjU+yi1+nwP9XX8fCuD2NufNEJgDh6rQHPHShBz8CAqETgDdPYI6GcB3mRHcfPoOj9j/GVTRxVRaITAHHs+g388MBR0YlgwvUQOh2+bLqFzTv344VjpXCKaHoTpQCII9V1+MGBEnQ7pSsCrSDA4fHg9ZNlePT3B1kWVGyIVgBEcXU9vr+vGHYWEwymjaUAPzTqq212FO09jF+WfM42w8SIqAVAHLvegD/d+zHsfX3DewdiRqNWs/vce/4qtu7+ECfqmiBmRC8Agqpwnt53hOX/xSwCvU6HOnsXnt13BD/4sAS3evsgdiQhAILqBJ7aexgtPb3DW8liQaDlnV6PY1W1+PZ7B7G3oioySal4FgBB+fgn3z+E2vYOlkyJNf6hpE5LTx/+9vCnbHOrrkNaZwYlJYDAVvLjez5CWWNLTD2BiudZ86lT9U14/L0/4LdfnGcRv9SQnACImvZOPPruQZxvuhmTJaKWCk89Xrx49HNse+dDXG0TR1JnIkhzgQ3gm3NmID0x+CmgiMBxKGu8iRc/KcXJeumXiEtOADq1Gi9sWI0/X72E7asH2rZEA0GtRlWbHU9/cARNPfKoDpbUFDDbkow933kIP1m7jO21R9P4BFUxz041Y0/RVjxxz1x2hFzqiGo7OBhFi/LxjxvXICs5KSJVP+HGAFQn+IfL1Xjp01MsJpEqohcApVX/unAFfrpmCfSCwLZgxQBH05FWi/bbffjNiTK8cfYCvFNwuinaiFoAVGP36qZ12DQvlwV7YkyuqKk+UaVCSVUt/umz02yZKiVEKwA6B7Bjyzrkp6eymj8xww15A2oe9VrpObxx+gL6XKHXNsYS0QlAxXP4+TdW4C8LlyNBEAbPB0gEFc9Do9GgtLYRf3/0BMqaB0vWxYyoBJCZaMCL96/Fd5csYNXBUj2Gpddo0NXvwCvHz+DNsgpRdxQXjQAKZ2Thta0bMW9aKpxO5x1HQ8KDVQhz3ISDRY1azTqBsBzDUJXvRO6FKokpb/DJ9Qb85sRZnBBp0kgUAvjhioV46YG1MGg0E3L59GFTLT6dsrntcLC5mA6ajHdIdCS0t7Dz3CU0dPZg7YwsLLBaYE00MkFQEEq5h0AgGmpASptF/W43/vPMebxyvAy9IjtdHFMBpCTo8PID30DRovmDI843tquk79O2K33wtAan+Za+0vstnd0419KKK612FNfUYYY5Ca9vXQ+jIITcz1fF8+hyDmD9f+1lTwIhcpISMT/dgsLcHKzKmYbcZBPrbEJRvyAI7EwCE8Y4KxQVR7GBgAtNt/DyZ2dwpLoWiPdUMD3Ri4y0Jm8GBpzOoB8guXSn1wd7/202IhvpUS19DlS1d6Ckph7lza3s6HaARRnpMBsMIbV9CUDB2wdnLw4bP3CcnV70O+geqHk0vYyCmj2S7sHZM5Fq0CONzvrRwyjobKPfP3giiF5Df5PX72PJq4WZ6XjnT7bgP85cxD9/dloUK4WYCIAe30LdODNMRjgcXz9wSR82uW8aaezEj9eLGnsXPq6qZYY/eq0eDV29Yy4P51nMYbl/no5/uVw4XDX20SwSaFN3L3sFzjDQiR6DoGHNJ/NTzayXQX764Fd6j0RB988Ofg49uEKjUuFn61Yyj/KzQ/+Ly63tiBsBUO78rwqX4+eFK9gH4RjqyhUI3ALzuNvtRq9zAFX2DpTWN6O0oQUVre1o7+sPqWvINJORLBb6fQkCSusacbrxZlh/j8frR7d3gLW4oVcAOuNPD62Yk2pmh0XnWFKQqBFYG1tqPU9TGU0vL25Ygx8dPIqOGD54KmoC0Alq1oH7J4UrWM9emr+pho6gzpwdjgFU2ew4WtOAS6021ouH3PFEloLUXyAceJ7HR5XXpmy5RoUh1e2d7HUndPydehGqOeo44ofT64UzCj0AYi6AGcmJeHXzfWw09Dud6OofwFc2O6o7utihyNKGJlZKdet2f8gdPsaCPmRqGEldPUL79zxau7pxuCrygRl5ry6RlYdHRQDLsqaxR6z87lwFa3xQY++MWLt16v1DDSNDXaYJGg1KLlWymCIeiYoADlypYa9oQPMraxYZggB4jmN5g13lVxGvSL+iYQTk/pO1oz8vYCRajYb1/TnbdAvxiuwEQIS6AvT5fNhzqXLScYeUkZ0AfD4/vP7QqnouNrfiUKV4snKxQHYCyEg0sP49441qnlfhvUuVkqzln0pkJwDq/U87esFiANqlu25rx/uXYt+hI9bITgCh1OVRxnH3+auiPbIdTWQngAHP4JbtWG1laZl4rdWGXeVXon5vYkR2AqB+vsz4Y0wBao2GPaNADs/9nQpkJwAqBKG9/dESwbS72GzvEEV3LrEgOwGMt+u3t6Ka7fEryFQAY8WANPpt3b1461xFtG9J1MhOAB7/6EWcNPp/V375roofBRkKgMqvRgaAFPk32OysFEtB5gKgp46wx8bc8R61ln+r/DJsIx4yoSBDAbg9g1NAoCaQRn+9zY7dcbzlG1cCSDPoh8vHA+v+neevKOv+eBHAnXvBtCdQc6tNyfrFlQDugEqyd5z8ErYwn/UTT8hQAP7h/f4LjTex72p0StGkimx3A6ke4NWT5+AQwekbMcP3HXw7ek8pjALs2cOCgINXanDoq+uxvh1RQ7aXnQegA56HKipZ8yYxtpQRG5LrEzgelbYO1l4+2PP9FGQsAJr73crIDxk2BcgtDlAYn4DNZRcDKITHsAAULxA/3GlrxQPEOXcJQPEC8mekjRUPEOd8TQCKF5Avo9l2VA+giEB+jGXTMacARQTyIZgtlRggzgkqAMULSJ/xbDiuB1BEIF1CsV1YxhVDY2mF8Qln0IYVAyjeQPyEa6Owg0BFBOJlIraZlDGVKUEcTGZQTsloVoQQG6bCG0+pO1eEEB2mchqO6HyuCGJqiGTc9X9xEyUtH90aFQAAAABJRU5ErkJggg=='
-CSSV = "58"
+CSSV = "59"
 EMAIL = "alise@studiojamcreatives.com"
 
 JSONLD = '''{"@context":"https://schema.org","@type":"ProfessionalService","name":"Studio Jam","alternateName":"Studio Jam Creatives","url":"https://studiojamcreatives.com/","email":"alise@studiojamcreatives.com","founder":{"@type":"Person","name":"Alise McCreary"},"description":"A creative marketing studio offering brand identity, website and Shopify design, social media management, and marketing and ads.","sameAs":["https://instagram.com/studiojamcreatives"],"knowsAbout":["Brand identity","Website design","Shopify","Social media management","Paid advertising","Email marketing"]}'''
@@ -565,7 +565,7 @@ ct += f'''<section class="page-hero with-photo contact-hero" id="top"><span id="
       <ul class="tips">
         <li>Working with clients everywhere. Most projects start with a short discovery call, on Zoom or in person</li>
         <li>You will always talk to Alise, not an account manager</li>
-        <li>Looking for the job instead? <a href="/work-with-us">Work with us</a> has the details</li>
+        <li>Looking for a job instead? Apply on <a href="/work-with-us">Work with us</a></li>
       </ul>
     </div>
   </div>
@@ -586,62 +586,148 @@ cl += testimonial("Kristy, on working together")
 cl += cta_band("Next leg", "Want your city on the tour?", "Tell me about your business, what&rsquo;s working, and what&rsquo;s not. The first conversation is on the house.", "Add your stop") + footer()
 open('clients.html', 'w', encoding='utf-8').write(finalize(cl))
 
-# ---------------- WORK WITH US (rebuild with shared shell) ----------------
-ww = head("Marketing Assistant Job, Fayetteville AR | Studio Jam", "Studio Jam is hiring a part-time marketing assistant / paid intern in Fayetteville, Arkansas. Email your resume and recent work to apply.", "work-with-us")
-ww += nav("work-with-us") + ticker("Now Hiring &#10039; Fayetteville, Arkansas &#10039; Part-Time Marketing Assistant &#10039; Paid Internship &#10039; Let&rsquo;s Jam! &#10039; Now Hiring &#10039; Fayetteville, Arkansas &#10039; Part-Time Marketing Assistant &#10039; Paid Internship &#10039; Let&rsquo;s Jam!")
-ww += page_hero("Work with us", "We&rsquo;re hiring in Fayetteville",
-                "Studio Jam is looking for a part-time marketing assistant / paid intern in Fayetteville, Arkansas.",
-                [("Send your resume", "#apply", "btn-blush btn-solid"), ("About the studio", "/about", "btn-blush")],
-                photo="alise-stool.jpg", alt="Alise McCreary on a stool with her feet up, laughing")
-ww += f'''
-<!-- THE ROLE -->
-<section class="job" id="role">
-  <div class="job-inner">
-    <p class="kicker">The role</p>
-    <h2>Part-time marketing assistant</h2>
-    <p class="job-copy">This is perfect for any student or young professional looking to add real digital media and marketing experience to their resume. (University of Arkansas students, we&rsquo;re looking at you.)</p>
-    <ul class="pillars job-pills">
-      <li>Part-time</li>
-      <li>Paid</li>
-      <li>Fayetteville, AR</li>
-      <li>Students &amp; young pros welcome</li>
-    </ul>
+# ---------------- WORK WITH US (application form, submissions emailed via FormSubmit) ----------------
+# Applications post to formsubmit.co, which emails each one to EMAIL with the resume attached.
+# One-time setup: the first submission triggers an activation email to EMAIL; click it once.
+ROLES = [
+    ("video-editor", "Video Editor (Reels), remote"),
+    ("social-coordinator", "Social Media + Content Coordinator, Oxford MS"),
+    ("photographer", "Content Photographer, Baldwyn + Tupelo MS"),
+    ("general", "Not sure yet, just want to jam"),
+]
+role_opts = "".join(f'\n          <option value="{label}" data-slug="{slug}">{label}</option>' for slug, label in ROLES)
+AUTOREPLY = ("Thanks for applying to Studio Jam! Your application and resume came through. "
+             "I read every application myself, and if it looks like a fit I'll reach out to set up a quick call. "
+             "Cheers! Alise McCreary, Studio Jam")
 
-    <div class="job-grid">
-      <div class="job-card">
-        <h3>What you&rsquo;ll do</h3>
-        <ul>
-          <li>Scheduling photoshoots</li>
-          <li>General administrative work</li>
-          <li>Connecting with current clients on their marketing goals</li>
-          <li>Onsite photo and video shoots (1 to 2 times per month)</li>
-        </ul>
-      </div>
-      <div class="job-card job-card-teal">
-        <h3>Who it&rsquo;s for</h3>
-        <ul>
-          <li>You want to learn how a creative marketing studio actually runs</li>
-          <li>You&rsquo;re organized, curious, and comfortable talking with clients</li>
-          <li>You do not have to be proficient, just willing to learn</li>
-          <li>This could grow into a full-time position if you want it to</li>
-        </ul>
-      </div>
+ap = head("Work With Us | Studio Jam", "Want to work with Studio Jam? Pick the role, attach your resume, and send your application straight to Alise.", "work-with-us")
+ap += nav("work-with-us") + ticker("Now Hiring &#10039; Join the Jam &#10039; Send Your Resume &#10039; Let&rsquo;s Jam! &#10039; Now Hiring &#10039; Join the Jam &#10039; Send Your Resume &#10039; Let&rsquo;s Jam!")
+ap += page_hero("Work with us", "Join the jam",
+                "Pick the role, attach your resume, and hit send. It comes straight to me, and I read every application myself.",
+                [("Start your application", "#form", "btn-blush btn-solid")], deco=("mascot-walk-pink.png", "walk"))
+ap += f'''
+<!-- APPLICATION FORM -->
+<section class="apply-form" id="form">
+  <form class="app-card" id="app" action="https://formsubmit.co/{EMAIL}" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="_subject" id="f-subject" value="New Studio Jam application">
+    <input type="hidden" name="_next" value="https://studiojamcreatives.com/apply-thanks">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_autoresponse" value="{AUTOREPLY}">
+    <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <p class="kicker">The application</p>
+    <h2>Tell me about you</h2>
+    <p class="app-note">Fields marked <span aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required. Takes about 5 minutes.</p>
+
+    <div class="field full">
+      <label for="f-role">Which role? <span class="req" aria-hidden="true">*</span></label>
+      <select id="f-role" name="Role" required>
+        <option value="" disabled selected>Pick one</option>{role_opts}
+      </select>
     </div>
-  </div>
-</section>
 
-<!-- APPLY -->
-<section class="contact apply" id="apply">
-  <img class="contact-star" src="{STAR}" alt="" width="602" height="667">
-  <p class="kicker">How to apply</p>
-  <h2>Let&rsquo;s jam</h2>
-  <p>Email your resume plus any recent work (class projects, content you&rsquo;ve made, anything you&rsquo;re proud of) to:</p>
-  <a class="btn btn-teal" href="mailto:{EMAIL}?subject=Marketing%20Assistant%20%2D%20Fayetteville">{EMAIL}</a>
-  <p class="ig">Know someone who&rsquo;d be perfect? Send them this page.</p>
-</section>
+    <div class="field">
+      <label for="f-name">Full name <span class="req" aria-hidden="true">*</span></label>
+      <input id="f-name" name="Name" type="text" autocomplete="name" required>
+    </div>
+    <div class="field">
+      <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+      <input id="f-email" name="email" type="email" autocomplete="email" required>
+    </div>
+    <div class="field">
+      <label for="f-phone">Phone</label>
+      <input id="f-phone" name="Phone" type="tel" autocomplete="tel">
+    </div>
+    <div class="field">
+      <label for="f-city">City and state <span class="req" aria-hidden="true">*</span></label>
+      <input id="f-city" name="City" type="text" autocomplete="address-level2" required>
+    </div>
 
+    <div class="field full">
+      <label for="f-resume">Resume <span class="req" aria-hidden="true">*</span></label>
+      <div class="drop" id="drop">
+        <input id="f-resume" name="attachment" type="file" accept=".pdf,.doc,.docx,.pages" required aria-describedby="f-resume-hint f-resume-msg">
+        <span class="drop-icon" aria-hidden="true">&#10039;</span>
+        <span class="drop-text" id="drop-text">Choose a file or drag it here</span>
+        <span class="drop-hint" id="f-resume-hint">PDF or Word doc, under 10 MB</span>
+      </div>
+      <p class="field-msg" id="f-resume-msg" role="status" aria-live="polite"></p>
+    </div>
+
+    <div class="field full">
+      <label for="f-links">Links to your work</label>
+      <textarea id="f-links" name="Work links" rows="3" aria-describedby="f-links-hint"></textarea>
+      <p class="hint" id="f-links-hint">Portfolio, reels you&rsquo;ve edited, accounts you&rsquo;ve managed, class projects. Anything you&rsquo;re proud of counts!</p>
+    </div>
+    <div class="field">
+      <label for="f-ig">Instagram or TikTok</label>
+      <input id="f-ig" name="Instagram or TikTok" type="text" placeholder="@yourhandle">
+    </div>
+    <div class="field">
+      <label for="f-avail">Availability</label>
+      <input id="f-avail" name="Availability" type="text" placeholder="e.g. 10 hrs a week, free Mondays">
+    </div>
+    <div class="field full">
+      <label for="f-why">Why Studio Jam? <span class="req" aria-hidden="true">*</span></label>
+      <textarea id="f-why" name="Why Studio Jam" rows="4" required aria-describedby="f-why-hint"></textarea>
+      <p class="hint" id="f-why-hint">A few sentences is plenty.</p>
+    </div>
+    <div class="field full">
+      <label for="f-heard">How did you hear about us?</label>
+      <select id="f-heard" name="Heard about us from">
+        <option value="">Pick one</option>
+        <option>Instagram</option>
+        <option>LinkedIn</option>
+        <option>Facebook</option>
+        <option>Handshake or a school job board</option>
+        <option>A friend or teammate</option>
+        <option>Somewhere else</option>
+      </select>
+    </div>
+
+    <div class="app-submit full">
+      <button class="btn btn-teal btn-fill" type="submit" id="f-send">Send my application</button>
+      <p class="hint">After you hit send you&rsquo;ll see a quick &ldquo;I&rsquo;m not a robot&rdquo; check, then you&rsquo;re done.</p>
+    </div>
+  </form>
+</section>
+<script>
+(function () {{
+  var form = document.getElementById('app'), role = document.getElementById('f-role'), file = document.getElementById('f-resume');
+  var dropText = document.getElementById('drop-text'), msg = document.getElementById('f-resume-msg'), drop = document.getElementById('drop');
+  var MAX = 10 * 1024 * 1024;
+  var want = new URLSearchParams(location.search).get('role');
+  if (want) for (var i = 0; i < role.options.length; i++) if (role.options[i].dataset.slug === want) role.selectedIndex = i;
+  function checkFile() {{
+    var f = file.files && file.files[0];
+    drop.classList.toggle('has-file', !!f);
+    if (!f) {{ dropText.textContent = 'Choose a file or drag it here'; msg.textContent = ''; file.setCustomValidity(''); return; }}
+    dropText.textContent = f.name;
+    if (f.size > MAX) {{ msg.textContent = 'That file is ' + (f.size / 1048576).toFixed(1) + ' MB. Please attach one under 10 MB (a PDF export usually does it).'; file.setCustomValidity('File is over 10 MB'); }}
+    else {{ msg.textContent = 'Attached: ' + f.name; file.setCustomValidity(''); }}
+  }}
+  file.addEventListener('change', checkFile);
+  ['dragenter', 'dragover'].forEach(function (e) {{ drop.addEventListener(e, function () {{ drop.classList.add('over'); }}); }});
+  ['dragleave', 'drop'].forEach(function (e) {{ drop.addEventListener(e, function () {{ drop.classList.remove('over'); }}); }});
+  form.addEventListener('submit', function () {{
+    var name = document.getElementById('f-name').value.trim();
+    document.getElementById('f-subject').value = 'New application: ' + (role.value || 'Studio Jam') + (name ? ' | ' + name : '');
+    var b = document.getElementById('f-send'); b.textContent = 'Sending...'; b.setAttribute('aria-disabled', 'true');
+  }});
+}})();
+</script>
 ''' + footer()
-open('work-with-us.html', 'w', encoding='utf-8').write(finalize(ww))
+open('work-with-us.html', 'w', encoding='utf-8').write(finalize(ap))
+
+# ---------------- APPLY THANKS ----------------
+at = head("Application Sent | Studio Jam", "Your Studio Jam application is in.", "apply-thanks", noindex=True)
+at += nav("work-with-us") + ticker("Application Received &#10039; Thank You &#10039; Let&rsquo;s Jam! &#10039; Application Received &#10039; Thank You &#10039; Let&rsquo;s Jam!")
+at += page_hero("Application received", "You&rsquo;re on the list!",
+                "Your application and resume came through. I read every one myself, and if it looks like a fit I&rsquo;ll reach out to set up a quick call. Cheers!",
+                [("Back to the main stage", "/", "btn-blush btn-solid"), ("Follow along on Instagram", "https://instagram.com/studiojamcreatives", "btn-blush")],
+                cls="notfound", deco=("mascot-stand.png", "stand"))
+at += footer()
+open('apply-thanks.html', 'w', encoding='utf-8').write(finalize(at))
 
 # ---------------- 404 ----------------
 nf = head("Wrong Venue | Studio Jam", "That page is not on the setlist. Head back to Studio Jam.", "404", noindex=True)
