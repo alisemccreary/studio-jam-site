@@ -590,7 +590,6 @@ open('clients.html', 'w', encoding='utf-8').write(finalize(cl))
 # Applications post to formsubmit.co, which emails each one to EMAIL with the resume attached.
 # One-time setup: the first submission triggers an activation email to EMAIL; click it once.
 ROLES = [
-    ("video-editor", "Video Editor (Reels), remote"),
     ("social-coordinator", "Social Media + Content Coordinator, Oxford MS"),
     ("photographer", "Content Photographer, Baldwyn + Tupelo MS"),
     ("general", "Not sure yet, just want to jam"),
