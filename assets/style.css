@@ -1027,3 +1027,18 @@ h2 { max-width: 18em; margin-left: auto; margin-right: auto; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 @media (max-width: 640px) { .app-card { grid-template-columns: 1fr; } }
 .app-card > h2 { text-align: left; margin: 0; }
+
+/* Work With Us: apply by email */
+.apply-roles { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.8rem; }
+.apply-role { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border: 2px solid var(--teal); border-radius: 16px; padding: 0.9rem 1.1rem; }
+.apply-role.picked { background: var(--blush, #f7d6d9); }
+.apply-role div { display: flex; flex-direction: column; gap: 0.15rem; }
+.apply-role strong { font-size: 1.05rem; }
+.apply-role span:not(.sr-only) { font-size: 0.9rem; color: #2f6573; }
+.apply-alt p { margin: 0; font-size: 0.95rem; line-height: 1.6; }
+.apply-alt a { color: var(--teal); font-weight: 700; overflow-wrap: anywhere; }
+.copy-email { margin-left: 0.4rem; font: inherit; font-size: 0.85rem; color: var(--teal); background: transparent; border: 1.5px solid var(--teal); border-radius: 999px; padding: 0.15rem 0.7rem; cursor: pointer; }
+.copy-email:hover, .copy-email:focus-visible { background: var(--teal); color: var(--white); }
+.apply-notice { border-left: 4px solid var(--teal); padding: 0.2rem 0 0.2rem 0.9rem; }
+.apply-notice p { margin: 0; font-size: 0.92rem; line-height: 1.55; }
+@media (max-width: 640px) { .apply-role .btn { width: 100%; text-align: center; } }
