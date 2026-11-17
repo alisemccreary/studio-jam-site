@@ -593,8 +593,6 @@ open('clients.html', 'w', encoding='utf-8').write(finalize(cl))
 from urllib.parse import quote
 ROLES = [
     ("social-coordinator", "Social Media + Content Coordinator", "Oxford, MS"),
-    ("photographer", "Content Photographer", "Baldwyn + Tupelo, MS"),
-    ("general", "Not sure yet, just want to jam", "Anywhere"),
 ]
 APPLY_BODY = ("Hi Alise!\n\n"
               "Name:\nCity and state:\nPhone:\n"
@@ -613,7 +611,7 @@ role_rows = "".join(
 ap = head("Work With Us | Studio Jam", "Want to work with Studio Jam? Email your resume straight to Alise. She reads every application herself.", "work-with-us")
 ap += nav("work-with-us") + ticker("Now Hiring &#10039; Join the Jam &#10039; Send Your Resume &#10039; Let&rsquo;s Jam! &#10039; Now Hiring &#10039; Join the Jam &#10039; Send Your Resume &#10039; Let&rsquo;s Jam!")
 ap += page_hero("Work with us", "Join the jam",
-                "Pick your role, attach your resume, and email it straight to me. I read every application myself.",
+                "Attach your resume and email it straight to me. I read every application myself.",
                 [("How to apply", "#form", "btn-blush btn-solid")], deco=("mascot-walk-pink.png", "walk"))
 ap += f'''
 <!-- APPLY BY EMAIL -->
@@ -621,7 +619,7 @@ ap += f'''
   <div class="app-card">
     <p class="kicker">The application</p>
     <h2>Email me your resume</h2>
-    <p class="app-note">Tap your role and an email opens with everything I need already listed. Fill it in, attach your resume (PDF or Word doc), and send. Takes about 5 minutes.</p>
+    <p class="app-note">Tap the button and an email opens with everything I need already listed. Fill it in, attach your resume (PDF or Word doc), and send. Takes about 5 minutes.</p>
 
     <ul class="apply-roles full">{role_rows}
     </ul>
